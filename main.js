@@ -1,202 +1,128 @@
+/**
+ * ANT'S Corporate Site V2
+ * main.js — スムーススクロール / ハンバーガーメニュー / スクロールリビール のみ
+ */
+
 document.addEventListener('DOMContentLoaded', () => {
-  // --- STICKY HEADER ---
-  const header = document.querySelector('.header');
-  const scrollThreshold = 50;
 
-  const handleScroll = () => {
-    if (window.scrollY > scrollThreshold) {
-      header.classList.add('header--scrolled');
-    } else {
-      header.classList.remove('header--scrolled');
-    }
-  };
+    /* ============================================================
+       1. Header — スクロール時のクラス付与
+    ============================================================ */
+    const header = document.getElementById('header');
 
-  window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Run once in case page loads scrolled
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 40) {
+            header.classList.add('is-scrolled');
+        } else {
+            header.classList.remove('is-scrolled');
+        }
+    }, { passive: true });
 
-  // --- MOBILE NAV TOGGLE ---
-  const mobileToggle = document.querySelector('.mobile-toggle');
-  const nav = document.querySelector('.nav');
 
-  if (mobileToggle && nav) {
-    mobileToggle.addEventListener('click', () => {
-      mobileToggle.classList.toggle('mobile-toggle--active');
-      nav.classList.toggle('nav--active');
-    });
+    /* ============================================================
+       2. Hamburger Menu — モバイル開閉
+    ============================================================ */
+    const hamburger = document.getElementById('hamburger');
+    const nav       = document.getElementById('nav');
 
-    // Close menu when clicking navigation links
-    const navLinks = document.querySelectorAll('.nav__link');
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileToggle.classList.remove('mobile-toggle--active');
-        nav.classList.remove('nav--active');
-      });
-    });
-  }
-
-  // --- SCROLL REVEAL ANIMATIONS (IntersectionObserver) ---
-  const revealElements = document.querySelectorAll('.reveal-on-scroll');
-
-  const revealCallback = (entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        // Once revealed, we don't need to observe it anymore
-        observer.unobserve(entry.target);
-      }
-    });
-  };
-
-  const revealObserver = new IntersectionObserver(revealCallback, {
-    root: null,
-    threshold: 0.15,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  revealElements.forEach(el => {
-    revealObserver.observe(el);
-  });
-
-  // --- ACCORDION (RECRUITMENT POSITIONS) ---
-  const accordionItems = document.querySelectorAll('.accordion-item');
-
-  accordionItems.forEach(item => {
-    const trigger = item.querySelector('.accordion-trigger');
-
-    if (trigger) {
-      trigger.addEventListener('click', () => {
-        const isActive = item.classList.contains('accordion-item--active');
-        
-        // Close all other items
-        accordionItems.forEach(otherItem => {
-          otherItem.classList.remove('accordion-item--active');
+    if (hamburger && nav) {
+        hamburger.addEventListener('click', () => {
+            const isOpen = nav.classList.toggle('is-open');
+            hamburger.classList.toggle('is-active');
+            hamburger.setAttribute('aria-expanded', isOpen);
+            // メニュー開放中は背景スクロールを止める
+            document.body.style.overflow = isOpen ? 'hidden' : '';
         });
 
-        // Toggle current item
-        if (!isActive) {
-          item.classList.add('accordion-item--active');
-        }
-      });
+        // ナビリンクをクリックしたら閉じる
+        nav.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('is-open');
+                hamburger.classList.remove('is-active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            });
+        });
+
+        // Escape キーで閉じる
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && nav.classList.contains('is-open')) {
+                nav.classList.remove('is-open');
+                hamburger.classList.remove('is-active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
+        });
     }
-  });
 
-  // --- MODAL (RECRUITMENT APPLY) ---
-  const modal = document.getElementById('applyModal');
-  const openButtons = document.querySelectorAll('.open-apply-modal');
-  const closeButton = document.querySelector('.modal__close');
-  const overlay = document.querySelector('.modal__overlay');
-  const positionSelect = document.getElementById('jobPosition');
 
-  const openModal = (defaultPosition = '') => {
-    if (modal) {
-      modal.classList.add('modal--active');
-      document.body.style.overflow = 'hidden'; // Stop background scrolling
-      
-      if (defaultPosition && positionSelect) {
-        positionSelect.value = defaultPosition;
-      }
-    }
-  };
+    /* ============================================================
+       3. Smooth Scroll — アンカーリンクの滑らか移動
+    ============================================================ */
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return; // ページトップは通常動作に任せる
 
-  const closeModal = () => {
-    if (modal) {
-      modal.classList.remove('modal--active');
-      document.body.style.overflow = ''; // Restore scrolling
-    }
-  };
+            const target = document.querySelector(targetId);
+            if (!target) return;
 
-  openButtons.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const position = btn.getAttribute('data-position') || '';
-      openModal(position);
+            e.preventDefault();
+
+            const headerHeight = header ? header.offsetHeight : 0;
+            const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+            window.scrollTo({ top, behavior: 'smooth' });
+        });
     });
-  });
 
-  if (closeButton) closeButton.addEventListener('click', closeModal);
-  if (overlay) overlay.addEventListener('click', closeModal);
 
-  // Close modal with Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && modal && modal.classList.contains('modal--active')) {
-      closeModal();
+    /* ============================================================
+       4. Scroll Reveal — IntersectionObserver でフェードイン
+    ============================================================ */
+    const revealEls = document.querySelectorAll('.reveal');
+
+    if (revealEls.length > 0) {
+        const observer = new IntersectionObserver((entries, obs) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                entry.target.classList.add('is-visible');
+                obs.unobserve(entry.target); // 一度表示したら監視解除
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: '0px 0px -48px 0px'
+        });
+
+        revealEls.forEach(el => observer.observe(el));
     }
-  });
 
-  // --- TOAST NOTIFICATIONS ---
-  const toast = document.getElementById('toastNotification');
-  const toastMessage = document.getElementById('toastMessage');
 
-  const showToast = (message, duration = 4000) => {
-    if (toast && toastMessage) {
-      toastMessage.textContent = message;
-      toast.classList.add('toast--active');
+    /* ============================================================
+       5. Contact Form — シンプルなクライアントサイドバリデーション
+         （送信先が確定したら action 属性に Formspree 等の URL を設定）
+    ============================================================ */
+    const contactForm = document.getElementById('contactForm');
 
-      setTimeout(() => {
-        toast.classList.remove('toast--active');
-      }, duration);
+    if (contactForm) {
+        contactForm.addEventListener('submit', function (e) {
+            // action="#" のままの場合はデモ動作
+            if (this.action.endsWith('#') || this.action === window.location.href) {
+                e.preventDefault();
+                const btn = this.querySelector('.btn--submit');
+                const original = btn.textContent;
+
+                btn.textContent = '送信完了しました';
+                btn.disabled = true;
+
+                setTimeout(() => {
+                    btn.textContent = original;
+                    btn.disabled = false;
+                    this.reset();
+                }, 3000);
+            }
+            // action に実際のエンドポイントが設定されていれば通常送信
+        });
     }
-  };
 
-  // --- FORM SUBMISSION HANDLING (Contact & Recruitment) ---
-  const contactForm = document.getElementById('contactForm');
-  const recruitmentForm = document.getElementById('recruitmentForm');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      
-      // Simple validation
-      const name = contactForm.querySelector('[name="name"]').value.trim();
-      const email = contactForm.querySelector('[name="email"]').value.trim();
-      
-      if (!name || !email) {
-        showToast('お名前とメールアドレスをご入力ください。');
-        return;
-      }
-
-      // Simulate API submit
-      const submitBtn = contactForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '送信中... <i class="fas fa-spinner fa-spin"></i>';
-
-      setTimeout(() => {
-        showToast('お問い合わせを受け付けました。ご連絡をお待ちください。');
-        contactForm.reset();
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-      }, 1500);
-    });
-  }
-
-  if (recruitmentForm) {
-    recruitmentForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      // Simple validation
-      const name = recruitmentForm.querySelector('[name="applyName"]').value.trim();
-      const phone = recruitmentForm.querySelector('[name="applyPhone"]').value.trim();
-      const position = recruitmentForm.querySelector('[name="applyPosition"]').value;
-
-      if (!name || !phone || !position) {
-        showToast('必須項目をご入力ください。');
-        return;
-      }
-
-      // Simulate API submit
-      const submitBtn = recruitmentForm.querySelector('button[type="submit"]');
-      const originalText = submitBtn.innerHTML;
-      submitBtn.disabled = true;
-      submitBtn.innerHTML = '送信中... <i class="fas fa-spinner fa-spin"></i>';
-
-      setTimeout(() => {
-        closeModal();
-        showToast('エントリーが完了しました。担当者よりご連絡いたします。');
-        recruitmentForm.reset();
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalText;
-      }, 1500);
-    });
-  }
 });
