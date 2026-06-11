@@ -1,139 +1,201 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ANT'S | 茅ヶ崎・辻堂のおもてなし美容室</title>
-    <meta name="description" content="ANT'Sは茅ヶ崎・辻堂を拠点に、サロン事業と訪問美容事業を展開するトータルビューティーブランドです。">
-    <link rel="stylesheet" href="style.css">
-    <script src="main.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ANT'S | 茅ヶ崎・辻堂のおもてなし美容室</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
 </head>
+
 <body>
 
-<!-- ==================== HEADER ==================== -->
-<header class="header" id="header">
+  <!-- ==================== LOADING ANIMATION ==================== -->
+  <div id="global-loader" class="global-loader">
+    <span class="loader-logo">ANT'S</span>
+  </div>
+
+  <!-- ==================== HEADER ==================== -->
+  <header class="header" id="header">
     <div class="header-inner">
-        <a href="index.html" class="logo">ANT'S</a>
-        <nav class="nav" id="nav">
-            <ul class="nav-list">
-                <li><a href="salon.html"  class="nav-link" data-page="salon.html">ABOUT</a></li>
-                <li><a href="visit.html"  class="nav-link" data-page="visit.html">訪問美容</a></li>
-                <li><a href="beauty.html" class="nav-link" data-page="beauty.html">トータルビューティー</a></li>
-                <li><a href="cast.html"   class="nav-link" data-page="cast.html">CAST</a></li>
-                <li><a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="nav-link nav-link--recruit">RECRUIT ↗</a></li>
-                <li><a href="access.html" class="nav-link" data-page="access.html">ACCESS</a></li>
-            </ul>
-        </nav>
-        <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</header>
+      <a href="index.html" class="logo">ANT'S</a>
+      <nav class="nav" id="nav">
+        <ul class="nav-list">
+          <li><a href="salon.html" class="nav-link" data-page="salon.html">ABOUT</a></li>
+          <li><a href="visit.html" class="nav-link" data-page="visit.html">訪問美容</a></li>
+          <li><a href="beauty.html" class="nav-link" data-page="beauty.html">トータルビューティー</a></li>
+          <li><a href="cast.html" class="nav-link" data-page="cast.html">CAST</a></li>
+          <li><a href="access.html" class="nav-link" data-page="access.html">ACCESS</a></li>
+          <li><a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer"
+              class="nav-link nav-link--recruit">RECRUIT ↗</a></li>
 
-<!-- ==================== HERO ==================== -->
-<section class="hero">
-    <div class="hero-split">
-        <div class="hero-panel hero-panel--salon">
-            <div class="placeholder" style="position:absolute;inset:0;">【サロン空間 ビジュアル】</div>
-            <span class="hero-panel-label" style="position:relative;z-index:2;">Salon</span>
-        </div>
-        <div class="hero-panel hero-panel--visit">
-            <div class="placeholder" style="position:absolute;inset:0;">【訪問美容 ビジュアル】</div>
-            <span class="hero-panel-label" style="position:relative;z-index:2;">Visit</span>
-        </div>
-    </div>
-    <div class="hero-divider"></div>
-    <div class="hero-copy-wrap">
-        <p class="hero-copy">「ありがとう」を伝えたくて。</p>
-    </div>
-</section>
-
-<!-- ==================== VISION SUMMARY ==================== -->
-<section class="section section--alt">
-    <div class="container">
-        <div class="vision-summary reveal">
-            <span class="section-label">VISION</span>
-            <h2 class="section-title">Happiness creator</h2>
-            <p class="vision-identity">私たちは、キャスト・ゲスト・関わる全ての方の<br>「こうありたい」を叶え、幸せを創造するチームである。</p>
-            <p class="vision-meta">"ありがとう"が波及する世界を創る</p>
-            <p class="vision-tagline">inspiring a world of thankfulness</p>
-            <a href="vision.html" class="btn btn--ghost">VIEW MORE</a>
-        </div>
-    </div>
-</section>
-
-<!-- ==================== BUSINESS SUMMARY ==================== -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title reveal">BUSINESS</h2>
-        <div class="business-grid">
-            <div class="business-card reveal">
-                <div class="business-visual placeholder">【訪問美容 イメージ】</div>
-                <div class="business-body">
-                    <h3>訪問美容事業</h3>
-                    <p>施設関係者様やご利用者様に向けた、ANT'Sのホスピタリティあふれる訪問美容サービス。いつまでも「美しくありたい」という願いを、安心の技術と真心でお届けします。</p>
-                    <a href="visit.html" class="btn btn--outline">詳しく見る</a>
-                </div>
-            </div>
-            <div class="business-card reveal reveal-delay-1">
-                <div class="business-visual placeholder">【トータルビューティー イメージ】</div>
-                <div class="business-body">
-                    <h3>サロン事業（トータルビューティー）</h3>
-                    <p>ヘアケアはもちろん、アイラッシュ、エステ、ネイルなど、お客様の美を総合的にプロデュース。各店舗で高い技術を持つキャストが、特別な時間をご提供いたします。</p>
-                    <a href="beauty.html" class="btn btn--outline">詳しく見る</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ==================== SALON SUMMARY ==================== -->
-<section class="section section--alt">
-    <div class="container">
-        <h2 class="section-title reveal">SALON LIST</h2>
-        <div class="salon-summary-grid reveal">
-            <a href="salon.html" class="salon-mini-card">ANT'S<br>辻堂本店</a>
-            <a href="salon.html" class="salon-mini-card">ANT'S Southern-Resort<br>茅ヶ崎店</a>
-            <a href="salon.html" class="salon-mini-card">ENi hair and resort<br>by ANT'S</a>
-            <a href="salon.html" class="salon-mini-card">Lune. by ANT'S<br>茅ヶ崎北口店</a>
-            <a href="salon.html" class="salon-mini-card">ANT'S<br>茅ヶ崎駅前店</a>
-        </div>
-        <div style="text-align:center; margin-top:40px;">
-            <a href="salon.html" class="btn btn--primary reveal">店舗一覧へ</a>
-        </div>
-    </div>
-</section>
-
-<!-- ==================== NEWS ==================== -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title reveal">NEWS</h2>
-        <ul class="news-list reveal">
-            <li>
-                <time class="news-time" datetime="2026-05-29">2026.05.29</time>
-                <span class="news-divider">|</span>
-                <a href="#" class="news-link">Lune. 茅ヶ崎北口店 ネット環境が復旧しました。</a>
-            </li>
-            <li>
-                <time class="news-time" datetime="2026-01-01">2026.01.01</time>
-                <span class="news-divider">|</span>
-                <a href="#" class="news-link">新年明けましておめでとうございます。</a>
-            </li>
         </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-</section>
+  </header>
 
-<!-- ==================== FOOTER ==================== -->
-<footer class="footer">
-    <div class="container footer-inner">
-        <div class="footer-logo">ANT'S</div>
-        <nav class="footer-nav">
-            <a href="#">プライバシーポリシー</a>
-            <a href="#">Instagram</a>
-        </nav>
-        <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
+  <!-- ==================== HERO ==================== -->
+  <section class="hero">
+    <div class="hero-bg-slider">
+      <div class="hero-slide hero-slide--1">
+        <div class="placeholder" style="width:100%; height:100%;">【サロン空間 高画質写真】</div>
+      </div>
+      <div class="hero-slide hero-slide--2">
+        <div class="placeholder" style="width:100%; height:100%;">【訪問美容 高画質写真】</div>
+      </div>
     </div>
-</footer>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-copy-wrap">
+      <p class="hero-copy-en">Inspiring a world of thankfulness</p>
+      <h2 class="hero-copy-jp">「ありがとう」を伝えたくて。</h2>
+    </div>
+
+    <div class="hero-scroll-indicator"><span>SCROLL</span></div>
+  </section>
+
+  <!-- ==================== VISION SUMMARY ==================== -->
+  <section class="section">
+    <div class="container text-center reveal">
+      <h2 class="section-title">VISION</h2>
+      <p style="font-size: 1.2rem; margin-bottom: 24px; font-weight: bold;">Happiness creator</p>
+      <p style="margin-bottom: 40px;">”ありがとう”が波及する世界を創る</p>
+      <a href="vision.html" class="btn btn--outline">VIEW MORE</a>
+    </div>
+  </section>
+
+  <!-- ==================== BUSINESS SUMMARY ==================== -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2 class="section-title text-center">BUSINESS</h2>
+      <div class="business-grid">
+        <div class="business-card reveal">
+          <div class="business-visual placeholder">【訪問美容 イメージ】</div>
+          <div class="business-body">
+            <h3>訪問美容事業</h3>
+            <p>施設関係者様やご利用者様に向けた、ANT'Sのホスピタリティあふれる訪問美容サービス。</p>
+            <a href="visit.html" class="btn btn--outline mt-4">詳細を見る</a>
+          </div>
+        </div>
+        <div class="business-card reveal">
+          <div class="business-visual placeholder">【トータルビューティー イメージ】</div>
+          <div class="business-body">
+            <h3>サロン事業（トータルビューティー）</h3>
+            <p>ヘア、アイラッシュ、エステ、ネイル。お客様の美を総合的にプロデュースいたします。</p>
+            <a href="beauty.html" class="btn btn--outline mt-4">詳細を見る</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== SALON LIST ==================== -->
+  <section class="section section--alt" style="padding-bottom: 80px;">
+    <div class="container text-center reveal">
+      <h2 class="section-title">SALON LIST</h2>
+      <p style="margin-bottom: 40px; color: #666; font-size: 0.85rem; letter-spacing: 0.1em;">ANT'Sは茅ヶ崎・辻堂に5店舗展開しています。
+      </p>
+    </div>
+
+    <div class="salon-hiroin-grid reveal reveal-delay-1">
+      <a href="salon.html" class="salon-hiroin-card">
+        <div class="salon-hiroin-img">
+          <div class="placeholder">【辻堂本店 写真】</div>
+        </div>
+        <div class="salon-hiroin-txt">
+          <span>ANT'S 辻堂本店</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+      <a href="salon.html" class="salon-hiroin-card">
+        <div class="salon-hiroin-img">
+          <div class="placeholder" style="background:#e8e6e1;">【茅ヶ崎店 写真】</div>
+        </div>
+        <div class="salon-hiroin-txt">
+          <span>Southern-Resort 茅ヶ崎店</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+      <a href="salon.html" class="salon-hiroin-card">
+        <div class="salon-hiroin-img">
+          <div class="placeholder">【ENi 写真】</div>
+        </div>
+        <div class="salon-hiroin-txt">
+          <span>ENi hair and resort</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+      <a href="salon.html" class="salon-hiroin-card">
+        <div class="salon-hiroin-img">
+          <div class="placeholder" style="background:#e8e6e1;">【Lune. 写真】</div>
+        </div>
+        <div class="salon-hiroin-txt">
+          <span>Lune. by ANT'S</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+      <a href="salon.html" class="salon-hiroin-card">
+        <div class="salon-hiroin-img">
+          <div class="placeholder">【駅前店 写真】</div>
+        </div>
+        <div class="salon-hiroin-txt">
+          <span>ANT'S 茅ヶ崎駅前店</span>
+          <span class="arrow">→</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="container text-center reveal" style="margin-top: 60px;">
+      <a href="salon.html" class="btn btn--outline">VIEW ALL SALONS</a>
+    </div>
+  </section>
+
+  <!-- ==================== NEWS ==================== -->
+  <section class="section bg-light">
+    <div class="container">
+      <h2 class="section-title text-center">NEWS</h2>
+      <ul class="news-list reveal">
+        <li>
+          <time class="news-time" datetime="2026-05-29">2026.05.29</time>
+          <span class="news-divider">|</span>
+          <a href="#" class="news-link">ルーン店 ネット環境復旧しました。</a>
+        </li>
+        <li>
+          <time class="news-time" datetime="2026-01-01">2026.01.01</time>
+          <span class="news-divider">|</span>
+          <a href="#" class="news-link">新年明けましておめでとうございます！</a>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ==================== COMPANY ==================== -->
+  <section class="section">
+    <div class="container text-center reveal">
+      <h2 class="section-title">COMPANY</h2>
+      <p style="margin-bottom: 16px;"><strong>株式会社 ANT'S</strong></p>
+      <p style="margin-bottom: 40px;">〒XXX-XXXX 神奈川県茅ヶ崎市〇〇 1-2-3</p>
+      <a href="access.html" class="btn btn--outline">VIEW MORE</a>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-logo">ANT'S</div>
+      <nav class="footer-nav">
+        <a href="#">プライバシーポリシー</a>
+        <a href="#">Instagram</a>
+      </nav>
+      <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
+    </div>
+  </footer>
 
 </body>
+
 </html>

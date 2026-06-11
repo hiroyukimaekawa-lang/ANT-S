@@ -160,10 +160,13 @@ ol, ul { list-style: none; }
 ============================== */
 .placeholder {
     background: #e2e0db;
+    background-image: url('assets/concept_organic.png') !important;
+    background-size: cover !important;
+    background-position: center !important;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: rgba(0,0,0,0.28);
+    color: transparent !important;
     font-size: 0.78rem;
     letter-spacing: 0.1em;
     font-family: var(--font-sans);
@@ -317,71 +320,40 @@ ol, ul { list-style: none; }
 .reveal-delay-3 { transition-delay: 0.3s; }
 
 /* ==============================
-   Page: index.html — Hero
+   Page: index.html — Hero (Bond Tokyo style)
 ============================== */
 .hero {
     position: relative;
     height: 100vh;
-    min-height: 580px;
-    padding-top: var(--header-h);
+    min-height: 600px;
     overflow: hidden;
+    background: #111;
 }
-.hero-split {
-    display: flex;
-    height: 100%;
-}
-.hero-panel {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    position: relative;
-    overflow: hidden;
-}
-.hero-panel--salon {
-    background: #d8d4cc;
-    animation: heroReveal 1.4s ease forwards;
-}
-.hero-panel--visit {
-    background: #ccd2d0;
-    animation: heroReveal 1.4s 0.15s ease forwards;
-}
-@keyframes heroReveal {
-    from { opacity: 0; transform: scale(1.04); }
-    to   { opacity: 1; transform: scale(1); }
-}
-.hero-panel::before {
-    content: '';
+.hero-bg-slider {
     position: absolute;
     inset: 0;
-    background: rgba(0,0,0,0.06);
 }
-.hero-panel-label {
-    font-family: var(--font-serif);
-    font-size: 0.75rem;
-    letter-spacing: 0.35em;
-    text-transform: uppercase;
-    color: rgba(30,30,30,0.5);
-    position: relative;
-    z-index: 1;
-}
-.hero-panel .placeholder {
-    width: 100%;
-    height: 100%;
+.hero-slide {
     position: absolute;
     inset: 0;
-    font-size: 0.78rem;
+    opacity: 0;
+    animation: heroCrossfade 14s infinite linear;
 }
-.hero-divider {
+.hero-slide--1 { animation-delay: 0s; }
+.hero-slide--2 { animation-delay: 7s; }
+
+@keyframes heroCrossfade {
+    0%   { opacity: 0; transform: scale(1.05); }
+    15%  { opacity: 1; }
+    50%  { opacity: 1; transform: scale(1); }
+    65%  { opacity: 0; transform: scale(1.05); }
+    100% { opacity: 0; }
+}
+.hero-overlay {
     position: absolute;
-    top: 15%; bottom: 15%;
-    left: 50%;
-    width: 1px;
-    background: rgba(255,255,255,0.45);
-    transform: translateX(-50%);
-    z-index: 5;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 2;
 }
 .hero-copy-wrap {
     position: absolute;
@@ -389,22 +361,52 @@ ol, ul { list-style: none; }
     transform: translate(-50%, -50%);
     z-index: 10;
     text-align: center;
-    animation: heroCopy 1s 0.5s ease both;
+    color: #fff;
+    width: 100%;
 }
-@keyframes heroCopy {
-    from { opacity: 0; transform: translate(-50%, calc(-50% + 12px)); }
-    to   { opacity: 1; transform: translate(-50%, -50%); }
+.hero-copy-en {
+    font-size: 0.85rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    opacity: 0.8;
 }
-.hero-copy {
-    font-family: var(--font-serif);
-    font-size: clamp(1.2rem, 3vw, 2.2rem);
+.hero-copy-jp {
+    font-size: clamp(1.8rem, 4vw, 3rem);
     font-weight: 300;
-    letter-spacing: 0.22em;
-    color: var(--color-text);
-    background: rgba(250, 250, 248, 0.88);
-    padding: 22px 48px;
-    border: 1px solid rgba(255,255,255,0.55);
-    white-space: nowrap;
+    letter-spacing: 0.2em;
+}
+.hero-scroll-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.hero-scroll-indicator span {
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #fff;
+    opacity: 0.7;
+    writing-mode: vertical-rl;
+}
+.hero-scroll-indicator::after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 60px;
+    background: rgba(255,255,255,0.5);
+    animation: scrollLine 2s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+@keyframes scrollLine {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
 /* ==============================
@@ -472,24 +474,31 @@ ol, ul { list-style: none; }
 ============================== */
 .salon-summary-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 16px;
     margin-bottom: 48px;
 }
 .salon-mini-card {
     background: var(--color-surface);
     border: 1px solid var(--color-border);
     border-radius: var(--radius);
-    padding: 24px 16px;
+    padding: 32px 16px;
     text-align: center;
-    font-size: 0.83rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    letter-spacing: 0.04em;
-    line-height: 1.5;
-    transition: border-color var(--tr), transform var(--tr);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+    transition: border-color var(--tr), transform var(--tr), box-shadow var(--tr);
     color: var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-.salon-mini-card:hover { border-color: var(--color-accent); transform: translateY(-2px); }
+.salon-mini-card:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+}
 
 /* ==============================
    Page: index.html — News
@@ -832,6 +841,7 @@ ol, ul { list-style: none; }
     .access-grid     { grid-template-columns: 1fr; gap: 56px; }
     .credo-item      { grid-template-columns: 1fr; gap: 8px; }
     .credo-text      { padding-left: 16px; }
+    .salon-summary-grid { grid-template-columns: repeat(3, 1fr); }
 }
 
 /* ==============================
@@ -859,13 +869,9 @@ ol, ul { list-style: none; }
     .nav-list { flex-direction: column; gap: 30px; text-align: center; }
     .nav-link { font-size: 1rem; }
 
-    /* Hero */
-    .hero-split { flex-direction: column; }
-    .hero-panel { min-height: 220px; flex: none; }
-    .hero-panel--salon { flex: 1; }
-    .hero-panel--visit { flex: 1; }
-    .hero-divider { display: none; }
-    .hero-copy { font-size: 1rem; padding: 16px 22px; white-space: normal; max-width: 240px; }
+    /* Hero mobile overrides */
+    .hero-copy-jp { font-size: 1.5rem; }
+    .hero-copy-en { font-size: 0.72rem; margin-bottom: 16px; }
 
     /* Page hero */
     .page-hero { height: 180px; padding-bottom: 28px; }
@@ -880,8 +886,8 @@ ol, ul { list-style: none; }
     /* Cast */
     .cast-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
 
-    /* Vision summary */
-    .salon-summary-grid { grid-template-columns: 1fr 1fr; }
+    /* Salon list summary */
+    .salon-summary-grid { grid-template-columns: repeat(2, 1fr); }
 
     /* Footer */
     .footer-nav { flex-wrap: wrap; justify-content: center; gap: 16px; }
@@ -890,6 +896,270 @@ ol, ul { list-style: none; }
 @media (max-width: 480px) {
     .salon-summary-grid { grid-template-columns: 1fr; }
     .cast-grid { grid-template-columns: repeat(2, 1fr); }
-    .hero-copy { font-size: 0.92rem; }
     .credo-item { grid-template-columns: 1fr; }
+}
+
+/* ==============================
+   Loading Animation
+============================== */
+.global-loader {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100vh;
+    background: var(--color-bg);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 1s;
+}
+.global-loader.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+.loader-logo {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    letter-spacing: 0.25em;
+    color: var(--color-text);
+    opacity: 0;
+    animation: loaderPulse 1.5s ease-in-out forwards;
+}
+@keyframes loaderPulse {
+    0% { opacity: 0; transform: scale(0.95); filter: blur(4px); }
+    100% { opacity: 1; transform: scale(1); filter: blur(0); }
+}
+
+/* ==============================
+   Utility / Helper Classes
+============================== */
+.text-center { text-align: center; }
+.bg-light { background: var(--color-surface); }
+.mt-4 { margin-top: 24px; }
+.btn-outline {
+    background: transparent;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+}
+.btn-outline:hover {
+    background: var(--color-text);
+    color: #fff;
+    border-color: var(--color-text);
+}
+
+/* ==============================
+   Top Page: HIROIN風 サロンリスト
+============================== */
+.salon-hiroin-grid {
+    display: grid;
+    /* PCでは5店舗を隙間なく1行に並べる */
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+}
+
+.salon-hiroin-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    color: var(--color-text);
+    background: var(--color-bg);
+    transition: transform var(--tr), box-shadow var(--tr);
+}
+
+.salon-hiroin-img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    position: relative;
+}
+
+.salon-hiroin-img .placeholder {
+    width: 100%;
+    height: 100%;
+    background: #dcdad5;
+    transition: transform 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.salon-hiroin-card:hover .placeholder {
+    /* ホバー時に写真を少しズームさせる上品な演出 */
+    transform: scale(1.05);
+}
+
+.salon-hiroin-txt {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    border-right: 1px solid var(--color-border);
+    transition: background var(--tr);
+}
+/* 左端と右端のボーダー調整 */
+.salon-hiroin-card:first-child .salon-hiroin-txt { border-left: 1px solid var(--color-border); }
+.salon-hiroin-txt .arrow {
+    font-family: var(--font-sans);
+    color: var(--color-muted);
+    transition: transform var(--tr), color var(--tr);
+}
+.salon-hiroin-card:hover .salon-hiroin-txt {
+    background: var(--color-surface-2);
+    color: var(--color-accent);
+}
+.salon-hiroin-card:hover .arrow {
+    transform: translateX(4px);
+    color: var(--color-accent);
+}
+
+
+/* ==============================
+   Salon Page: 画面完全2分割＆ラグジュアリー余白
+============================== */
+/* 2分割セクション全体の器（画面いっぱいに広げるためcontainerはあえて外す） */
+.salon-split-container {
+    width: 100%;
+    overflow: hidden;
+    background: var(--color-surface);
+}
+
+/* 1店舗ごとの行（高さや幅を揃えるフレックスボックス） */
+.salon-split-row {
+    display: flex;
+    width: 100%;
+    min-height: 80vh; /* 画面の高さ80%分のボリュームを持たせる */
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* 偶数番目（2、4店舗目など）は左右を180度反転させる */
+.salon-split-row:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* 左側（または右側）の巨大写真エリア（完全に横幅50%に固定） */
+.salon-split-img {
+    flex: 0 0 50%;
+    width: 50%;
+    position: relative;
+    background: #eae9e4;
+}
+
+/* 写真の代わりに表示されているグレー枠を全画面にフィットさせる */
+.salon-split-img .placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #888;
+    font-size: 1.1rem;
+    letter-spacing: 0.1em;
+}
+
+/* もう片方の文章エリア（完全に横幅50%に固定） */
+.salon-split-text {
+    flex: 0 0 50%;
+    width: 50%;
+    display: flex;
+    align-items: center;    /* 上下の中央に配置 */
+    justify-content: center; /* 左右の中央に配置 */
+    background: var(--color-surface);
+}
+
+/* テキストを囲う内側のボックス（ここで贅沢な余白「パディング」を出す） */
+.salon-text-inner {
+    width: 100%;
+    max-width: 600px; /* 文字が横に広がりすぎて読みづらくなるのを防ぐ */
+    /* 上下に100px、左右に12%（画面幅に連動する高級感のある可変余白）のパディングを適用 */
+    padding: 100px 12%; 
+    box-sizing: border-box;
+}
+
+.salon-split-name {
+    font-family: var(--font-serif);
+    font-size: clamp(1.8rem, 3.5vw, 2.5rem); /* 画面サイズに応じて美しく縮尺 */
+    font-weight: 300;
+    letter-spacing: 0.08em;
+    margin-bottom: 12px;
+    color: var(--color-text);
+    line-height: 1.3;
+    white-space: nowrap;
+}
+
+.salon-split-concept {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-accent); /* ブランドアクセントカラー */
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    line-height: 1.6;
+}
+
+.salon-split-desc {
+    color: #444;
+    font-size: 0.9rem;
+    line-height: 2.0; /* 行間を広めに取って読みやすく上品に */
+    margin-bottom: 48px;
+}
+
+.salon-split-desc p {
+    margin-bottom: 24px; /* 段落同士の余白 */
+}
+.salon-split-desc p:last-child {
+    margin-bottom: 0;
+}
+
+/* ==============================
+   Responsive (タブレット・スマホ対応)
+============================== */
+@media (max-width: 1024px) {
+    /* タブレット時は文章エリアの左右の余白を少し縮める */
+    .salon-text-inner {
+        padding: 80px 8%;
+    }
+    /* HIROIN風サロンリストを3列に折り返し */
+    .salon-hiroin-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+    /* スマートフォン時は2分割を解除し、全て「上：巨大写真、下：テキスト」に縦積みする */
+    .salon-split-row,
+    .salon-split-row:nth-child(even) {
+        flex-direction: column;
+        min-height: auto;
+    }
+    
+    /* 写真とテキストをそれぞれ横幅100%に広げる */
+    .salon-split-img {
+        width: 100%;
+        height: 45vh; /* スマホ画面の高さ45%分の巨大写真枠 */
+    }
+    
+    .salon-split-text {
+        width: 100%;
+    }
+    
+    /* スマホ時用の心地よい余白設計（上下に64px、左右に24pxの余白に自動可変） */
+    .salon-text-inner {
+        max-width: 100%;
+        padding: 64px 24px;
+    }
+    
+    .salon-split-name {
+        font-size: 1.8rem;
+    }
+    
+    .salon-split-desc {
+        margin-bottom: 36px;
+    }
+    
+    /* スマホ時はサロンリストを2列に */
+    .salon-hiroin-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 480px) {
+    .salon-hiroin-grid { grid-template-columns: 1fr; }
 }

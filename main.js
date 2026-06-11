@@ -7,12 +7,21 @@
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ============================================================
-       1. Page Fade-in（ページ表示時のフェードイン）
+       1. Page Fade-in / Loader Handling
     ============================================================ */
-    // bodyに is-loaded を付けて opacity: 0 → 1
-    requestAnimationFrame(() => {
-        document.body.classList.add('is-loaded');
-    });
+    const loader = document.getElementById('global-loader');
+    if (loader) {
+        // ロゴのアニメーションを1.8秒見せた後、ローダー全体を隠し、bodyをフェードイン
+        setTimeout(() => {
+            loader.classList.add('is-hidden');
+            document.body.classList.add('is-loaded');
+        }, 1800);
+    } else {
+        // ローダーがない下層ページは即座にフェードイン
+        requestAnimationFrame(() => {
+            document.body.classList.add('is-loaded');
+        });
+    }
 
     /* ============================================================
        2. Page Fade-out（リンク遷移時のフェードアウト）
