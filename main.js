@@ -1,127 +1,144 @@
 /**
- * ANT'S Corporate Site V2
- * main.js — スムーススクロール / ハンバーガーメニュー / スクロールリビール のみ
+ * ANT'S Corporate Site V2 — main.js
+ * 全ページ共通: ページフェードイン / ハンバーガーメニュー /
+ *               スムーススクロール / スクロールリビール / コンタクトフォーム
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
     /* ============================================================
-       1. Header — スクロール時のクラス付与
+       1. Page Fade-in（ページ表示時のフェードイン）
     ============================================================ */
-    const header = document.getElementById('header');
-
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 40) {
-            header.classList.add('is-scrolled');
-        } else {
-            header.classList.remove('is-scrolled');
-        }
-    }, { passive: true });
-
+    // bodyに is-loaded を付けて opacity: 0 → 1
+    requestAnimationFrame(() => {
+        document.body.classList.add('is-loaded');
+    });
 
     /* ============================================================
-       2. Hamburger Menu — モバイル開閉
+       2. Page Fade-out（リンク遷移時のフェードアウト）
+       ※ 同一ページ内のアンカーリンクは除外
+    ============================================================ */
+    document.querySelectorAll('a[href]').forEach(link => {
+        const href = link.getAttribute('href');
+        // 外部リンク・アンカーのみ・空・#始まりは除外
+        if (!href || href.startsWith('#') || href.startsWith('http') ||
+            href.startsWith('mailto') || link.target === '_blank') return;
+
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const dest = this.href;
+            document.body.classList.remove('is-loaded');
+            document.body.classList.add('is-leaving');
+            setTimeout(() => { window.location.href = dest; }, 320);
+        });
+    });
+
+    /* ============================================================
+       3. Header — スクロール時クラス付与
+    ============================================================ */
+    const header = document.querySelector('.header');
+    if (header) {
+        const onScroll = () => {
+            header.classList.toggle('is-scrolled', window.scrollY > 30);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+    }
+
+    /* ============================================================
+       4. Hamburger Menu
     ============================================================ */
     const hamburger = document.getElementById('hamburger');
     const nav       = document.getElementById('nav');
 
     if (hamburger && nav) {
+        const toggle = (open) => {
+            hamburger.classList.toggle('is-active', open);
+            nav.classList.toggle('is-open', open);
+            hamburger.setAttribute('aria-expanded', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        };
+
         hamburger.addEventListener('click', () => {
-            const isOpen = nav.classList.toggle('is-open');
-            hamburger.classList.toggle('is-active');
-            hamburger.setAttribute('aria-expanded', isOpen);
-            // メニュー開放中は背景スクロールを止める
-            document.body.style.overflow = isOpen ? 'hidden' : '';
+            toggle(!nav.classList.contains('is-open'));
         });
 
-        // ナビリンクをクリックしたら閉じる
+        // ナビリンクでメニューを閉じる
         nav.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => {
-                nav.classList.remove('is-open');
-                hamburger.classList.remove('is-active');
-                hamburger.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            });
+            link.addEventListener('click', () => toggle(false));
         });
 
-        // Escape キーで閉じる
+        // Escape キー
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && nav.classList.contains('is-open')) {
-                nav.classList.remove('is-open');
-                hamburger.classList.remove('is-active');
-                hamburger.setAttribute('aria-expanded', 'false');
-                document.body.style.overflow = '';
-            }
+            if (e.key === 'Escape' && nav.classList.contains('is-open')) toggle(false);
         });
     }
 
+    /* ============================================================
+       5. アクティブなナビリンクのハイライト
+    ============================================================ */
+    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+        if (link.dataset.page === currentPath) {
+            link.classList.add('is-current');
+        }
+    });
 
     /* ============================================================
-       3. Smooth Scroll — アンカーリンクの滑らか移動
+       6. Smooth Scroll（同一ページ内アンカーのみ）
     ============================================================ */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId === '#') return; // ページトップは通常動作に任せる
-
-            const target = document.querySelector(targetId);
+            const id = this.getAttribute('href');
+            if (id === '#') return;
+            const target = document.querySelector(id);
             if (!target) return;
-
             e.preventDefault();
-
-            const headerHeight = header ? header.offsetHeight : 0;
-            const top = target.getBoundingClientRect().top + window.scrollY - headerHeight;
-
-            window.scrollTo({ top, behavior: 'smooth' });
+            const offset = header ? header.offsetHeight : 0;
+            window.scrollTo({
+                top: target.getBoundingClientRect().top + window.scrollY - offset,
+                behavior: 'smooth'
+            });
         });
     });
 
-
     /* ============================================================
-       4. Scroll Reveal — IntersectionObserver でフェードイン
+       7. Scroll Reveal（IntersectionObserver）
     ============================================================ */
-    const revealEls = document.querySelectorAll('.reveal');
-
-    if (revealEls.length > 0) {
+    const reveals = document.querySelectorAll('.reveal');
+    if (reveals.length) {
         const observer = new IntersectionObserver((entries, obs) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
                 entry.target.classList.add('is-visible');
-                obs.unobserve(entry.target); // 一度表示したら監視解除
+                obs.unobserve(entry.target);
             });
-        }, {
-            threshold: 0.12,
-            rootMargin: '0px 0px -48px 0px'
-        });
+        }, { threshold: 0.1, rootMargin: '0px 0px -44px 0px' });
 
-        revealEls.forEach(el => observer.observe(el));
+        reveals.forEach(el => observer.observe(el));
     }
 
-
     /* ============================================================
-       5. Contact Form — シンプルなクライアントサイドバリデーション
-         （送信先が確定したら action 属性に Formspree 等の URL を設定）
+       8. Contact Form（クライアントサイド）
+       action 属性に Formspree URL を設定すれば実送信される
     ============================================================ */
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function (e) {
-            // action="#" のままの場合はデモ動作
-            if (this.action.endsWith('#') || this.action === window.location.href) {
+    const form = document.getElementById('contactForm');
+    if (form) {
+        form.addEventListener('submit', function (e) {
+            // action が "#" か未設定のままならデモ送信
+            const action = this.action;
+            if (!action || action.endsWith('#') || action === window.location.href) {
                 e.preventDefault();
-                const btn = this.querySelector('.btn--submit');
-                const original = btn.textContent;
-
-                btn.textContent = '送信完了しました';
+                const btn = this.querySelector('[type="submit"]');
+                btn.textContent = '送信しました。ありがとうございます。';
                 btn.disabled = true;
-
                 setTimeout(() => {
-                    btn.textContent = original;
+                    btn.textContent = '送 信 す る';
                     btn.disabled = false;
                     this.reset();
-                }, 3000);
+                }, 3500);
             }
-            // action に実際のエンドポイントが設定されていれば通常送信
+            // 実URLが設定されていれば通常送信
         });
     }
 

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACCESS & CONTACT | ANT'S</title>
+    <meta name="description" content="ANT'Sへのアクセスとお問い合わせ。会社概要、本社オフィス所在地、お問い合わせフォームはこちらです。">
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+</head>
+<body>
+
+<header class="header" id="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo">ANT'S</a>
+        <nav class="nav" id="nav">
+            <ul class="nav-list">
+                <li><a href="salon.html"  class="nav-link" data-page="salon.html">ABOUT</a></li>
+                <li><a href="visit.html"  class="nav-link" data-page="visit.html">訪問美容</a></li>
+                <li><a href="beauty.html" class="nav-link" data-page="beauty.html">トータルビューティー</a></li>
+                <li><a href="cast.html"   class="nav-link" data-page="cast.html">CAST</a></li>
+                <li><a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="nav-link nav-link--recruit">RECRUIT ↗</a></li>
+                <li><a href="access.html" class="nav-link" data-page="access.html">ACCESS</a></li>
+            </ul>
+        </nav>
+        <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- ==================== PAGE HERO ==================== -->
+<div class="page-hero">
+    <div class="container">
+        <p class="page-hero-sub">Access & Contact</p>
+        <h1 class="page-hero-title">ACCESS</h1>
+    </div>
+</div>
+
+<!-- ==================== ACCESS & CONTACT SECTION ==================== -->
+<section class="section">
+    <div class="container access-grid">
+        
+        <!-- Company Info -->
+        <div class="access-info reveal">
+            <h2 class="section-title section-title--left">COMPANY</h2>
+            <dl class="company-dl">
+                <dt>会社名</dt>
+                <dd>株式会社 ANT'S</dd>
+                <dt>所在地</dt>
+                <dd>〒XXX-XXXX<br>神奈川県茅ヶ崎市〇〇 X-X-X<br><small>（本社・オフィスの正式住所が入ります）</small></dd>
+            </dl>
+        </div>
+        
+        <!-- Contact Form -->
+        <div class="contact-wrap reveal">
+            <h2 class="section-title section-title--left">CONTACT</h2>
+            <p class="contact-desc">訪問美容のご依頼や、法人様からのお問い合わせはこちらからお願いいたします。</p>
+            <form id="contactForm" class="contact-form" action="#" method="POST">
+                <div class="form-row">
+                    <label for="c-name">お名前 / 企業名</label>
+                    <input type="text" id="c-name" name="name" placeholder="例：株式会社〇〇 山田 太郎" required>
+                </div>
+                <div class="form-row">
+                    <label for="c-email">メールアドレス</label>
+                    <input type="email" id="c-email" name="email" placeholder="example@email.com" required>
+                </div>
+                <div class="form-row">
+                    <label for="c-subject">件名</label>
+                    <input type="text" id="c-subject" name="subject" placeholder="訪問美容のご依頼について" required>
+                </div>
+                <div class="form-row">
+                    <label for="c-message">お問い合わせ内容</label>
+                    <textarea id="c-message" name="message" rows="6" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
+                </div>
+                <button type="submit" class="btn btn--submit">送 信 す る</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-logo">ANT'S</div>
+        <nav class="footer-nav">
+            <a href="#">プライバシーポリシー</a>
+            <a href="#">Instagram</a>
+        </nav>
+        <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>
