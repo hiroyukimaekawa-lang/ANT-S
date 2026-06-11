@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AURA Beauty & Co. | Corporate Site</title>
+    <meta name="description" content="AURA Beauty & Co. は、一人ひとりの美しさを引き出すヘアスタイリング、ヘッドスパ、メイクアップを提供するプレミアムビューティーサロンです。採用情報も掲載中。" />
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="/style.css" />
+    
+    <style>
+      /* Scroll Reveal Classes (Simple CSS trigger class styling) */
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: opacity 1s cubic-bezier(0.25, 1, 0.5, 1), transform 1s cubic-bezier(0.25, 1, 0.5, 1);
+      }
+      .reveal-on-scroll.revealed {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- --- HEADER --- -->
+    <header class="header">
+      <div class="container header__container">
+        <a href="#" class="logo">
+          AURA<span>.</span>
+        </a>
+        
+        <nav class="nav">
+          <ul class="nav__list">
+            <li><a href="#concept" class="nav__link">Concept</a></li>
+            <li><a href="#services" class="nav__link">Services</a></li>
+            <li><a href="#recruitment" class="nav__link">Careers</a></li>
+            <li><a href="#news" class="nav__link">News</a></li>
+            <li><a href="#contact" class="nav__link">Contact</a></li>
+          </ul>
+          <!-- Side menu mobile button -->
+          <a href="#" class="btn btn--accent open-apply-modal" style="display: none;">Entry Now</a>
+        </nav>
+        
+        <div class="header__actions">
+          <a href="#" class="btn btn--accent open-apply-modal">Entry Now</a>
+          <button class="mobile-toggle" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- --- HERO SECTION --- -->
+    <section class="hero">
+      <div class="hero__bg">
+        <img src="/assets/hero_salon.png" alt="AURA Salon Interior" />
+      </div>
+      <div class="container hero__container">
+        <div class="hero__content">
+          <span class="hero__tagline">AURA Beauty & Co.</span>
+          <h1 class="hero__title">Discover Your <span>True Beauty</span></h1>
+          <p class="hero__desc">
+            洗練された技術と上質な空間で、心と体を満たす美を提供します。髪型からスキンケアまで、あなたの魅力を最大限に引き出すクリエイティブサロンです。
+          </p>
+          <div class="hero__buttons">
+            <a href="#services" class="btn btn--primary">Our Services</a>
+            <a href="#recruitment" class="btn btn--outline" style="color: var(--text-light); border-color: rgba(255, 255, 255, 0.4);">Join Our Team</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- CONCEPT SECTION --- -->
+    <section id="concept" class="section-padding concept">
+      <div class="container">
+        <div class="concept__grid">
+          <div class="concept__image-wrapper reveal-on-scroll">
+            <div class="concept__image-main">
+              <img src="/assets/concept_organic.png" alt="AURA Botanical Skincare" />
+            </div>
+            <div class="concept__image-badge glass">
+              <div class="concept__badge-inner">
+                Natural &<br>Organic
+                <span>100%</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="concept__content reveal-on-scroll" style="transition-delay: 0.2s;">
+            <span class="concept__subtitle">Philosophy</span>
+            <h2 class="concept__title">内側から輝く、<br>持続可能で本質的な美しさを。</h2>
+            <p class="concept__text">
+              AURA が目指すのは、一時的な美しさの提供ではありません。地球環境と素肌に優しい植物由来のオーガニックプロダクトと、高度な専門技術を融合させ、お客様一人ひとりが持つ本質的な美しさを引き出し育みます。
+            </p>
+            
+            <div class="concept__features">
+              <div class="concept__feature">
+                <div class="concept__feature-icon">
+                  <i class="fa-solid fa-leaf"></i>
+                </div>
+                <div>
+                  <h4 class="concept__feature-title">植物由来の厳選成分</h4>
+                  <p class="concept__feature-desc">髪や地肌に優しい、国際基準を満たしたオーガニックコスメを採用しています。</p>
+                </div>
+              </div>
+              
+              <div class="concept__feature">
+                <div class="concept__feature-icon">
+                  <i class="fa-solid fa-sparkles"></i>
+                </div>
+                <div>
+                  <h4 class="concept__feature-title">完全パーソナライズ</h4>
+                  <p class="concept__feature-desc">丁寧なカウンセリングをもとに、骨格・髪質・気分に合わせた最適なスタイルをご提案します。</p>
+                </div>
+              </div>
+            </div>
+            
+            <a href="#contact" class="btn btn--primary">About Us</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- SERVICES SECTION --- -->
+    <section id="services" class="section-padding services">
+      <div class="container">
+        <div class="section-title reveal-on-scroll">
+          <span>What We Do</span>
+          <h2>Our Services</h2>
+        </div>
+        
+        <div class="services__grid">
+          <!-- Card 1 -->
+          <div class="service-card reveal-on-scroll">
+            <div class="service-card__image">
+              <img src="/assets/service_styling.png" alt="Hair Styling Service" />
+              <span class="service-card__tag">Hair Design</span>
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Styling & Cut</h3>
+              <p class="service-card__desc">
+                トレンドと再現性を重視したヘアスタイルをご提案します。日常になじむ扱いやすさと、どこかモードなエッセンスを両立させます。
+              </p>
+              <a href="#contact" class="service-card__link">
+                More Details <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Card 2 -->
+          <div class="service-card reveal-on-scroll" style="transition-delay: 0.1s;">
+            <div class="service-card__image">
+              <img src="/assets/service_spa.png" alt="Head Spa Service" />
+              <span class="service-card__tag">Wellness</span>
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Wellness Head Spa</h3>
+              <p class="service-card__desc">
+                頭皮の環境を整え、極上のリラクゼーションをお届けするヘッドスパ。アロマの香りとマッサージで、日々の緊張から解放します。
+              </p>
+              <a href="#contact" class="service-card__link">
+                More Details <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+          
+          <!-- Card 3 -->
+          <div class="service-card reveal-on-scroll" style="transition-delay: 0.2s;">
+            <div class="service-card__image">
+              <img src="/assets/hero_salon.png" alt="Bridal & Make-up" />
+              <span class="service-card__tag">Make-up</span>
+            </div>
+            <div class="service-card__content">
+              <h3 class="service-card__title">Bridal & Make-up</h3>
+              <p class="service-card__desc">
+                特別な日のためのメイクアップとブライダルヘアメイク。あなたの最も美しい瞬間を引き出すトータルビューティーをご提案します。
+              </p>
+              <a href="#contact" class="service-card__link">
+                More Details <i class="fa-solid fa-arrow-right"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- RECRUITMENT SECTION --- -->
+    <section id="recruitment" class="section-padding recruitment">
+      <div class="container">
+        <div class="recruitment__grid">
+          <div class="recruitment__content reveal-on-scroll">
+            <div class="section-title" style="text-align: left; margin-bottom: 30px;">
+              <span>Recruit</span>
+              <h2>Join Our Team</h2>
+            </div>
+            <h3>共に美のクリエイションを<br>発信する仲間を募集しています。</h3>
+            <p class="recruitment__desc">
+              AURA では、卓越した技術と豊かな人間性を持つプロフェッショナルを育成・支援する環境を整えています。自主性を尊重し合い、クリエイティブな表現を楽しめる仲間をお待ちしています。
+            </p>
+            
+            <div class="positions-accordion">
+              <!-- Stylist -->
+              <div class="accordion-item">
+                <button class="accordion-trigger">
+                  <span>Stylist / スタイリスト</span>
+                  <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>サロンワークを中心としたカット・カラー等の施術全般、撮影活動等をお任せします。</p>
+                    <ul class="accordion-details-list">
+                      <li><strong>給与：</strong>基本給28万円〜 ＋ 歩合手当（売上歩合・店販歩合）</li>
+                      <li><strong>勤務時間：</strong>10:00 〜 19:00（実働8時間・シフト制）</li>
+                      <li><strong>応募資格：</strong>美容師免許保持者（スタイリスト実務経験2年以上）</li>
+                    </ul>
+                    <a href="#" class="btn btn--primary btn--accent open-apply-modal" data-position="スタイリスト">Apply Now</a>
+                  </div>
+                </div>
+              </div>
+              
+              <!-- Assistant -->
+              <div class="accordion-item">
+                <button class="accordion-trigger">
+                  <span>Assistant / アシスタント</span>
+                  <i class="fa-solid fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-content">
+                  <div class="accordion-content-inner">
+                    <p>スタイリストのサポート業務、早期デビューに向けたカリキュラムによる技術習得に注力いただきます。</p>
+                    <ul class="accordion-details-list">
+                      <li><strong>給与：</strong>基本給21万円〜 ＋ 技術手当（シャンプー、カラー合格等）</li>
+                      <li><strong>勤務時間：</strong>10:00 〜 19:00（レッスン時間確保）</li>
+                      <li><strong>応募資格：</strong>美容師免許保持者（新卒・未経験可）</li>
+                    </ul>
+                    <a href="#" class="btn btn--primary btn--accent open-apply-modal" data-position="アシスタント">Apply Now</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <a href="#" class="btn btn--outline open-apply-modal">View All Positions</a>
+          </div>
+          
+          <div class="recruitment__images reveal-on-scroll" style="transition-delay: 0.2s;">
+            <div class="recruitment__stats glass">
+              <div class="recruitment__stat-item">
+                <div class="recruitment__stat-num">2yr</div>
+                <div class="recruitment__stat-label">Debut Goal</div>
+              </div>
+              <div style="width: 1px; background-color: var(--border-color);"></div>
+              <div class="recruitment__stat-item">
+                <div class="recruitment__stat-num">80%</div>
+                <div class="recruitment__stat-label">Repeat Rate</div>
+              </div>
+            </div>
+            
+            <div class="recruitment__image-main">
+              <img src="/assets/team_member.png" alt="AURA Stylist Team" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- NEWS SECTION --- -->
+    <section id="news" class="section-padding news">
+      <div class="container">
+        <div class="section-title reveal-on-scroll">
+          <span>What's New</span>
+          <h2>News & Articles</h2>
+        </div>
+        
+        <div class="news__grid">
+          <!-- Article 1 -->
+          <article class="news-card reveal-on-scroll">
+            <div class="news-card__image">
+              <img src="/assets/concept_organic.png" alt="New Skin Oil Launch" />
+            </div>
+            <div class="news-card__meta">
+              <span>Product</span>
+              <time datetime="2026-06-01">2026.06.01</time>
+            </div>
+            <h3 class="news-card__title">
+              <a href="#">新商品オーガニックヘアオイル「AURA Blend」の販売を開始しました。</a>
+            </h3>
+          </article>
+          
+          <!-- Article 2 -->
+          <article class="news-card reveal-on-scroll" style="transition-delay: 0.1s;">
+            <div class="news-card__image">
+              <img src="/assets/hero_salon.png" alt="Award Redesign Winner" />
+            </div>
+            <div class="news-card__meta">
+              <span>Awards</span>
+              <time datetime="2026-05-15">2026.05.15</time>
+            </div>
+            <h3 class="news-card__title">
+              <a href="#">JAPAN HAIR DESIGN AWARD 2026 にて当サロンスタイリストがグランプリを獲得。</a>
+            </h3>
+          </article>
+          
+          <!-- Article 3 -->
+          <article class="news-card reveal-on-scroll" style="transition-delay: 0.2s;">
+            <div class="news-card__image">
+              <img src="/assets/service_styling.png" alt="Recruitment Briefing Info" />
+            </div>
+            <div class="news-card__meta">
+              <span>Recruit</span>
+              <time datetime="2026-05-01">2026.05.01</time>
+            </div>
+            <h3 class="news-card__title">
+              <a href="#">2027年度新卒アシスタント採用に関するオンライン説明会を開催します。</a>
+            </h3>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- CONTACT SECTION --- -->
+    <section id="contact" class="section-padding contact">
+      <div class="container">
+        <div class="section-title reveal-on-scroll">
+          <span>Get In Touch</span>
+          <h2>Contact Us</h2>
+        </div>
+        
+        <div class="contact__grid">
+          <div class="contact__info reveal-on-scroll">
+            <div class="contact__info-card glass">
+              <h3 class="contact__info-title">Salon Information</h3>
+              <p class="contact__info-desc">ご予約やサービスに関するお問い合わせは、お電話または以下のフォームより受け付けております。採用をご希望の方もこちらからお気軽にご質問ください。</p>
+              
+              <ul class="contact__info-list">
+                <li class="contact__info-item">
+                  <div class="contact__info-icon"><i class="fa-solid fa-phone"></i></div>
+                  <div class="contact__info-content">
+                    <h5>Phone</h5>
+                    <p>03-1234-5678</p>
+                  </div>
+                </li>
+                <li class="contact__info-item">
+                  <div class="contact__info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                  <div class="contact__info-content">
+                    <h5>Location</h5>
+                    <p>東京都港区南青山 5-10-10 1F</p>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div class="contact__form reveal-on-scroll" style="transition-delay: 0.2s;">
+            <form id="contactForm" class="form">
+              <div class="form-group">
+                <label class="form-label" for="name">お名前 *</label>
+                <input class="form-input" type="text" id="name" name="name" required placeholder="山田 花子" />
+              </div>
+              
+              <div class="form-group">
+                <label class="form-label" for="email">メールアドレス *</label>
+                <input class="form-input" type="email" id="email" name="email" required placeholder="hello@aura.com" />
+              </div>
+              
+              <div class="form-group form-group--full">
+                <label class="form-label" for="subject">お問い合わせ項目</label>
+                <select class="form-select" id="subject" name="subject">
+                  <option value="ご予約について">ご予約について</option>
+                  <option value="採用について">採用について</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+              
+              <div class="form-group form-group--full">
+                <label class="form-label" for="message">メッセージ *</label>
+                <textarea class="form-textarea" id="message" name="message" required placeholder="お問い合わせ内容をご入力ください。"></textarea>
+              </div>
+              
+              <div class="form__submit-wrapper">
+                <button type="submit" class="btn btn--primary">Send Message</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- --- FOOTER --- -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__grid">
+          <div class="footer__about">
+            <a href="#" class="logo">AURA<span>.</span></a>
+            <p class="footer__about-text">南青山のプレミアムビューティーサロン。一人ひとりの魅力を引き出すスタイリングと極上の癒やしをご提供します。</p>
+            <div class="footer__socials">
+              <a href="#" class="footer__social-link" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+              <a href="#" class="footer__social-link" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="#" class="footer__social-link" aria-label="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+          </div>
+          
+          <div>
+            <h4 class="footer__title">Explore</h4>
+            <ul class="footer__links">
+              <li><a href="#concept">Concept</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#recruitment">Careers</a></li>
+              <li><a href="#news">News</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="footer__title">Hours</h4>
+            <ul class="footer__links">
+              <li><a style="cursor: default;">Weekday: 11:00 - 20:00</a></li>
+              <li><a style="cursor: default;">Weekend: 10:00 - 19:00</a></li>
+              <li><a style="cursor: default;">Closed: Tuesday</a></li>
+            </ul>
+          </div>
+          
+          <div>
+            <h4 class="footer__title">Newsletter</h4>
+            <p class="footer__newsletter-desc">最新のヘアケア情報や限定クーポンをお届けします。</p>
+            <form class="footer__newsletter-form">
+              <input type="email" class="footer__newsletter-input" placeholder="Your Email" required aria-label="Email address for newsletter" />
+              <button type="submit" class="btn btn--accent" aria-label="Subscribe"><i class="fa-solid fa-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+        
+        <div class="footer__bottom">
+          <p>&copy; 2026 AURA Beauty & Co. All Rights Reserved.</p>
+          <p>
+            <a href="#" style="margin-right: 20px;">Privacy Policy</a>
+            <a href="#">Terms & Conditions</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- --- RECRUITMENT APPLICATION MODAL --- -->
+    <div id="applyModal" class="modal">
+      <div class="modal__overlay"></div>
+      <div class="modal__card">
+        <div class="modal__header">
+          <div class="modal__title">
+            <h3>Recruitment Entry</h3>
+            <p>エントリーフォーム</p>
+          </div>
+          <button class="modal__close" aria-label="Close Modal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <div class="modal__body">
+          <form id="recruitmentForm" class="form">
+            <div class="form-group">
+              <label class="form-label" for="applyPosition">希望職種 *</label>
+              <select class="form-select" id="jobPosition" name="applyPosition" required>
+                <option value="">職種を選択してください</option>
+                <option value="スタイリスト">スタイリスト (Stylist)</option>
+                <option value="アシスタント">アシスタント (Assistant)</option>
+                <option value="レセプショニスト">レセプショニスト (Receptionist)</option>
+              </select>
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="applyName">お名前 *</label>
+              <input class="form-input" type="text" id="applyName" name="applyName" required placeholder="山田 太郎" />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="applyPhone">電話番号 *</label>
+              <input class="form-input" type="tel" id="applyPhone" name="applyPhone" required placeholder="090-0000-0000" />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="applyEmail">メールアドレス *</label>
+              <input class="form-input" type="email" id="applyEmail" name="applyEmail" required placeholder="taro@aura.com" />
+            </div>
+            
+            <div class="form-group form-group--full">
+              <label class="form-label" for="applyExperience">職務経歴・PR *</label>
+              <textarea class="form-textarea" id="applyExperience" name="applyExperience" required placeholder="過去の経歴や得意なスタイルなどをご記入ください。"></textarea>
+            </div>
+            
+            <div class="form__submit-wrapper">
+              <button type="submit" class="btn btn--primary" style="width: 100%;">Submit Application</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- --- TOAST NOTIFICATION --- -->
+    <div id="toastNotification" class="toast">
+      <i class="fa-solid fa-circle-check"></i>
+      <span id="toastMessage">メッセージを送信しました。</span>
+    </div>
+
+    <!-- Main JavaScript Link -->
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
