@@ -59,18 +59,29 @@ document.addEventListener('DOMContentLoaded', () => {
     ============================================================ */
     const hamburger = document.getElementById('hamburger');
     const nav       = document.getElementById('nav');
+    const overlay   = document.getElementById('nav-overlay');
+    const navClose  = document.getElementById('nav-close');
 
     if (hamburger && nav) {
         const toggle = (open) => {
             hamburger.classList.toggle('is-active', open);
-            nav.classList.toggle('is-open', open);
+            nav.classList.toggle('is-active', open);
+            if (overlay) overlay.classList.toggle('is-active', open);
             hamburger.setAttribute('aria-expanded', open);
             document.body.style.overflow = open ? 'hidden' : '';
         };
 
         hamburger.addEventListener('click', () => {
-            toggle(!nav.classList.contains('is-open'));
+            toggle(!nav.classList.contains('is-active'));
         });
+
+        if (navClose) {
+            navClose.addEventListener('click', () => toggle(false));
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', () => toggle(false));
+        }
 
         // ナビリンクでメニューを閉じる
         nav.querySelectorAll('.nav-link').forEach(link => {
@@ -79,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Escape キー
         document.addEventListener('keydown', e => {
-            if (e.key === 'Escape' && nav.classList.contains('is-open')) toggle(false);
+            if (e.key === 'Escape' && nav.classList.contains('is-active')) toggle(false);
         });
     }
 
@@ -149,6 +160,39 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             // 実URLが設定されていれば通常送信
         });
+    }
+
+    /* ============================================================
+       9. Count-up Animation (IntersectionObserver)
+    ============================================================ */
+    const countUps = document.querySelectorAll('.count-up');
+    if (countUps.length) {
+        const countUpObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const targetEl = entry.target;
+                const targetNum = parseInt(targetEl.getAttribute('data-target'), 10);
+                let currentNum = 0;
+                const duration = 1500; // ms
+                const intervalTime = 30; // ms
+                const steps = duration / intervalTime;
+                const stepIncrement = Math.ceil(targetNum / steps);
+                
+                const timer = setInterval(() => {
+                    currentNum += stepIncrement;
+                    if (currentNum >= targetNum) {
+                        targetEl.textContent = targetNum.toLocaleString();
+                        clearInterval(timer);
+                    } else {
+                        targetEl.textContent = currentNum.toLocaleString();
+                    }
+                }, intervalTime);
+                
+                observer.unobserve(targetEl);
+            });
+        }, { threshold: 0.2 });
+
+        countUps.forEach(el => countUpObserver.observe(el));
     }
 
 });

@@ -13,7 +13,9 @@
 <header class="header" id="header">
     <div class="header-inner">
         <a href="index.html" class="logo">ANT'S</a>
+        <div class="nav-overlay" id="nav-overlay"></div>
         <nav class="nav" id="nav">
+            <button class="nav-close" id="nav-close" aria-label="閉じる">✕</button>
             <ul class="nav-list">
                 <li><a href="salon.html"  class="nav-link" data-page="salon.html">ABOUT</a></li>
                 <li><a href="visit.html"  class="nav-link" data-page="visit.html">訪問美容</a></li>
@@ -108,13 +110,46 @@
 </section>
 
 <footer class="footer">
-    <div class="container footer-inner">
-        <div class="footer-logo">ANT'S</div>
-        <nav class="footer-nav">
-            <a href="#">プライバシーポリシー</a>
-            <a href="#">Instagram</a>
-        </nav>
-        <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
+    <div class="container">
+        <!-- サイトマップエリア -->
+        <div class="footer-sitemap">
+            <!-- 1列目：ビジョン・サロンリスト -->
+            <div class="sitemap-col">
+                <a href="vision.html" class="sitemap-main">VISION</a>
+                
+                <a href="salon.html" class="sitemap-main" style="margin-top: 16px;">SALON LIST (ABOUT)</a>
+                <ul class="sitemap-sub">
+                    <li><a href="https://beauty.hotpepper.jp/slnH000112464/" target="_blank" rel="noopener noreferrer">ANT'S 辻堂本店</a></li>
+                    <li><a href="https://beauty.hotpepper.jp/slnH000183871/" target="_blank" rel="noopener noreferrer">Southern-Resort 茅ヶ崎店</a></li>
+                    <li><a href="#" target="_blank" rel="noopener noreferrer">ANT'S 茅ヶ崎駅前店</a></li>
+                    <li><a href="https://beauty.hotpepper.jp/slnH000575740/" target="_blank" rel="noopener noreferrer">ENi hair and resort</a></li>
+                    <li><a href="https://beauty.hotpepper.jp/slnH000797881/" target="_blank" rel="noopener noreferrer">Lune. by ANT'S</a></li>
+                </ul>
+            </div>
+
+            <!-- 2列目：事業・キャスト -->
+            <div class="sitemap-col">
+                <a href="visit.html" class="sitemap-main">訪問美容</a>
+                <a href="beauty.html" class="sitemap-main">トータルビューティー</a>
+                <a href="cast.html" class="sitemap-main">CAST</a>
+            </div>
+
+            <!-- 3列目：会社情報・採用 -->
+            <div class="sitemap-col">
+                <a href="access.html" class="sitemap-main">COMPANY / ACCESS</a>
+                <a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="sitemap-main">RECRUIT ↗</a>
+            </div>
+        </div>
+
+        <!-- コピーライト・SNSエリア -->
+        <div class="footer-bottom">
+            <div class="footer-logo">ANT'S</div>
+            <div class="footer-bottom-links">
+                <a href="#">プライバシーポリシー</a>
+                <a href="#">Instagram</a>
+            </div>
+            <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
+        </div>
     </div>
 </footer>
 

@@ -1,100 +1,314 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>訪問美容 | ANT'S</title>
-    <meta name="description" content="ANT'Sの訪問美容事業のご案内。施設関係者様・ご利用者様に向けた、ANT'Sのホスピタリティあふれる訪問美容サービスです。">
+    <meta name="description" content="ANT'Sの訪問美容事業のご案内。施設関係者様・ご利用者様に向けた、ANT'S of ホスピタリティあふれる訪問美容サービスです。">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>
+
 <body>
 
-<header class="header" id="header">
-    <div class="header-inner">
-        <a href="index.html" class="logo">ANT'S</a>
-        <nav class="nav" id="nav">
-            <ul class="nav-list">
-                <li><a href="salon.html"  class="nav-link" data-page="salon.html">ABOUT</a></li>
-                <li><a href="visit.html"  class="nav-link" data-page="visit.html">訪問美容</a></li>
-                <li><a href="beauty.html" class="nav-link" data-page="beauty.html">トータルビューティー</a></li>
-                <li><a href="cast.html"   class="nav-link" data-page="cast.html">CAST</a></li>
-                <li><a href="access.html" class="nav-link" data-page="access.html">ACCESS</a></li>
-                <li><a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="nav-link nav-link--recruit">RECRUIT ↗</a></li>
-            </ul>
-        </nav>
-        <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
+    <!-- ==================== LOADING ANIMATION ==================== -->
+    <div id="global-loader" class="global-loader">
+        <span class="loader-logo">ANT'S</span>
     </div>
-</header>
 
-<!-- ==================== PAGE HERO ==================== -->
-<div class="page-hero">
-    <div class="container">
-        <p class="page-hero-sub">Visiting Beauty Service</p>
-        <h1 class="page-hero-title">訪問美容</h1>
-    </div>
-</div>
-
-<!-- ==================== SECTION 1: What we do ==================== -->
-<section class="section section--alt">
-    <div class="container">
-        <div class="content-grid reveal">
-            <div class="placeholder content-visual" style="height:380px; border-radius:6px;">【訪問美容 イメージ】</div>
-            <div class="content-body">
-                <span class="section-label">What we do</span>
-                <h2>いつまでも、<br>美しくありたい。<br>その願いに寄り添う。</h2>
-                <p>ANT'Sの訪問美容は、介護施設・福祉施設・病院などへスタイリストが直接お伺いし、ヘアカット・カラー・パーマ・シャンプーなど、サロンクオリティのサービスをご提供するものです。</p>
-                <p>外出が難しい方にも、「きれいになった」という喜びと、それに伴う心の豊かさをお届けすることを使命としています。</p>
-                <ul class="features-list">
-                    <li><span class="feature-icon"></span>施設内でのヘアカット・カラー・パーマ対応</li>
-                    <li><span class="feature-icon"></span>スタイリスト資格保有者が担当</li>
-                    <li><span class="feature-icon"></span>ご利用者様のペースに合わせた丁寧な施術</li>
-                    <li><span class="feature-icon"></span>施設管理者様との事前打ち合わせ実施</li>
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">ANT'S</a>
+            <div class="nav-overlay" id="nav-overlay"></div>
+            <nav class="nav" id="nav">
+                <button class="nav-close" id="nav-close" aria-label="閉じる">✕</button>
+                <ul class="nav-list">
+                    <li><a href="salon.html" class="nav-link" data-page="salon.html">ABOUT</a></li>
+                    <li><a href="visit.html" class="nav-link" data-page="visit.html">訪問美容</a></li>
+                    <li><a href="beauty.html" class="nav-link" data-page="beauty.html">トータルビューティー</a></li>
+                    <li><a href="cast.html" class="nav-link" data-page="cast.html">CAST</a></li>
+                    <li><a href="access.html" class="nav-link" data-page="access.html">ACCESS</a></li>
+                    <li><a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer"
+                            class="nav-link nav-link--recruit">RECRUIT ↗</a></li>
                 </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="visit-hero">
+        <div class="visit-hero-img">
+            <img src="assets/concept_organic.png" alt="訪問美容 ANT'S">
+        </div>
+        <div class="visit-hero-overlay"></div>
+        <div class="visit-hero-copy">
+            <span class="visit-hero-en">Visiting Beauty Service</span>
+            <h1 class="visit-hero-title reveal">いつまでも、<br>美しくありたい。</h1>
+            <p class="visit-hero-sub reveal">その願いに寄り添う、ANT'Sの訪問美容</p>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 1: 訪問美容とは ==================== -->
+    <section class="section section--alt">
+        <div class="container">
+            <h2 class="section-title text-center reveal">訪問美容とは</h2>
+            <p class="reveal"
+                style="text-align:center; max-width:720px; margin:0 auto 64px; color:#555; line-height:2.0;">
+                ANT'Sの訪問美容は、介護施設・福祉施設・病院などへスタイリストが直接お伺いし、ヘアカット・カラー・パーマ・シャンプーなど、サロンクオリティのサービスをご提供するものです。外出が難しい方にも、「きれいになった」という喜びと、それに伴う心の豊かさをお届けすることを使命としています。
+            </p>
+            <!-- <div class="visit-points reveal">
+        <div class="visit-point">
+          <div class="visit-point-icon">✂︎</div>
+          <h3>サロンクオリティ</h3>
+          <p>サロンと同等の高い技術力を持ったスタイリストが担当。ご要望やお好みのスタイルを丁寧にお伺いし、美しく仕上げます。</p>
+        </div>
+        <div class="visit-point">
+          <div class="visit-point-icon">♡</div>
+          <h3>おもてなしの心</h3>
+          <p>ゲストの方に寄り添い、思いやりと敬意を持った心地よい時間を提供します。「また来てほしい」と感じていただけるような温かい接客を心がけています。</p>
+        </div>
+        <div class="visit-point">
+          <div class="visit-point-icon">◎</div>
+          <h3>継続的な担当制</h3>
+          <p>毎回異なるスタッフではなく、同じスタイリストが継続してお伺いすることで、ご利用者様の好みや状態を深く理解し、長期的な信頼関係を築きます。</p>
+        </div>
+      </div> -->
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 2: 提供サービス ==================== -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title text-center reveal">提供サービス</h2>
+            <p class="reveal" style="text-align:center; max-width:680px; margin:0 auto 80px; color:#555;">
+                お一人おひとりの体調や状態に合わせた丁寧な施術を行います。
+            </p>
+
+            <div class="visit-split-row reveal">
+                <div class="visit-split-img">
+                    <div class="placeholder" style="width:100%; height:100%;">【ヘアカット イメージ】</div>
+                </div>
+                <div class="visit-split-text">
+                    <div class="visit-text-inner">
+                        <h2 class="salon-split-name">ヘアカット</h2>
+                        <p class="salon-split-concept">丁寧なカウンセリングと繊細なカット技術</p>
+                        <div class="salon-split-desc">
+                            <p>髪型が変わるだけで、気持ちまで明るく前向きになります。ベッドの上や車椅子に座ったままでも、安全かつ快適に施術を受けられるよう、お一人おひとりの状態に細心の注意を払いながら進めます。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-split-row reveal" style="flex-direction: row-reverse;">
+                <div class="visit-split-img">
+                    <div class="placeholder" style="width:100%; height:100%;">【ヘアカラー イメージ】</div>
+                </div>
+                <div class="visit-split-text">
+                    <div class="visit-text-inner">
+                        <h2 class="salon-split-name">ヘアカラー</h2>
+                        <p class="salon-split-concept">髪と頭皮に優しい薬剤を使用した上品な白髪染め</p>
+                        <div class="salon-split-desc">
+                            <p>サロンで使用している低刺激のカラー剤を使用し、髪や地肌への負担を最小限に抑えながら、艶のある自然で上品なカラーに仕上げます。色のニュアンスもお気軽にご相談ください。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="visit-split-row reveal">
+                <div class="visit-split-img">
+                    <div class="placeholder" style="width:100%; height:100%;">【パーマ イメージ】</div>
+                </div>
+                <div class="visit-split-text">
+                    <div class="visit-text-inner">
+                        <h2 class="salon-split-name">パーマ</h2>
+                        <p class="salon-split-concept">ボリュームと華やかさをプラスするデザイン</p>
+                        <div class="salon-split-desc">
+                            <p>トップのボリュームをふんわり出すことで、若々しく華やかな印象になります。お顔立ちに合わせた上品なウェーブやカールを創り出し、毎朝のお手入れも簡単になるように仕上げます。</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ==================== SECTION 2: Our Promise ==================== -->
-<section class="section">
-    <div class="container">
-        <div class="content-grid content-grid--reverse reveal">
-            <div class="content-body" style="direction:ltr;">
-                <span class="section-label">Our Promise</span>
-                <h2>ANT'Sが大切にしている<br>3つの「こころ」</h2>
-                <ul class="features-list">
-                    <li><span class="feature-icon"></span><div><strong style="display:block;margin-bottom:4px;">おもてなしの心</strong>ゲストの方が「来てもらえてよかった」と感じる温かい接客を心がけています。</div></li>
-                    <li><span class="feature-icon"></span><div><strong style="display:block;margin-bottom:4px;">技術への誠実さ</strong>場所が変わっても、サロンクオリティの技術を妥協なくお届けします。</div></li>
-                    <li><span class="feature-icon"></span><div><strong style="display:block;margin-bottom:4px;">継続的な信頼関係</strong>担当スタイリストが継続してお伺いし、長期的なご関係を大切にします。</div></li>
-                </ul>
+    <!-- ==================== SECTION 3: 実績と信頼 ==================== -->
+    <section class="section section--alt">
+        <div class="container">
+            <h2 class="section-title text-center reveal">ANT'S 訪問美容の強み</h2>
+            <p class="reveal" style="text-align:center; max-width:680px; margin:0 auto 48px; color:#555;">
+                湘南エリアを中心とした多数の施設様との提携実績があります。
+            </p>
+            <div class="achievements-grid reveal">
+                <div class="achievement-card">
+                    <div class="achievement-num-wrap">
+                        <span class="count-up" data-target="30">30</span><span>件以上</span>
+                    </div>
+                    <p class="achievement-label">契約・連携施設数<br>（2026年現在）</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-num-wrap">
+                        <span class="count-up" data-target="10">10</span><span>年以上</span>
+                    </div>
+                    <p class="achievement-label">訪問美容キャリア</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-num-wrap">
+                        <span class="count-up" data-target="1500">1,500</span><span>名以上</span>
+                    </div>
+                    <p class="achievement-label">年間施術実績</p>
+                </div>
+                <div class="achievement-card">
+                    <div class="achievement-num-wrap">
+                        <span class="count-up" data-target="98">98</span><span>%</span>
+                    </div>
+                    <p class="achievement-label">ご利用者様満足度</p>
+                </div>
             </div>
-            <div class="placeholder content-visual" style="height:380px; border-radius:6px; direction:ltr;">【ホスピタリティ イメージ】</div>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ==================== CTA ==================== -->
-<section class="section section--alt">
-    <div class="container" style="text-align:center;">
-        <h2 class="section-title reveal">導入のご相談はこちら</h2>
-        <p class="reveal" style="color:#666; margin-bottom:36px; font-size:0.9rem;">訪問美容の導入をご検討の施設様・法人様は、お気軽にお問い合わせください。</p>
-        <a href="access.html" class="btn btn--primary reveal">お問い合わせフォームへ</a>
-    </div>
-</section>
+    <!-- ==================== SECTION 4: 申込の流れ（タイムライン） ==================== -->
+    <section class="section section--alt" style="background: var(--color-surface-2);">
+        <div class="container">
+            <span class="section-label text-center reveal">Flow</span>
+            <h2 class="section-title text-center reveal">ご利用の流れ</h2>
 
-<footer class="footer">
-    <div class="container footer-inner">
-        <div class="footer-logo">ANT'S</div>
-        <nav class="footer-nav">
-            <a href="#">プライバシーポリシー</a>
-            <a href="#">Instagram</a>
-        </nav>
-        <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
-    </div>
-</footer>
+            <div class="timeline reveal">
+                <div class="timeline-item">
+                    <div class="timeline-number">STEP 01</div>
+                    <div class="timeline-title">お問い合わせ・ご相談</div>
+                    <div class="timeline-desc">お問い合わせフォーム、またはお電話にてご連絡ください。施設の規模・ご要望・スケジュール感などをお聞きします。初回のご相談は無料です。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">STEP 02</div>
+                    <div class="timeline-title">ヒアリング・現地確認（無料）</div>
+                    <div class="timeline-desc">担当スタッフが施設にお伺いし、スペース・設備・入居者様の状況などを確認します。施設スタッフ様との打ち合わせも実施し、最適なプランをご提案します。
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">STEP 03</div>
+                    <div class="timeline-title">プランご確認・ご契約</div>
+                    <div class="timeline-desc">訪問頻度・メニューなどをまとめた提案書をご提出。内容をご確認いただき、合意の上でご契約を締結します。（※詳細な料金はお見積り時にご案内いたします）
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">STEP 04</div>
+                    <div class="timeline-title">初回訪問・施術開始</div>
+                    <div class="timeline-desc">ご契約後、日程調整を行い初回訪問を実施します。担当スタイリストがご挨拶した上で、一人ひとりの状態を丁寧に確認しながら施術を行います。</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-number">STEP 05</div>
+                    <div class="timeline-title">定期訪問・継続サポート</div>
+                    <div class="timeline-desc">以降は定期的にお伺いします。施設スタッフ様と連携しながら、ご利用者様の変化に合わせた対応を継続します。</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SECTION 5: 感染対策・衛生管理（フルウィズ＆背景数字デザイン） ==================== -->
+    <section class="section">
+        <div class="container text-center">
+            <span class="section-label reveal">Hygiene</span>
+            <h2 class="section-title reveal">衛生・感染対策への取り組み</h2>
+            <p class="reveal" style="max-width:680px; margin:0 auto 80px; color:#555; line-height:2.0;">
+                ANT'Sでは、ご利用者様・施設スタッフ様・訪問スタイリスト全員の安全を守るため、<br>
+                訪問美容における感染対策を徹底的に実施しています。
+            </p>
+        </div>
+
+        <!-- 横幅いっぱいのリストエリア -->
+        <div class="hygiene-full-wrap reveal">
+            <!-- 01 -->
+            <div class="hygiene-full-item">
+                <div class="hygiene-bg-num">01</div>
+                <div class="container hygiene-inner">
+                    <h3 class="hygiene-title">器具の完全消毒</h3>
+                    <p class="hygiene-desc">ハサミ・コーム・クリップなど全器具を施術前後に薬剤消毒。タオル・ケープは一人ごとに新品を使用します。</p>
+                </div>
+            </div>
+
+            <!-- 02 -->
+            <div class="hygiene-full-item">
+                <div class="hygiene-bg-num">02</div>
+                <div class="container hygiene-inner">
+                    <h3 class="hygiene-title">スタイリストの健康管理</h3>
+                    <p class="hygiene-desc">訪問前の体温測定・手指消毒を徹底。体調不良時は別スタッフへの交替対応を行います。</p>
+                </div>
+            </div>
+
+            <!-- 03 -->
+            <div class="hygiene-full-item">
+                <div class="hygiene-bg-num">03</div>
+                <div class="container hygiene-inner">
+                    <h3 class="hygiene-title">施術環境への配慮</h3>
+                    <p class="hygiene-desc">換気の確保・飛沫防止シートの活用など、施設環境に応じた対応を実施します。施設のガイドラインを最優先します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="section section--alt">
+        <div class="container text-center">
+            <h2 class="section-title reveal" style="margin-bottom:24px;">まずはお気軽にご相談ください</h2>
+            <p class="reveal" style="color:#666; margin-bottom:48px; font-size:0.95rem; line-height:2.0;">
+                訪問美容の導入をご検討の施設様・法人様はもちろん、<br>
+                ご家族の方や個人でのご相談もお気軽にどうぞ。
+            </p>
+            <a href="access.html" class="btn btn-outline reveal">お問い合わせ・相談フォームへ</a>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="footer">
+        <div class="container">
+            <!-- サイトマップエリア -->
+            <div class="footer-sitemap">
+                <!-- 1列目：ビジョン・サロンリスト -->
+                <div class="sitemap-col">
+                    <a href="vision.html" class="sitemap-main">VISION</a>
+                    
+                    <a href="salon.html" class="sitemap-main" style="margin-top: 16px;">SALON LIST (ABOUT)</a>
+                    <ul class="sitemap-sub">
+                        <li><a href="https://beauty.hotpepper.jp/slnH000112464/" target="_blank" rel="noopener noreferrer">ANT'S 辻堂本店</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000183871/" target="_blank" rel="noopener noreferrer">Southern-Resort 茅ヶ崎店</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">ANT'S 茅ヶ崎駅前店</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000575740/" target="_blank" rel="noopener noreferrer">ENi hair and resort</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000797881/" target="_blank" rel="noopener noreferrer">Lune. by ANT'S</a></li>
+                    </ul>
+                </div>
+
+                <!-- 2列目：事業・キャスト -->
+                <div class="sitemap-col">
+                    <a href="visit.html" class="sitemap-main">訪問美容</a>
+                    <a href="beauty.html" class="sitemap-main">トータルビューティー</a>
+                    <a href="cast.html" class="sitemap-main">CAST</a>
+                </div>
+
+                <!-- 3列目：会社情報・採用 -->
+                <div class="sitemap-col">
+                    <a href="access.html" class="sitemap-main">COMPANY / ACCESS</a>
+                    <a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="sitemap-main">RECRUIT ↗</a>
+                </div>
+            </div>
+
+            <!-- コピーライト・SNSエリア -->
+            <div class="footer-bottom">
+                <div class="footer-logo">ANT'S</div>
+                <div class="footer-bottom-links">
+                    <a href="#">プライバシーポリシー</a>
+                    <a href="#">Instagram</a>
+                </div>
+                <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
 </body>
+
 </html>
