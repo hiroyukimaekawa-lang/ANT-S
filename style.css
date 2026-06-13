@@ -20,7 +20,7 @@
     --font-sans: 'Noto Sans JP', sans-serif;
 
     --header-h: 70px;
-    --max-w: 1080px;
+    --max-w: 960px;
     --radius: 6px;
     --tr: 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
     --shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
@@ -90,7 +90,7 @@ ul {
 .container {
     max-width: var(--max-w);
     margin: 0 auto;
-    padding: 0 28px;
+    padding: 0 20px;
 }
 
 .section {
@@ -1164,15 +1164,19 @@ ul {
     padding-bottom: 8px;
     margin-bottom: 56px;
 }
+/* --- MVVI 見出しエリア（Identity, Mission, Vision等） --- */
 .mvvi-label {
     font-family: var(--font-serif);
-    font-size: 1.25rem;
+    /* ↓ここを変更：スマホでは1.8rem、PCでは最大2.5remまで大きく可変します */
+    font-size: clamp(1.8rem, 4vw, 2.5rem); 
     font-weight: 500;
     color: var(--color-text);
 }
+
 .mvvi-sub {
     font-family: var(--font-serif);
-    font-size: 0.9rem;
+    /* ↓ここを変更：サブタイトル（【私たちは何者であるか】等）もバランス良く少し大きくします */
+    font-size: clamp(1rem, 2vw, 1.2rem); 
     color: var(--color-text);
 }
 
@@ -1253,13 +1257,15 @@ ul {
     align-items: start;
 }
 
+/* --- クレド（Credo）の章番号 --- */
 .credo-num {
     font-family: var(--font-serif);
-    font-size: 0.75rem;
+    /* ↓ここを変更：第1章〜第4章の文字を大きく目立たせます */
+    font-size: clamp(1.4rem, 3vw, 1.8rem); 
     font-weight: 500;
     letter-spacing: 0.12em;
     color: var(--color-accent);
-    padding-top: 4px;
+    padding-top: 0; /* 大きくした分、上部の余白を調整 */
 }
 
 .credo-text {
@@ -1326,6 +1332,13 @@ ul {
     /* ---- ナビゲーション ---- */
     .hamburger {
         display: flex;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    
+    .hamburger.is-active {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
     }
 
     /* ---- モバイル用 サイドドロワーメニュー（wit-hair風） ---- */
@@ -1681,6 +1694,36 @@ ul {
     width: 100%;
 }
 
+/* ============================================================
+   SALON LIST 2+3 分割グリッド（index.html）
+============================================================ */
+/* 上段：2列グリッド */
+.salon-grid--2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    gap: 0;
+}
+
+/* 下段：3列グリッド */
+.salon-grid--3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    gap: 0;
+}
+
+/* 2+3レイアウト時の写真高さ（大きめに設定してダイナミックに） */
+.salon-grid--2 .salon-hiroin-img,
+.salon-grid--3 .salon-hiroin-img {
+    aspect-ratio: unset; /* 旧 aspect-ratio を無効化 */
+    height: 360px;       /* 上段（2枚）の高さ */
+}
+
+.salon-grid--3 .salon-hiroin-img {
+    height: 280px; /* 下段（3枚）は少しコンパクトにバランスを取る */
+}
+
 .salon-hiroin-card {
     display: flex;
     flex-direction: column;
@@ -1921,6 +1964,17 @@ ul {
     /* スマホ時はサロンリストを2列に */
     .salon-hiroin-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* スマホ時：2+3グリッドはすべて1列に */
+    .salon-grid--2,
+    .salon-grid--3 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .salon-grid--2 .salon-hiroin-img,
+    .salon-grid--3 .salon-hiroin-img {
+        height: 260px; /* スマホ時は写真高さをコンパクトに */
     }
 }
 
@@ -2313,86 +2367,124 @@ details.accordion-item[open] summary::after {
     color: var(--color-accent);
 }
 
-/* 感染対策・衛生管理セクション（フルウィズ＆背景数字デザイン） */
-.hygiene-full-wrap {
-    margin-top: 40px;
-    border-top: 1px solid var(--color-border);
+/* ============================================================
+   Large Number List (提供サービス・衛生管理共通の背景数字デザイン)
+============================================================ */
+.bg-num-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
-.hygiene-full-item {
+.bg-num-item {
     position: relative;
+    width: 100%;
     padding: 80px 0;
+    border-top: 1px solid var(--color-border);
+    overflow: hidden;
+    transition: background var(--tr);
+}
+
+.bg-num-item:last-child {
     border-bottom: 1px solid var(--color-border);
-    overflow: hidden; /* 大きな数字のはみ出しを切る */
-    transition: background-color var(--tr);
 }
 
-.hygiene-full-item:hover {
-    background-color: var(--color-surface); /* ホバー時に優しく白く発光 */
+.bg-num-item:hover {
+    background: var(--color-surface-2); /* ホバーで極薄い色を敷いてリッチに */
 }
 
-/* 巨大な透かし数字 */
-.hygiene-bg-num {
+/* 左上に配置する巨大な透かし数字 */
+.bg-num-bg {
     position: absolute;
     top: -20px;
-    left: 40px;
+    left: 2%;
     font-family: var(--font-serif);
-    font-size: 14rem; /* 圧倒的サイズ感 */
+    font-size: 14rem;
     font-weight: 300;
-    color: var(--color-text);
-    opacity: 0.04; /* 極めて薄く透かす */
+    color: var(--color-accent);
+    opacity: 0.04; /* 極めて薄く透けさせる */
     line-height: 1;
-    pointer-events: none; /* テキスト選択などの邪魔をしない */
+    z-index: 0;
     user-select: none;
+    pointer-events: none;
 }
 
-.hygiene-inner {
+.bg-num-inner {
     position: relative;
     z-index: 1;
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-    gap: 64px; /* タイトルと説明文の間の広い余白 */
+    gap: 64px;
 }
 
-.hygiene-title {
-    flex: 0 0 30%;
+.bg-num-title-wrap {
+    flex: 0 0 35%; /* 左側のタイトルエリアの幅 */
+}
+
+.bg-num-title-wrap .section-label {
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    display: inline-block;
+}
+
+.bg-num-title {
     font-family: var(--font-serif);
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 400;
     letter-spacing: 0.1em;
     color: var(--color-text);
-    margin-top: 6px;
+    margin-bottom: 12px;
 }
 
-.hygiene-desc {
-    flex: 1;
+.bg-num-concept {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    letter-spacing: 0.1em;
+    line-height: 1.6;
+}
+
+.bg-num-desc {
+    flex: 1; /* 右側の説明文エリア */
     font-size: 0.95rem;
     color: #555;
     line-height: 2.0;
+    margin-top: 6px;
 }
 
 /* Responsive updates for visit.html */
 @media (max-width: 768px) {
 
+    /* 写真とテキストを縦並びにし、高さをリセット */
+    .salon-split-row,
+    .salon-split-row:nth-child(even),
     .visit-split-row,
     .visit-split-row:nth-child(even) {
         flex-direction: column;
         min-height: auto;
     }
-
+    
+    /* ▼▼▼ ここを修正：スマホ時の写真エリアのサイズを固定 ▼▼▼ */
+    .salon-split-img,
     .visit-split-img {
         width: 100%;
-        height: 45vh;
+        height: 45vh; /* スマホ画面の高さの45%を確保 */
+        min-height: 300px; /* どんなに画面が小さくても最低300pxは確保して消滅を防ぐ */
+        position: relative; /* プレースホルダーの基準位置を維持 */
     }
-
+    
+    /* テキストエリアは横幅100%にする */
+    .salon-split-text,
     .visit-split-text {
         width: 100%;
     }
-
+    
+    .salon-text-inner,
     .visit-text-inner {
         max-width: 100%;
-        padding: 64px 24px;
+        padding: 56px 24px; /* スマホ用に余白を調整 */
     }
 
     .achievements-grid {
@@ -2412,21 +2504,21 @@ details.accordion-item[open] summary::after {
         left: -28px;
     }
 
-    /* 衛生管理セクションのスマホ調整 */
-    .hygiene-full-item {
+    /* 背景数字デザインのスマホ調整 */
+    .bg-num-item {
         padding: 56px 0;
     }
-    .hygiene-inner {
+    .bg-num-inner {
         flex-direction: column;
-        gap: 16px;
+        gap: 24px;
     }
-    .hygiene-title {
-        font-size: 1.3rem;
+    .bg-num-title-wrap {
+        flex: 0 0 auto;
     }
-    .hygiene-bg-num {
+    .bg-num-bg {
         font-size: 8rem; /* スマホ時は数字を少し小さく */
         top: 0;
-        left: -10px; /* 画面端にはみ出させてエッジを効かせる */
+        left: -10px;
         opacity: 0.06;
     }
 
@@ -2444,5 +2536,81 @@ details.accordion-item[open] summary::after {
     
     .footer-bottom {
         padding-top: 40px;
+    }
+}
+/* ============================================================
+   コンパクトセクション（beauty.html 等、余白を抑えたいページ用）
+============================================================ */
+.section--compact {
+    padding: 40px 0; /* 通常の 110px → 40px に縮小 */
+}
+
+.section--compact .section-title {
+    margin-bottom: 40px; /* 通常の 70px → 40px に縮小 */
+}
+
+/* ============================================================
+   2×2・画面幅いっぱいグリッド（beauty.html サービスカード用）
+   タイトルは container 内に、カードは container 外に出して
+   ブラウザの端から端まで突き抜けるダイナミックなレイアウト
+============================================================ */
+.compact-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* PC時は横2列 × 縦2行 */
+    width: 100%;
+    gap: 0; /* カード同士をピタッと隙間なく並べてハイブランド感を演出 */
+}
+
+/* 2列になって広くなったカードの余白・見た目調整 */
+.compact-grid .business-card {
+    width: 100%;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #fff;
+    padding: 50px 40px; /* 広がった横幅に合わせてゆったりめに */
+    border: 1px solid #eef0f2; /* 隣り合うカードの区切り線 */
+}
+
+/* 写真エリア：カードが大きくなった分、高さを引き上げてダイナミックに */
+.compact-grid .business-visual {
+    width: 100%;
+    height: 360px; /* PC画面でビジュアルが映える高さ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ============================================================
+   取り扱いサービスセクション（services-grid / 旧スタイル）
+============================================================ */
+.services-grid {
+    display: grid;
+    gap: 32px;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+/* ＝ レスポンシブ対応 ＝ */
+
+/* タブレット（1024px以下）：compact-grid は 2列のまま維持 */
+@media (max-width: 1024px) {
+    .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+    }
+}
+
+/* スマートフォン（600px以下）：縦1列にスッキリ並べる */
+@media (max-width: 600px) {
+    .compact-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .compact-grid .business-card {
+        padding: 30px 20px; /* スマホ時は余白をタイトに */
+    }
+    .compact-grid .business-visual {
+        height: 240px; /* スマホ用に写真の高さをコンパクトに */
+    }
+    .services-grid {
+        grid-template-columns: repeat(1, 1fr);
     }
 }

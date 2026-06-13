@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,57 +9,63 @@
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
 </head>
+
 <body>
 
-<header class="header" id="header">
-    <div class="header-inner">
-        <a href="index.html" class="logo">ANT'S</a>
-        <div class="nav-overlay" id="nav-overlay"></div>
-        <nav class="nav" id="nav">
-            <button class="nav-close" id="nav-close" aria-label="閉じる">✕</button>
-            <ul class="nav-list">
-                <li><a href="salon.html"  class="nav-link" data-page="salon.html">ABOUT</a></li>
-                <li><a href="visit.html"  class="nav-link" data-page="visit.html">訪問美容</a></li>
-                <li><a href="beauty.html" class="nav-link" data-page="beauty.html">トータルビューティー</a></li>
-                <li><a href="cast.html"   class="nav-link" data-page="cast.html">CAST</a></li>
-                <li><a href="access.html" class="nav-link" data-page="access.html">ACCESS</a></li>
-                <li><a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="nav-link nav-link--recruit">RECRUIT ↗</a></li>
-            </ul>
-        </nav>
-        <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-    </div>
-</header>
+    <header class="header" id="header">
+        <div class="header-inner">
+            <a href="index.html" class="logo">ANT'S</a>
+            <div class="nav-overlay" id="nav-overlay"></div>
+            <nav class="nav" id="nav">
+                <button class="nav-close" id="nav-close" aria-label="閉じる">✕</button>
+                <ul class="nav-list">
+                    <li><a href="salon.html" class="nav-link" data-page="salon.html">ABOUT</a></li>
+                    <li><a href="visit.html" class="nav-link" data-page="visit.html">訪問美容</a></li>
+                    <li><a href="beauty.html" class="nav-link" data-page="beauty.html">トータルビューティー</a></li>
+                    <li><a href="cast.html" class="nav-link" data-page="cast.html">CAST</a></li>
+                    <li><a href="access.html" class="nav-link" data-page="access.html">ACCESS</a></li>
+                    <li><a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer"
+                            class="nav-link nav-link--recruit">RECRUIT ↗</a></li>
+                </ul>
+            </nav>
+            <button class="hamburger" id="hamburger" aria-label="メニュー" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
 
-<!-- ==================== PAGE HERO ==================== -->
-<div class="page-hero">
-    <div class="container">
-        <p class="page-hero-sub">Total Beauty Brand</p>
-        <h1 class="page-hero-title">トータルビューティー</h1>
-    </div>
-</div>
-
-<!-- ==================== INTRO ==================== -->
-<section class="section section--alt">
-    <div class="container">
-        <div class="content-grid reveal">
-            <div class="placeholder content-visual" style="height:380px; border-radius:6px;">【サロン空間 ビジュアル】</div>
-            <div class="content-body">
-                <span class="section-label">Our Brand</span>
-                <h2>ヘアだけじゃない。<br>美のすべてを、<br>ANT'Sで。</h2>
-                <p>ANT'Sは「トータルビューティーブランド」として、ヘアカット・カラー・パーマをはじめ、アイラッシュ、エステ、ネイルなど、お客様の美を総合的にサポートします。</p>
-                <p>すべてのサービスに共通しているのは、ANT'Sが大切にしてきた「おもてなしの心」と「高い専門技術」。一人のお客様に対し、チームとして最高の体験をご提供します。</p>
-            </div>
+    <!-- ==================== PAGE HERO ==================== -->
+    <div class="page-hero">
+        <div class="container">
+            <p class="page-hero-sub">Total Beauty Brand</p>
+            <h1 class="page-hero-title">トータルビューティー</h1>
         </div>
     </div>
-</section>
 
-<!-- ==================== SERVICES ==================== -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title reveal">取り扱いサービス</h2>
-        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:32px;">
+    <!-- ==================== INTRO ==================== -->
+    <section class="section section--alt section--compact">
+        <div class="container">
+            <div class="content-grid reveal">
+                <div class="placeholder content-visual" style="height:380px; border-radius:6px;">【サロン空間 ビジュアル】</div>
+                <div class="content-body">
+                    <span class="section-label">Our Brand</span>
+                    <h2>ヘアだけじゃない。<br>美のすべてを、<br>ANT'Sで。</h2>
+                    <p>ANT'Sは「トータルビューティーブランド」として、ヘアカット・カラー・パーマをはじめ、アイラッシュ、エステ、ネイルなど、お客様の美を総合的にサポートします。</p>
+                    <p>すべてのサービスに共通しているのは、ANT'Sが大切にしてきた「おもてなしの心」と「高い専門技術」。一人のお客様に対し、チームとして最高の体験をご提供します。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SERVICES (4分割・画面幅いっぱい) ==================== -->
+    <section class="section section--compact">
+        <!-- タイトルは中央に綺麗に収めるため、container内に残します -->
+        <div class="container">
+            <h2 class="section-title text-center reveal">取り扱いサービス</h2>
+        </div>
+
+        <!-- 画面幅100%に広げるため、containerの外側に4分割用のグリッドを配置します -->
+        <div class="compact-grid">
 
             <div class="business-card reveal">
                 <div class="business-visual placeholder">【ヘアデザイン イメージ】</div>
@@ -97,61 +104,67 @@
             </div>
 
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- ==================== CTA ==================== -->
-<section class="section section--alt">
-    <div class="container" style="text-align:center;">
-        <h2 class="section-title reveal">ご予約は各店舗ページから</h2>
-        <p class="reveal" style="color:#666; margin-bottom:36px; font-size:0.9rem;">詳細なメニューやご予約は、HOT PEPPER BEAUTY よりお願いいたします。</p>
-        <a href="salon.html" class="btn btn--primary reveal">SALON LIST へ</a>
-    </div>
-</section>
+    <!-- ==================== CTA ==================== -->
+    <section class="section section--alt section--compact">
+        <div class="container" style="text-align:center;">
+            <h2 class="section-title reveal">ご予約は各店舗ページから</h2>
+            <p class="reveal" style="color:#666; margin-bottom:36px; font-size:0.9rem;">詳細なメニューやご予約は、HOT PEPPER BEAUTY
+                よりお願いいたします。</p>
+            <a href="salon.html" class="btn btn--primary reveal">SALON LIST へ</a>
+        </div>
+    </section>
 
-<footer class="footer">
-    <div class="container">
-        <!-- サイトマップエリア -->
-        <div class="footer-sitemap">
-            <!-- 1列目：ビジョン・サロンリスト -->
-            <div class="sitemap-col">
-                <a href="vision.html" class="sitemap-main">VISION</a>
-                
-                <a href="salon.html" class="sitemap-main" style="margin-top: 16px;">SALON LIST (ABOUT)</a>
-                <ul class="sitemap-sub">
-                    <li><a href="https://beauty.hotpepper.jp/slnH000112464/" target="_blank" rel="noopener noreferrer">ANT'S 辻堂本店</a></li>
-                    <li><a href="https://beauty.hotpepper.jp/slnH000183871/" target="_blank" rel="noopener noreferrer">Southern-Resort 茅ヶ崎店</a></li>
-                    <li><a href="#" target="_blank" rel="noopener noreferrer">ANT'S 茅ヶ崎駅前店</a></li>
-                    <li><a href="https://beauty.hotpepper.jp/slnH000575740/" target="_blank" rel="noopener noreferrer">ENi hair and resort</a></li>
-                    <li><a href="https://beauty.hotpepper.jp/slnH000797881/" target="_blank" rel="noopener noreferrer">Lune. by ANT'S</a></li>
-                </ul>
+    <footer class="footer">
+        <div class="container">
+            <!-- サイトマップエリア -->
+            <div class="footer-sitemap">
+                <!-- 1列目：ビジョン・サロンリスト -->
+                <div class="sitemap-col">
+                    <a href="vision.html" class="sitemap-main">VISION</a>
+
+                    <a href="salon.html" class="sitemap-main" style="margin-top: 16px;">SALON LIST (ABOUT)</a>
+                    <ul class="sitemap-sub">
+                        <li><a href="https://beauty.hotpepper.jp/slnH000112464/" target="_blank"
+                                rel="noopener noreferrer">ANT'S 辻堂本店</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000183871/" target="_blank"
+                                rel="noopener noreferrer">Southern-Resort 茅ヶ崎店</a></li>
+                        <li><a href="#" target="_blank" rel="noopener noreferrer">ANT'S 茅ヶ崎駅前店</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000575740/" target="_blank"
+                                rel="noopener noreferrer">ENi hair and resort</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000797881/" target="_blank"
+                                rel="noopener noreferrer">Lune. by ANT'S</a></li>
+                    </ul>
+                </div>
+
+                <!-- 2列目：事業・キャスト -->
+                <div class="sitemap-col">
+                    <a href="visit.html" class="sitemap-main">訪問美容</a>
+                    <a href="beauty.html" class="sitemap-main">トータルビューティー</a>
+                    <a href="cast.html" class="sitemap-main">CAST</a>
+                </div>
+
+                <!-- 3列目：会社情報・採用 -->
+                <div class="sitemap-col">
+                    <a href="access.html" class="sitemap-main">COMPANY / ACCESS</a>
+                    <a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer"
+                        class="sitemap-main">RECRUIT ↗</a>
+                </div>
             </div>
 
-            <!-- 2列目：事業・キャスト -->
-            <div class="sitemap-col">
-                <a href="visit.html" class="sitemap-main">訪問美容</a>
-                <a href="beauty.html" class="sitemap-main">トータルビューティー</a>
-                <a href="cast.html" class="sitemap-main">CAST</a>
-            </div>
-
-            <!-- 3列目：会社情報・採用 -->
-            <div class="sitemap-col">
-                <a href="access.html" class="sitemap-main">COMPANY / ACCESS</a>
-                <a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="sitemap-main">RECRUIT ↗</a>
+            <!-- コピーライト・SNSエリア -->
+            <div class="footer-bottom">
+                <div class="footer-logo">ANT'S</div>
+                <div class="footer-bottom-links">
+                    <a href="#">プライバシーポリシー</a>
+                    <a href="#">Instagram</a>
+                </div>
+                <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
             </div>
         </div>
-
-        <!-- コピーライト・SNSエリア -->
-        <div class="footer-bottom">
-            <div class="footer-logo">ANT'S</div>
-            <div class="footer-bottom-links">
-                <a href="#">プライバシーポリシー</a>
-                <a href="#">Instagram</a>
-            </div>
-            <p class="copyright">&copy; 2026 ANT'S. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 </body>
+
 </html>
