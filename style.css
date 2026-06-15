@@ -2017,3 +2017,224 @@ ul {
         text-align: center;
     }
 }
+
+
+/* ==============================
+   Page: cast.html
+============================== */
+.cast-intro {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 80px;
+}
+
+.cast-salon-block {
+    margin-bottom: 80px;
+}
+
+.cast-salon-block:last-child {
+    margin-bottom: 0;
+}
+
+.cast-salon-label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+}
+
+.cast-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+}
+
+.cast-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cast-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: #e2e0db;
+    overflow: hidden;
+    background-size: cover !important;
+    background-position: center top !important;
+    margin-bottom: 16px;
+    transition: opacity var(--tr);
+}
+
+.cast-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cast-item:hover .cast-photo img {
+    transform: scale(1.04);
+}
+
+.cast-info {
+    padding: 0 2px;
+}
+
+.cast-name {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.cast-role {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .cast-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 16px;
+    }
+
+    .cast-salon-label {
+        font-size: 0.75rem;
+        padding: 8px 16px;
+    }
+
+    .cast-salon-block {
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cast-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 12px;
+    }
+}
+
+/* ==============================
+   Page: cast.html
+============================== */
+.cast-intro {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    color: var(--color-muted);
+    letter-spacing: 0.1em;
+    margin-bottom: 80px;
+}
+
+.cast-salon-block {
+    margin-bottom: 80px;
+}
+
+.cast-salon-block:last-child {
+    margin-bottom: 0;
+}
+
+.cast-salon-label {
+    font-family: var(--font-sans);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    display: inline-block;
+    padding: 10px 20px;
+    margin-bottom: 40px;
+}
+
+.cast-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 32px 24px;
+}
+
+.cast-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.cast-photo {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    background: #e2e0db;
+    overflow: hidden;
+    background-size: cover !important;
+    background-position: center top !important;
+    margin-bottom: 16px;
+    transition: opacity var(--tr);
+}
+
+.cast-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    transition: transform 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.cast-item:hover .cast-photo img {
+    transform: scale(1.04);
+}
+
+.cast-info {
+    padding: 0 2px;
+}
+
+.cast-name {
+    font-family: var(--font-serif);
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    color: var(--color-text);
+    margin-bottom: 4px;
+}
+
+.cast-role {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    color: var(--color-muted);
+    letter-spacing: 0.08em;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .cast-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px 16px;
+    }
+
+    .cast-salon-label {
+        font-size: 0.75rem;
+        padding: 8px 16px;
+    }
+
+    .cast-salon-block {
+        margin-bottom: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .cast-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px 12px;
+    }
+}
