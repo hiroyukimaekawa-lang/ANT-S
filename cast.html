@@ -5,13 +5,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAST | ANT'S</title>
-    <meta name="description" content="ANT'Sのキャスト紹介。茅ヶ崎・辻堂で活躍するスタイリストやアシスタント、アイリスト、ネイリストをご紹介します。">
+    <meta name="description" content="ANT'Sを支えるキャストをご紹介します。">
     <link rel="stylesheet" href="style.css">
     <script src="main.js" defer></script>
+    <style>
+        .cast-grid.cast-grid--team {
+            grid-template-columns: repeat(5, minmax(0, 1fr));
+            gap: 40px 18px;
+        }
+        .cast-grid--team .cast-item { min-width: 0; }
+        .cast-grid--team .cast-photo {
+            width: 100%;
+            height: auto;
+            aspect-ratio: 3 / 4;
+            background-size: cover !important;
+            background-repeat: no-repeat !important;
+            background-position: center 20% !important;
+            background-color: #ece9e3;
+        }
+        .cast-grid--team .cast-info {
+            padding-top: 15px;
+            text-align: center;
+        }
+        .cast-grid--team .cast-name {
+            margin: 0;
+            font-family: var(--font-serif);
+            font-size: 1rem;
+            letter-spacing: 0.12em;
+        }
+        @media (max-width: 1100px) {
+            .cast-grid.cast-grid--team {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+        @media (max-width: 768px) {
+            .cast-grid.cast-grid--team {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 28px 14px;
+            }
+            .cast-grid--team .cast-info { padding-top: 11px; }
+            .cast-grid--team .cast-name { font-size: 0.86rem; }
+        }
+    </style>
 </head>
 
 <body>
-
     <header class="header" id="header">
         <div class="header-inner">
             <a href="index.html" class="logo">ANT'S</a>
@@ -34,7 +72,6 @@
         </div>
     </header>
 
-    <!-- ==================== PAGE HERO ==================== -->
     <div class="page-hero">
         <div class="container">
             <p class="page-hero-sub">ANT'S Cast</p>
@@ -42,90 +79,49 @@
         </div>
     </div>
 
-    <!-- ==================== CAST SECTION ==================== -->
     <section class="section">
         <div class="container">
             <p class="cast-intro reveal">ANT'Sを支えるキャストたちをご紹介します。</p>
 
-            <div class="cast-grid">
-
-                <div class="cast-item reveal">
+            <div class="cast-grid cast-grid--team">
+                <article class="cast-item reveal">
                     <div class="cast-photo placeholder"
-                        style="background-image: url('assets/cast/cast-01.jpg'); color: transparent;"></div>
-                    <div class="cast-info">
-                        <p class="cast-name">額賀　成世</p>
-                        <p class="cast-role">ケアリスト</p>
-                    </div>
-                </div>
+                        style="background-image: url('assets/cast-kawauchi.jpg'); color: transparent;"
+                        role="img" aria-label="川内"></div>
+                    <div class="cast-info"><p class="cast-name">川内</p></div>
+                </article>
 
-                <div class="cast-item reveal reveal-delay-1">
+                <article class="cast-item reveal reveal-delay-1">
                     <div class="cast-photo placeholder"
-                        style="background-image: url('assets/cast-kawauchi.jpg'); color: transparent;"></div>
-                    <div class="cast-info">
-                        <p class="cast-name">寺岡　花純</p>
-                        <p class="cast-role">ケアリスト</p>
-                    </div>
-                </div>
+                        style="background-image: url('assets/cast-kurauchi.jpg'); color: transparent;"
+                        role="img" aria-label="倉内"></div>
+                    <div class="cast-info"><p class="cast-name">倉内</p></div>
+                </article>
 
-                <div class="cast-item reveal reveal-delay-2">
+                <article class="cast-item reveal reveal-delay-2">
                     <div class="cast-photo placeholder"
-                        style="background-image: url('assets/cast/cast-03.jpg'); color: transparent;"></div>
-                    <div class="cast-info">
-                        <p class="cast-name">梅津　桜子</p>
-                        <p class="cast-role">スタイリスト</p>
-                    </div>
-                </div>
+                        style="background-image: url('assets/cast-matsutake.jpg'); color: transparent;"
+                        role="img" aria-label="まつたけ"></div>
+                    <div class="cast-info"><p class="cast-name">まつたけ</p></div>
+                </article>
 
-                <div class="cast-item reveal reveal-delay-3">
+                <article class="cast-item reveal reveal-delay-3">
                     <div class="cast-photo placeholder"
-                        style="background-image: url('assets/cast/cast-04.jpg'); color: transparent;"></div>
-                    <div class="cast-info">
-                        <p class="cast-name">綿貫　結香</p>
-                        <p class="cast-role">スタイリスト / アイリスト / 着付け</p>
-                    </div>
-                </div>
+                        style="background-image: url('assets/cast-miyauchi.jpg'); color: transparent;"
+                        role="img" aria-label="宮内"></div>
+                    <div class="cast-info"><p class="cast-name">宮内</p></div>
+                </article>
 
-                <div class="cast-item reveal">
+                <article class="cast-item reveal">
                     <div class="cast-photo placeholder"
-                        style="background-image: url('assets/cast/cast-05.jpg'); color: transparent;"></div>
-                    <div class="cast-info">
-                        <p class="cast-name">キャスト名</p>
-                        <p class="cast-role">スタイリスト</p>
-                    </div>
-                </div>
-
-                <div class="cast-item reveal reveal-delay-1">
-                    <div class="cast-photo placeholder"
-                        style="background-image: url('assets/cast/cast-06.jpg'); color: transparent;"></div>
-                    <div class="cast-info">
-                        <p class="cast-name">キャスト名</p>
-                        <p class="cast-role">アシスタント</p>
-                    </div>
-                </div>
-
-                <div class="cast-item reveal reveal-delay-2">
-                    <div class="cast-photo placeholder"
-                        style="background-image: url('assets/cast/cast-07.jpg'); color: transparent;"></div>
-                    <div class="cast-info">
-                        <p class="cast-name">キャスト名</p>
-                        <p class="cast-role">アイリスト</p>
-                    </div>
-                </div>
-
-                <div class="cast-item reveal reveal-delay-3">
-                    <div class="cast-photo placeholder"
-                        style="background-image: url('assets/cast/cast-08.jpg'); color: transparent;"></div>
-                    <div class="cast-info">
-                        <p class="cast-name">キャスト名</p>
-                        <p class="cast-role">ネイリスト</p>
-                    </div>
-                </div>
-
+                        style="background-image: url('assets/cast-teraoka.jpg'); color: transparent;"
+                        role="img" aria-label="寺岡"></div>
+                    <div class="cast-info"><p class="cast-name">寺岡</p></div>
+                </article>
             </div>
         </div>
     </section>
 
-    <!-- ==================== FOOTER ==================== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-sitemap">
@@ -133,15 +129,11 @@
                     <a href="vision.html" class="sitemap-main">VISION</a>
                     <a href="salon.html" class="sitemap-main" style="margin-top: 16px;">SALON LIST (ABOUT)</a>
                     <ul class="sitemap-sub">
-                        <li><a href="https://beauty.hotpepper.jp/slnH000112464/" target="_blank"
-                                rel="noopener noreferrer">ANT'S 辻堂本店</a></li>
-                        <li><a href="https://beauty.hotpepper.jp/slnH000183871/" target="_blank"
-                                rel="noopener noreferrer">Southern-Resort 茅ヶ崎店</a></li>
-                        <li><a href="#" target="_blank" rel="noopener noreferrer">ANT'S 茅ヶ崎駅前店</a></li>
-                        <li><a href="https://beauty.hotpepper.jp/slnH000575740/" target="_blank"
-                                rel="noopener noreferrer">ENi hair and resort</a></li>
-                        <li><a href="https://beauty.hotpepper.jp/slnH000797881/" target="_blank"
-                                rel="noopener noreferrer">Lune. by ANT'S</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000112464/" target="_blank" rel="noopener noreferrer">ANT'S 辻堂本店</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000183871/" target="_blank" rel="noopener noreferrer">Southern-Resort 茅ヶ崎店</a></li>
+                        <li><a href="#">ANT'S 茅ヶ崎駅前店</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000575740/" target="_blank" rel="noopener noreferrer">ENi hair and resort</a></li>
+                        <li><a href="https://beauty.hotpepper.jp/slnH000797881/" target="_blank" rel="noopener noreferrer">Lune. by ANT'S</a></li>
                     </ul>
                 </div>
                 <div class="sitemap-col">
@@ -151,8 +143,7 @@
                 </div>
                 <div class="sitemap-col">
                     <a href="access.html" class="sitemap-main">COMPANY / ACCESS</a>
-                    <a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer"
-                        class="sitemap-main">RECRUIT ↗</a>
+                    <a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="sitemap-main">RECRUIT ↗</a>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -165,7 +156,5 @@
             </div>
         </div>
     </footer>
-
 </body>
-
 </html>
