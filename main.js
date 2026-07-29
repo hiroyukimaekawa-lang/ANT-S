@@ -1,164 +1,528 @@
 (() => {
-    const existing = document.querySelector('link[data-ants-responsive]');
-    if (!existing) {
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = 'responsive-fix.css';
-        link.dataset.antsResponsive = 'true';
-        document.head.appendChild(link);
-    }
+    const styleId = 'ants-responsive-unified';
+    if (document.getElementById(styleId)) return;
+
+    const style = document.createElement('style');
+    style.id = styleId;
+    style.textContent = `
+        :root {
+            --ants-ink: #11110f;
+            --ants-paper: #f5f3ee;
+            --ants-white: #fff;
+            --ants-gold: #b69a73;
+            --ants-line: rgba(17,17,15,.12);
+        }
+
+        html, body { width: 100%; max-width: 100%; overflow-x: clip; }
+        body.is-nav-open { overflow: hidden; }
+        img, video, iframe { max-width: 100%; }
+        .has-local-image > .placeholder { opacity: 0 !important; visibility: hidden !important; }
+        .salon-hiroin-img.has-local-image,
+        .salon-split-img.has-local-image,
+        .rakugei-visual.has-local-image,
+        .content-visual.has-local-image {
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+
+        .mobile-reserve { display: none; }
+
+        .ants-display-title {
+            margin: 0;
+            font-family: var(--font-serif);
+            font-size: clamp(2.15rem, 5vw, 4.8rem);
+            font-weight: 300;
+            line-height: 1.15;
+            letter-spacing: .05em;
+        }
+
+        .ants-section-head {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(280px, .72fr);
+            gap: 28px clamp(40px, 8vw, 120px);
+            align-items: end;
+            margin-bottom: clamp(54px, 8vw, 96px);
+        }
+        .ants-section-head .section-label { grid-column: 1 / -1; }
+        .ants-section-head > p { margin: 0 0 .35em; color: #68655f; line-height: 2; }
+        .ants-section-head--center { display: block; max-width: 760px; text-align: center; }
+        .ants-section-head--center > p { margin: 24px auto 0; }
+
+        /* Local images */
+        .page-index .hero-slide,
+        .page-index .og-img,
+        .page-index .rakugei-visual,
+        .page-index .salon-hiroin-img {
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+        }
+        .page-index .hero-slide { animation: antsHeroFade 18s infinite ease-in-out !important; }
+        .page-index .hero-slide--1 { animation-delay: 0s !important; }
+        .page-index .hero-slide--2 { animation-delay: 6s !important; }
+        .page-index .hero-slide--3 { animation-delay: 12s !important; }
+        @keyframes antsHeroFade {
+            0% { opacity: 0; transform: scale(1.045); }
+            8% { opacity: 1; }
+            30% { opacity: 1; transform: scale(1); }
+            38% { opacity: 0; }
+            100% { opacity: 0; }
+        }
+
+        /* History */
+        .ants-history-section { position: relative; background: var(--ants-ink); color: #fff; overflow: hidden; }
+        .ants-history-section::before {
+            content: 'HISTORY'; position: absolute; top: -.18em; right: -.06em;
+            font-family: var(--font-serif); font-size: clamp(7rem, 21vw, 22rem);
+            font-weight: 300; line-height: 1; color: rgba(255,255,255,.025); pointer-events: none;
+        }
+        .ants-history-section .section-label { color: #d9bea0; }
+        .ants-history-section .ants-section-head > p { color: rgba(255,255,255,.62); }
+        .ants-history-list { position: relative; max-width: 1080px; }
+        .ants-history-list::before {
+            content: ''; position: absolute; top: 12px; bottom: 10px; left: 180px;
+            width: 1px; background: rgba(255,255,255,.17);
+        }
+        .ants-history-item {
+            position: relative; display: grid; grid-template-columns: 148px 64px minmax(0, 1fr);
+            align-items: center; min-height: 104px; border-bottom: 1px solid rgba(255,255,255,.1);
+        }
+        .ants-history-year { display: flex; align-items: baseline; gap: 12px; font-family: var(--font-serif); }
+        .ants-history-year strong { font-size: clamp(2rem, 4vw, 3.6rem); font-weight: 300; }
+        .ants-history-year span { color: rgba(255,255,255,.42); font-family: var(--font-sans); font-size: .68rem; }
+        .ants-history-dot {
+            position: relative; z-index: 1; width: 10px; height: 10px; margin-left: 28px;
+            border: 2px solid var(--ants-ink); border-radius: 50%; background: #d9bea0;
+            box-shadow: 0 0 0 1px rgba(255,255,255,.3);
+        }
+        .ants-history-item p { margin: 0; color: rgba(255,255,255,.86); letter-spacing: .08em; line-height: 1.8; }
+        .ants-history-list:not(.is-expanded) .ants-history-item:nth-child(n + 4) { display: none; }
+        .ants-history-toggle-wrap { display: flex; justify-content: center; margin-top: 48px; }
+        .ants-history-toggle {
+            min-width: 190px; padding: 14px 30px; border: 1px solid rgba(255,255,255,.42);
+            background: transparent; color: #fff; font-family: var(--font-sans); font-size: .75rem;
+            letter-spacing: .14em; cursor: pointer; transition: background .3s ease, color .3s ease;
+        }
+        .ants-history-toggle:hover { background: #fff; color: var(--ants-ink); }
+
+        /* Visiting beauty price */
+        .ants-pricing-section { background: var(--ants-paper); }
+        .ants-pricing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(24px, 4vw, 52px); }
+        .ants-price-card { overflow: hidden; background: #fff; box-shadow: 0 12px 44px rgba(38,33,27,.075); }
+        .ants-price-image { min-height: 300px; background-position: center; background-size: cover; }
+        .ants-price-body { padding: clamp(30px, 5vw, 54px); }
+        .ants-price-type, .ants-contact-kicker {
+            display: block; margin-bottom: 12px; color: #9f8260;
+            font-family: var(--font-serif); font-size: .72rem; letter-spacing: .2em;
+        }
+        .ants-price-body h3 {
+            margin: 0 0 18px; font-family: var(--font-serif); font-size: clamp(1.8rem, 3vw, 2.6rem);
+            font-weight: 300; letter-spacing: .08em;
+        }
+        .ants-price-note { min-height: 4em; margin: 0 0 28px; color: #74716b; font-size: .78rem; line-height: 1.9; }
+        .ants-price-list { margin: 0; border-top: 1px solid var(--ants-line); }
+        .ants-price-list > div {
+            display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 18px; align-items: baseline;
+            padding: 14px 0; border-bottom: 1px solid var(--ants-line);
+        }
+        .ants-price-list dt { color: #4e4c48; font-size: .82rem; line-height: 1.6; }
+        .ants-price-list dd { margin: 0; font-family: var(--font-serif); font-size: 1.05rem; white-space: nowrap; }
+        .ants-contact-panel {
+            display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, .58fr); gap: clamp(36px, 7vw, 90px);
+            align-items: center; margin-top: clamp(42px, 7vw, 86px); padding: clamp(36px, 6vw, 72px);
+            background: var(--ants-ink); color: #fff;
+        }
+        .ants-contact-panel h3 {
+            margin: 0 0 20px; font-family: var(--font-serif); font-size: clamp(1.8rem, 3.5vw, 3rem);
+            font-weight: 300; line-height: 1.35;
+        }
+        .ants-contact-panel p { margin: 0; color: rgba(255,255,255,.62); font-size: .84rem; line-height: 2; }
+        .ants-contact-actions { display: flex; flex-direction: column; }
+        .ants-phone-button {
+            display: flex; flex-direction: column; gap: 6px; padding: 22px 24px;
+            border: 1px solid rgba(255,255,255,.55); color: #fff;
+        }
+        .ants-phone-button small { font-size: .68rem; letter-spacing: .12em; }
+        .ants-phone-button strong { font-family: var(--font-serif); font-size: clamp(1.45rem, 3vw, 2.1rem); font-weight: 300; }
+        .ants-phone-button span { font-size: .7rem; letter-spacing: .14em; }
+        .ants-mail-link {
+            display: flex; justify-content: space-between; gap: 12px; margin-top: 18px; padding-bottom: 8px;
+            border-bottom: 1px solid rgba(255,255,255,.25); color: rgba(255,255,255,.83);
+            font-size: .75rem; overflow-wrap: anywhere;
+        }
+        .ants-price-caution { margin-top: 16px; color: #77736c; font-size: .7rem; line-height: 1.8; }
+
+        @media (max-width: 1080px) {
+            .header-inner { padding-inline: 24px; }
+            .nav-list { gap: 26px; }
+        }
+
+        @media (max-width: 768px) {
+            :root { --header-h: 66px; }
+            body { font-size: 14px; line-height: 1.85; background: #fff; }
+            .container { padding-inline: 22px; }
+            .section { padding: 76px 0; }
+
+            /* Reference-image style header */
+            .header {
+                height: var(--header-h) !important; background: #fff !important; border-bottom: 0 !important;
+                box-shadow: none !important; backdrop-filter: none !important;
+            }
+            .header-inner { position: relative; justify-content: center !important; padding: 0 66px !important; }
+            .logo {
+                position: absolute; left: 50%; transform: translateX(-50%); color: #111 !important;
+                font-size: 1.08rem; letter-spacing: .18em; white-space: nowrap;
+            }
+            .logo::after { content: 'HAIR & RESORT'; display: block; margin-top: -3px; font-family: var(--font-sans); font-size: .42rem; letter-spacing: .12em; text-align: center; }
+            .hamburger {
+                display: flex !important; position: absolute; left: 10px; top: 11px; width: 44px !important;
+                height: 44px !important; padding: 13px 9px; border: 0; z-index: 1002;
+            }
+            .hamburger span { background: #111 !important; height: 1px; }
+            .mobile-reserve {
+                display: flex; position: absolute; right: 0; top: 0; width: 66px; height: 66px;
+                align-items: center; justify-content: center; background: #111; color: #fff;
+                font-size: .62rem; letter-spacing: .08em; z-index: 1002;
+            }
+            .nav { width: min(88vw, 390px) !important; max-width: none !important; padding-top: 76px !important; }
+            .nav-list { gap: 6px !important; padding: 18px 28px 40px !important; }
+            .nav-link {
+                min-height: 50px; display: flex !important; align-items: center; border-bottom: 1px solid rgba(0,0,0,.08);
+                font-family: var(--font-serif); font-size: 1.08rem !important; font-weight: 400 !important;
+            }
+            .nav-close { top: 12px !important; left: 15px !important; width: 44px; height: 44px; }
+
+            /* Hero: photo + black copy panel */
+            .page-index .hero,
+            .page-index .hero--rakugei {
+                height: 77svh !important; min-height: 540px !important; margin-top: var(--header-h);
+                overflow: visible !important; background: #ddd;
+            }
+            .page-index .hero-bg-slider { overflow: hidden; }
+            .page-index .hero-slide { background-position: center center !important; }
+            .page-index .hero-overlay { background: rgba(0,0,0,.08) !important; }
+            .page-index .hero-copy-wrap--rakugei {
+                top: auto !important; left: 9% !important; right: 0 !important; bottom: -128px !important;
+                width: 91% !important; min-height: 238px; transform: none !important;
+                align-items: flex-start !important; justify-content: center; padding: 34px 28px 30px;
+                background: #111; text-align: left !important;
+            }
+            .page-index .hero-copy-wrap--rakugei .hero-copy-en {
+                margin: 0 0 24px !important; font-size: .58rem !important; letter-spacing: .18em !important;
+                text-transform: none !important; opacity: .7;
+            }
+            .page-index .hero-copy-wrap--rakugei .hero-copy-jp {
+                margin: 0; font-size: clamp(2rem, 9.4vw, 2.8rem) !important; line-height: 1.45 !important;
+                letter-spacing: .09em !important; white-space: normal !important;
+            }
+            .page-index .hero-scroll-indicator { display: none; }
+
+            /* Intro spacing after overlapping panel */
+            .page-index .hero + .section { padding-top: 194px !important; padding-bottom: 64px !important; }
+            .page-index .hero + .section .container { padding-inline: 30px; }
+            .page-index .hero + .section h3 { font-size: .76rem !important; letter-spacing: .18em !important; margin-bottom: 30px !important; }
+            .page-index .hero + .section p { font-size: .82rem !important; line-height: 2.15 !important; letter-spacing: .05em !important; }
+            .page-index .hero + .section p br { display: none; }
+
+            /* Editorial gallery like reference */
+            .page-index .overlap-gallery-section { padding: 14px 0 84px !important; background: #fff; }
+            .page-index .overlap-gallery-container {
+                display: grid !important; height: auto !important; gap: 54px !important; padding: 0 22px;
+            }
+            .page-index .overlap-gallery-container .og-img {
+                position: relative !important; inset: auto !important; width: 86% !important; height: auto !important;
+                min-height: 0 !important; aspect-ratio: 4 / 3; transform: none !important;
+            }
+            .page-index .overlap-gallery-container .og-img:nth-child(2) { margin-left: auto; aspect-ratio: 3 / 4; }
+            .page-index .overlap-gallery-container .og-img:nth-child(3) { width: 100% !important; aspect-ratio: 16 / 10; }
+            .page-index .overlap-gallery-section .text-center { margin-top: 42px !important; }
+
+            /* Business sections: photo then white editorial copy */
+            .page-index .rakugei-overlap-wrap { gap: 100px !important; padding: 0 !important; }
+            .page-index .rakugei-overlap,
+            .page-index .rakugei-overlap--reverse { display: block !important; padding: 0 0 12px !important; }
+            .page-index .rakugei-visual {
+                width: calc(100% - 44px) !important; height: auto !important; min-height: 0 !important;
+                aspect-ratio: 16 / 10 !important; margin: 0 22px !important;
+                background-size: cover !important; background-position: center !important;
+            }
+            .page-index .rakugei-overlap:nth-child(even) .rakugei-visual {
+                width: calc(100% - 44px) !important; margin: 0 22px !important;
+                aspect-ratio: 16 / 10 !important;
+            }
+            .page-index .rakugei-vertical,
+            .page-index .rakugei-overlap--reverse .rakugei-vertical {
+                position: relative !important; inset: auto !important; transform: none !important; writing-mode: horizontal-tb !important;
+                width: auto; margin: 34px 28px 0 !important; align-items: flex-start !important;
+            }
+            .page-index .rakugei-vertical .en { font-size: .64rem; letter-spacing: .18em; color: #999; }
+            .page-index .rakugei-vertical .jp { margin-top: 6px; font-size: 1.05rem; letter-spacing: .14em; }
+            .page-index .rakugei-body,
+            .page-index .rakugei-overlap--reverse .rakugei-body {
+                position: relative !important; inset: auto !important; transform: none !important; width: auto !important;
+                margin: 18px 28px 0 !important; padding: 0 !important; background: transparent !important;
+                box-shadow: none !important; text-align: left !important;
+            }
+            .page-index .rakugei-body h3 { margin-bottom: 18px; font-size: 1.45rem; line-height: 1.65; letter-spacing: .08em; }
+            .page-index .rakugei-body p { font-size: .8rem; line-height: 2.05; }
+            .page-index .rakugei-body p br { display: none; }
+            .page-index .rakugei-btn-wrap { justify-content: flex-start !important; margin-top: 28px; }
+
+            /* Salon cards */
+            .page-index .salon-grid--2,
+            .page-index .salon-grid--3 { grid-template-columns: 1fr !important; gap: 20px !important; padding: 0 22px; }
+            .page-index .salon-grid--2 .salon-hiroin-img,
+            .page-index .salon-grid--3 .salon-hiroin-img {
+                height: auto !important; aspect-ratio: 16 / 10;
+                background-size: cover !important;
+            }
+            .page-index .salon-hiroin-txt { min-height: 64px; padding-inline: 18px; }
+
+            /* Shared typography/layout */
+            .ants-section-head { display: block; margin-bottom: 48px; }
+            .ants-section-head .ants-display-title { margin-bottom: 24px; }
+            .ants-display-title { font-size: clamp(2.2rem, 10.5vw, 3.35rem); line-height: 1.2; }
+            .section-title { margin-bottom: 44px; }
+
+            .ants-history-list::before { left: 93px; }
+            .ants-history-item { grid-template-columns: 76px 34px minmax(0,1fr); min-height: 92px; }
+            .ants-history-year { display: block; }
+            .ants-history-year strong { display: block; font-size: 1.8rem; }
+            .ants-history-year span { display: block; margin-top: -4px; font-size: .58rem; }
+            .ants-history-dot { width: 9px; height: 9px; margin-left: 13px; }
+            .ants-history-item p { padding: 19px 0; font-size: .82rem; letter-spacing: .04em; }
+
+            .ants-pricing-grid { grid-template-columns: 1fr; gap: 26px; }
+            .ants-price-image { min-height: 0; aspect-ratio: 4 / 3; }
+            .ants-price-note { min-height: 0; }
+            .ants-contact-panel { grid-template-columns: 1fr; gap: 30px; margin-top: 42px; padding: 34px 24px; }
+            .ants-phone-button { min-height: 104px; }
+
+            .visit-hero { min-height: 82svh !important; height: 82svh !important; margin-top: var(--header-h); }
+            .visit-hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center; }
+            .visit-hero-copy { left: 24px !important; right: 24px; bottom: 64px !important; }
+            .visit-hero-title { font-size: clamp(2.2rem, 10vw, 3.2rem) !important; line-height: 1.35; }
+
+            .salon-split-img, .visit-split-img {
+                height: auto !important; min-height: 0 !important; aspect-ratio: 16 / 10;
+                background-size: cover !important;
+            }
+            .salon-text-inner, .visit-text-inner { padding: 48px 24px !important; }
+            .bg-num-item { padding-block: 46px !important; }
+            .timeline { padding-left: 26px !important; }
+
+            .footer { padding-top: 54px !important; }
+            .footer-sitemap { gap: 26px !important; }
+            .sitemap-main { min-height: 42px; display: flex; align-items: center; }
+        }
+
+        @media (max-width: 420px) {
+            .container { padding-inline: 18px; }
+            .section { padding: 64px 0; }
+            .ants-price-body { padding: 28px 20px 34px; }
+            .ants-price-list > div { gap: 10px; }
+            .ants-price-list dt { font-size: .76rem; }
+            .ants-price-list dd { font-size: .94rem; }
+            .ants-history-list { padding-inline: 14px; }
+            .ants-history-list::before { left: 84px; }
+            .ants-history-item { grid-template-columns: 68px 30px minmax(0,1fr); }
+            .ants-history-dot { margin-left: 10px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+            .reveal { opacity: 1 !important; transform: none !important; }
+        }
+    `;
+    document.head.appendChild(style);
 })();
 
 document.addEventListener('DOMContentLoaded', () => {
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
     const isTopPage = currentPath === 'index.html' || currentPath === '';
     const isVisitPage = currentPath === 'visit.html';
-
     document.body.classList.add(`page-${currentPath.replace('.html', '') || 'index'}`);
 
-    /* ============================================================
-       1. Header — スクロール時クラス付与
-    ============================================================ */
     const header = document.querySelector('.header');
-    if (header) {
-        const onScroll = () => {
-            header.classList.toggle('is-scrolled', window.scrollY > 30);
-        };
-        window.addEventListener('scroll', onScroll, { passive: true });
-        onScroll();
-    }
-
-    /* ============================================================
-       2. Hamburger Menu
-    ============================================================ */
     const hamburger = document.getElementById('hamburger');
     const nav = document.getElementById('nav');
     const overlay = document.getElementById('nav-overlay');
     const navClose = document.getElementById('nav-close');
 
-    if (hamburger && nav) {
-        const toggle = (open) => {
-            hamburger.classList.toggle('is-active', open);
-            nav.classList.toggle('is-active', open);
-            if (overlay) overlay.classList.toggle('is-active', open);
-            hamburger.setAttribute('aria-expanded', String(open));
-            document.body.style.overflow = open ? 'hidden' : '';
-        };
-
-        hamburger.addEventListener('click', () => {
-            toggle(!nav.classList.contains('is-active'));
-        });
-
-        if (navClose) navClose.addEventListener('click', () => toggle(false));
-        if (overlay) overlay.addEventListener('click', () => toggle(false));
-
-        nav.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', () => toggle(false));
-        });
+    if (header) {
+        const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 30);
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
     }
 
-    /* ============================================================
-       3. アクティブなナビリンクのハイライト・沿革導線追加
-    ============================================================ */
+    const toggleNav = (open) => {
+        hamburger?.classList.toggle('is-active', open);
+        nav?.classList.toggle('is-active', open);
+        overlay?.classList.toggle('is-active', open);
+        hamburger?.setAttribute('aria-expanded', String(open));
+        document.body.classList.toggle('is-nav-open', open);
+        document.body.style.overflow = open ? 'hidden' : '';
+    };
+
+    hamburger?.addEventListener('click', () => toggleNav(!nav?.classList.contains('is-active')));
+    navClose?.addEventListener('click', () => toggleNav(false));
+    overlay?.addEventListener('click', () => toggleNav(false));
+    nav?.querySelectorAll('.nav-link').forEach(link => link.addEventListener('click', () => toggleNav(false)));
+
     document.querySelectorAll('.nav-link[data-page]').forEach(link => {
-        if (link.dataset.page === currentPath) {
-            link.classList.add('is-current');
-        }
+        if (link.dataset.page === currentPath) link.classList.add('is-current');
     });
 
     const navList = document.querySelector('.nav-list');
     if (navList && !navList.querySelector('[data-enhanced-link="history"]')) {
-        const historyItem = document.createElement('li');
-        const historyHref = isTopPage ? '#history' : 'index.html#history';
-        historyItem.innerHTML = `<a href="${historyHref}" class="nav-link" data-enhanced-link="history">HISTORY</a>`;
-        const accessItem = Array.from(navList.children).find(item => item.textContent.includes('ACCESS'));
-        navList.insertBefore(historyItem, accessItem || null);
-        historyItem.querySelector('a')?.addEventListener('click', () => {
-            hamburger?.classList.remove('is-active');
-            nav?.classList.remove('is-active');
-            overlay?.classList.remove('is-active');
-            hamburger?.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-        });
+        const item = document.createElement('li');
+        item.innerHTML = `<a href="${isTopPage ? '#history' : 'index.html#history'}" class="nav-link" data-enhanced-link="history">HISTORY</a>`;
+        const accessItem = Array.from(navList.children).find(child => child.textContent.includes('ACCESS'));
+        navList.insertBefore(item, accessItem || null);
+        item.querySelector('a')?.addEventListener('click', () => toggleNav(false));
+    }
+
+    const headerInner = document.querySelector('.header-inner');
+    if (headerInner && !headerInner.querySelector('.mobile-reserve')) {
+        const reserve = document.createElement('a');
+        reserve.className = 'mobile-reserve';
+        reserve.href = 'salon.html';
+        reserve.textContent = 'ご予約';
+        reserve.setAttribute('aria-label', 'サロン一覧・ご予約');
+        headerInner.appendChild(reserve);
     }
 
     const companyAddress = Array.from(document.querySelectorAll('p')).find(element => element.textContent.includes('〒251-0045'));
     if (companyAddress) companyAddress.textContent = companyAddress.textContent.replace('〒251-0045', '〒251-0047');
 
-    /* ============================================================
-       4. 公式サイト写真の差し込み
-    ============================================================ */
-    const officialImages = {
-        honten: 'https://www.ants10.com/inqfm/upload_images/inqfm_img_honten01.jpg',
-        kaigan: 'https://www.ants10.com/inqfm/upload_images/inqfm_img_kaigan01.jpg',
-        ekimae: 'https://www.ants10.com/inqfm/upload_images/inqfm_img_ekimae01.jpg',
-        eni: 'https://www.ants10.com/inqfm/upload_images/inqfm_img_eni01.jpg',
-        lune: 'https://www.ants10.com/cmn/images/salonlist_lune.png',
-        visitHero: 'https://www.ants10.com/menu/upload_images/menu_visit_img01.jpg',
-        visitFacility: 'https://www.ants10.com/menu/upload_images/7834_960x960.jpg',
-        visitHome: 'https://www.ants10.com/menu/upload_images/7835_960x720.jpg'
+    // 店舗画像は店舗名ベースのファイル名で統一。
+    // 旧ファイル名もフォールバックとして残しているため、リネーム前後どちらでも表示されます。
+    const images = {
+        tsujido: ['assets/salon-tsujido-main.jpg', 'assets/top_catch01.jpg'],
+        southernResort: ['assets/salon-southern-resort-chigasaki.jpg', 'assets/sazanbeach.jpg'],
+        chigasakiEkimae: ['assets/salon-chigasaki-ekimae.jpg', 'assets/tigasaki.jpg'],
+        eni: ['assets/salon-eni-hair-and-resort.jpg', 'assets/eni-hair.jpg'],
+        lune: ['assets/salon-lune-chigasaki-kitaguchi.jpg', 'assets/lune.jpg'],
+        hero2: ['assets/top_catch02.jpg'],
+        hero3: ['assets/top_catch04.jpg']
     };
 
-    const setBackground = (element, imageUrl, position = 'center') => {
+    const setBackground = (element, imageCandidates, position = 'center') => {
         if (!element) return;
-        element.style.backgroundImage = `url("${imageUrl}")`;
-        element.style.backgroundSize = 'cover';
-        element.style.backgroundPosition = position;
-        element.classList.add('has-official-image');
-        const placeholder = element.querySelector('.placeholder');
-        if (placeholder) placeholder.setAttribute('aria-hidden', 'true');
+        const candidates = Array.isArray(imageCandidates) ? imageCandidates : [imageCandidates];
+
+        const applyCandidate = index => {
+            if (index >= candidates.length) return;
+            const loader = new Image();
+            loader.onload = () => {
+                element.style.setProperty('background-image', `url("${candidates[index]}")`, 'important');
+                element.style.setProperty('background-size', 'cover', 'important');
+                element.style.setProperty('background-position', position, 'important');
+                element.classList.add('has-local-image');
+                element.querySelector('.placeholder')?.setAttribute('aria-hidden', 'true');
+            };
+            loader.onerror = () => applyCandidate(index + 1);
+            loader.src = candidates[index];
+        };
+
+        applyCandidate(0);
     };
+
+    const salonImageSettings = [
+        {
+            keywords: ['辻堂本店'],
+            displayName: "ANT'S 辻堂本店",
+            image: images.tsujido,
+            position: 'center 42%'
+        },
+        {
+            keywords: ['Southern-Resort', 'サザンビーチ'],
+            displayName: "ANT'S Southern-Resort 茅ヶ崎店",
+            image: images.southernResort,
+            position: 'center 48%'
+        },
+        {
+            keywords: ['茅ヶ崎駅前店'],
+            displayName: "ANT'S 茅ヶ崎駅前店",
+            image: images.chigasakiEkimae,
+            position: 'center 45%'
+        },
+        {
+            keywords: ['ENi hair'],
+            displayName: "ENi hair and resort by ANT'S",
+            image: images.eni,
+            position: 'center 44%'
+        },
+        {
+            keywords: ['Lune.'],
+            displayName: "Lune. by ANT'S 茅ヶ崎北口店",
+            image: images.lune,
+            position: 'center 46%'
+        }
+    ];
+
+    const findSalonSetting = text => salonImageSettings.find(setting =>
+        setting.keywords.some(keyword => text.includes(keyword))
+    );
+
+    // トップページとSALON LISTページの店舗写真を同じ設定で管理します。
+    document.querySelectorAll('.salon-hiroin-card').forEach(card => {
+        const setting = findSalonSetting(card.textContent || '');
+        if (!setting) return;
+        setBackground(card.querySelector('.salon-hiroin-img'), setting.image, setting.position);
+        const name = card.querySelector('.salon-hiroin-txt span:first-child');
+        if (name) name.textContent = setting.displayName;
+    });
+
+    document.querySelectorAll('.salon-split-row').forEach(row => {
+        const setting = findSalonSetting(row.querySelector('.salon-split-name')?.textContent || '');
+        if (!setting) return;
+        setBackground(row.querySelector('.salon-split-img'), setting.image, setting.position);
+    });
 
     if (isTopPage) {
-        setBackground(document.querySelector('.hero-slide--1'), officialImages.honten, 'center');
-        setBackground(document.querySelector('.hero-slide--2'), officialImages.visitHero, 'center 38%');
+        const slider = document.querySelector('.hero-bg-slider');
+        if (slider && !slider.querySelector('.hero-slide--3')) {
+            const third = document.createElement('div');
+            third.className = 'hero-slide hero-slide--3';
+            third.innerHTML = '<div class="placeholder" style="width:100%;height:100%" aria-hidden="true"></div>';
+            slider.appendChild(third);
+        }
 
-        const galleryImages = document.querySelectorAll('.overlap-gallery-container .og-img');
-        [officialImages.ekimae, officialImages.eni, officialImages.visitHome].forEach((src, index) => {
-            setBackground(galleryImages[index], src, index === 2 ? 'center 35%' : 'center');
-        });
+        setBackground(document.querySelector('.hero-slide--1'), images.tsujido, 'center 42%');
+        setBackground(document.querySelector('.hero-slide--2'), images.hero2, 'center');
+        setBackground(document.querySelector('.hero-slide--3'), images.hero3, 'center');
 
-        const businessVisuals = document.querySelectorAll('.rakugei-visual');
-        setBackground(businessVisuals[0], officialImages.visitFacility, 'center 35%');
-        setBackground(businessVisuals[1], officialImages.honten, 'center');
+        const gallery = document.querySelectorAll('.overlap-gallery-container .og-img');
+        [images.chigasakiEkimae, images.southernResort, images.eni]
+            .forEach((src, index) => setBackground(gallery[index], src, 'center'));
 
-        const salonImages = document.querySelectorAll('.salon-hiroin-img');
-        [officialImages.honten, officialImages.kaigan, officialImages.eni, officialImages.lune, officialImages.ekimae]
-            .forEach((src, index) => setBackground(salonImages[index], src, 'center'));
+        const business = document.querySelectorAll('.rakugei-visual');
+        setBackground(business[0], images.hero3, 'center');
+        // 元画像が横長のため、スマホでも16:10で表示し、顔が切れすぎない位置に調整。
+        setBackground(business[1], images.tsujido, 'center 42%');
     }
 
     if (isVisitPage) {
         const heroImage = document.querySelector('.visit-hero-img img');
         if (heroImage) {
-            heroImage.src = officialImages.visitHero;
-            heroImage.alt = 'ANT\'Sの訪問美容サービス';
+            heroImage.src = images.hero3[0];
+            heroImage.alt = "ANT'Sの訪問美容サービス";
         }
     }
 
-    /* ============================================================
-       5. トップページ：会社沿革を追加
-    ============================================================ */
-    if (isTopPage) {
+    if (isTopPage && !document.getElementById('history')) {
         const historyItems = [
-            ['2008', 'H20', 'ANT’S Hair and Resort 辻堂本店オープン'],
-            ['2011', 'H23', 'ANT’S Southern-Resort サザンビーチ店オープン'],
-            ['2013', 'H25', '訪問美容事業オープン'],
+            ['2008', 'H20', 'ANT’S Hair and Resort 本店オープン'],
+            ['2011', 'H23', 'ANT’S Southern-Resort 店オープン'],
+            ['2013', 'H25', '訪問美容オープン'],
             ['2016', 'H28', 'cozy resort by ANT’S 茅ヶ崎駅前店オープン'],
-            ['2018', 'H30', '第1期 ANT’S Academy 開校'],
+            ['2018', 'H30', '第1期 アンツアカデミー開校'],
             ['2021', '', 'ANT’S Design Contest 2021 開催'],
             ['2022', 'R4', 'ENi hair and resort by ANT’S オープン'],
             ['2023', 'R5', '合同会社サンクフルネス設立（福祉事業）'],
-            ['2025', '', '眠活ヘッドストレッチ ANT’S 茅ヶ崎南口店オープン'],
+            ['2025', '', '眠活ヘッドストレッチ茅ヶ崎南口店オープン'],
             ['2026', 'R8', 'Lune. by ANT’S グランドオープン']
         ];
-
-        const historyMarkup = historyItems.map(([year, era, text]) => `
-            <article class="ants-history-item reveal">
-                <div class="ants-history-year"><strong>${year}</strong>${era ? `<span>${era}</span>` : ''}</div>
-                <div class="ants-history-dot" aria-hidden="true"></div>
-                <p>${text}</p>
-            </article>
-        `).join('');
 
         const historySection = document.createElement('section');
         historySection.id = 'history';
@@ -169,20 +533,41 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 class="ants-display-title">歩みを重ね、<br>美と福祉の未来へ。</h2>
                 <p>カントライブ創業から現在まで。サロン事業を起点に、教育・訪問美容・福祉へと活動の幅を広げてきました。</p>
             </div>
-            <div class="container ants-history-list">${historyMarkup}</div>
+            <div class="container ants-history-list" id="ants-history-list">
+                ${historyItems.map(([year, era, text]) => `
+                    <article class="ants-history-item reveal">
+                        <div class="ants-history-year"><strong>${year}</strong>${era ? `<span>${era}</span>` : ''}</div>
+                        <div class="ants-history-dot" aria-hidden="true"></div>
+                        <p>${text}</p>
+                    </article>
+                `).join('')}
+            </div>
+            <div class="container ants-history-toggle-wrap">
+                <button class="ants-history-toggle" type="button" aria-expanded="false" aria-controls="ants-history-list">さらに見る</button>
+            </div>
         `;
 
-        const salonListSection = Array.from(document.querySelectorAll('section')).find(section =>
+        const salonSection = Array.from(document.querySelectorAll('section')).find(section =>
             section.querySelector('.section-title')?.textContent.trim() === 'SALON LIST'
         );
-        if (salonListSection && !document.getElementById('history')) {
-            salonListSection.before(historySection);
-        }
+        salonSection?.before(historySection);
+
+        const historyList = historySection.querySelector('.ants-history-list');
+        const historyToggle = historySection.querySelector('.ants-history-toggle');
+        historyToggle?.addEventListener('click', () => {
+            const expanded = historyList?.classList.toggle('is-expanded') || false;
+            historyToggle.setAttribute('aria-expanded', String(expanded));
+            historyToggle.textContent = expanded ? '閉じる' : 'さらに見る';
+            if (expanded) {
+                historyList?.querySelectorAll('.reveal').forEach(item => item.classList.add('is-visible'));
+            }
+        });
     }
 
-    /* ============================================================
-       6. 訪問美容ページ：料金・問い合わせ先を追加
-    ============================================================ */
+    if (currentPath === 'beauty.html') {
+        setBackground(document.querySelector('.content-visual'), images.tsujido, 'center 42%');
+    }
+
     if (isVisitPage && !document.querySelector('.ants-pricing-section')) {
         const pricingSection = document.createElement('section');
         pricingSection.className = 'section ants-pricing-section';
@@ -193,13 +578,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <h2 class="ants-display-title">訪問美容 料金のご案内</h2>
                 <p>施設訪問・在宅訪問の両方に対応しています。料金は10%税込の目安です。</p>
             </div>
-
             <div class="container ants-pricing-grid">
                 <article class="ants-price-card reveal">
-                    <div class="ants-price-image" style="background-image:url('${officialImages.visitFacility}')" role="img" aria-label="施設訪問美容の施術イメージ"></div>
+                    <div class="ants-price-image" style="background-image:url('${images.hero3[0]}')" role="img" aria-label="施設訪問美容のイメージ"></div>
                     <div class="ants-price-body">
-                        <span class="ants-price-type">FACILITY</span>
-                        <h3>施設訪問</h3>
+                        <span class="ants-price-type">FACILITY</span><h3>施設訪問</h3>
                         <p class="ants-price-note">施設様とのお打ち合わせのうえ、料金を設定いたします。</p>
                         <dl class="ants-price-list">
                             <div><dt>カット</dt><dd>¥1,900〜</dd></div>
@@ -213,12 +596,10 @@ document.addEventListener('DOMContentLoaded', () => {
                         </dl>
                     </div>
                 </article>
-
                 <article class="ants-price-card reveal reveal-delay-1">
-                    <div class="ants-price-image" style="background-image:url('${officialImages.visitHome}')" role="img" aria-label="在宅訪問美容の施術イメージ"></div>
+                    <div class="ants-price-image" style="background-image:url('${images.hero2[0]}')" role="img" aria-label="在宅訪問美容のイメージ"></div>
                     <div class="ants-price-body">
-                        <span class="ants-price-type">HOME VISIT</span>
-                        <h3>在宅訪問</h3>
+                        <span class="ants-price-type">HOME VISIT</span><h3>在宅訪問</h3>
                         <p class="ants-price-note">ご本人様・ご家族様とのお打ち合わせのうえ、料金を設定いたします。</p>
                         <dl class="ants-price-list">
                             <div><dt>カット</dt><dd>¥4,860</dd></div>
@@ -231,7 +612,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </div>
                 </article>
             </div>
-
             <div class="container">
                 <div class="ants-contact-panel reveal">
                     <div>
@@ -245,84 +625,63 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>担当：川内</p>
                     </div>
                 </div>
-                <p class="ants-price-caution">※掲載料金は公式サイトの現行表示をもとにしています。施術内容・訪問条件・駐車料金等により異なる場合があります。</p>
+                <p class="ants-price-caution">※掲載料金は施術内容・訪問条件・駐車料金等により異なる場合があります。</p>
             </div>
         `;
 
         const flowSection = Array.from(document.querySelectorAll('section')).find(section =>
             section.querySelector('.section-title')?.textContent.trim() === 'ご利用の流れ'
         );
-        if (flowSection) flowSection.before(pricingSection);
+        flowSection?.before(pricingSection);
     }
 
-    /* ============================================================
-       7. Smooth Scroll
-    ============================================================ */
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (event) {
-            const id = this.getAttribute('href');
-            if (id === '#') return;
+        anchor.addEventListener('click', event => {
+            const id = anchor.getAttribute('href');
+            if (!id || id === '#') return;
             const target = document.querySelector(id);
             if (!target) return;
             event.preventDefault();
-            const offset = header ? header.offsetHeight : 0;
-            window.scrollTo({
-                top: target.getBoundingClientRect().top + window.scrollY - offset,
-                behavior: 'smooth'
-            });
+            const offset = header?.offsetHeight || 0;
+            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
         });
     });
 
-    /* ============================================================
-       8. Scroll Reveal
-    ============================================================ */
     const reveals = document.querySelectorAll('.reveal');
-    if (reveals.length) {
-        if (!('IntersectionObserver' in window)) {
-            reveals.forEach(element => element.classList.add('is-visible'));
-        } else {
-            const observer = new IntersectionObserver((entries, revealObserver) => {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('is-visible');
-                    revealObserver.unobserve(entry.target);
-                });
-            }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
-
-            reveals.forEach(element => observer.observe(element));
-        }
-    }
-
-    /* ============================================================
-       9. Count-up Animation
-    ============================================================ */
-    const countUps = document.querySelectorAll('.count-up');
-    if (countUps.length && 'IntersectionObserver' in window) {
-        const countUpObserver = new IntersectionObserver((entries, observer) => {
+    if (!('IntersectionObserver' in window)) {
+        reveals.forEach(element => element.classList.add('is-visible'));
+    } else {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-                const targetEl = entry.target;
-                const targetNum = parseInt(targetEl.getAttribute('data-target'), 10);
-                let currentNum = 0;
-                const duration = 1500;
-                const intervalTime = 30;
-                const steps = duration / intervalTime;
-                const stepIncrement = Math.ceil(targetNum / steps);
-
-                const timer = setInterval(() => {
-                    currentNum += stepIncrement;
-                    if (currentNum >= targetNum) {
-                        targetEl.textContent = targetNum.toLocaleString();
-                        clearInterval(timer);
-                    } else {
-                        targetEl.textContent = currentNum.toLocaleString();
-                    }
-                }, intervalTime);
-
-                observer.unobserve(targetEl);
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
             });
-        }, { threshold: 0.2 });
+        }, { threshold: .08, rootMargin: '0px 0px -24px 0px' });
+        reveals.forEach(element => revealObserver.observe(element));
+    }
 
-        countUps.forEach(element => countUpObserver.observe(element));
+    const countUps = document.querySelectorAll('.count-up');
+    if (countUps.length && 'IntersectionObserver' in window) {
+        const countObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+                const element = entry.target;
+                const target = Number.parseInt(element.dataset.target || '0', 10);
+                let current = 0;
+                const step = Math.max(1, Math.ceil(target / 50));
+                const timer = window.setInterval(() => {
+                    current += step;
+                    if (current >= target) {
+                        element.textContent = target.toLocaleString();
+                        window.clearInterval(timer);
+                    } else {
+                        element.textContent = current.toLocaleString();
+                    }
+                }, 30);
+                observer.unobserve(element);
+            });
+        }, { threshold: .2 });
+        countUps.forEach(element => countObserver.observe(element));
     }
 });
