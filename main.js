@@ -30,9 +30,9 @@
         .ants-display-title {
             margin: 0;
             font-family: var(--font-serif);
-            font-size: clamp(2.15rem, 5vw, 4.8rem);
+            font-size: clamp(1.8rem, 3.2vw, 3rem);
             font-weight: 300;
-            line-height: 1.15;
+            line-height: 1.25;
             letter-spacing: .05em;
         }
 
@@ -280,7 +280,7 @@
             /* Shared typography/layout */
             .ants-section-head { display: block; margin-bottom: 48px; }
             .ants-section-head .ants-display-title { margin-bottom: 24px; }
-            .ants-display-title { font-size: clamp(2.2rem, 10.5vw, 3.35rem); line-height: 1.2; }
+            .ants-display-title { font-size: clamp(1.6rem, 7vw, 2.4rem); line-height: 1.3; }
             .section-title { margin-bottom: 44px; }
 
             .ants-history-list::before { left: 93px; }
@@ -372,14 +372,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (link.dataset.page === currentPath) link.classList.add('is-current');
     });
 
-    const navList = document.querySelector('.nav-list');
-    if (navList && !navList.querySelector('[data-enhanced-link="history"]')) {
-        const item = document.createElement('li');
-        item.innerHTML = `<a href="${isTopPage ? '#history' : 'index.html#history'}" class="nav-link" data-enhanced-link="history">HISTORY</a>`;
-        const accessItem = Array.from(navList.children).find(child => child.textContent.includes('ACCESS'));
-        navList.insertBefore(item, accessItem || null);
-        item.querySelector('a')?.addEventListener('click', () => toggleNav(false));
-    }
+
 
     const headerInner = document.querySelector('.header-inner');
     if (headerInner && !headerInner.querySelector('.mobile-reserve')) {
@@ -394,14 +387,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const companyAddress = Array.from(document.querySelectorAll('p')).find(element => element.textContent.includes('〒251-0045'));
     if (companyAddress) companyAddress.textContent = companyAddress.textContent.replace('〒251-0045', '〒251-0047');
 
-    // 店舗画像は店舗名ベースのファイル名で統一。
-    // 旧ファイル名もフォールバックとして残しているため、リネーム前後どちらでも表示されます。
+    // 店舗画像パス設定
     const images = {
-        tsujido: ['assets/salon-tsujido-main.jpg', 'assets/top_catch01.jpg'],
-        southernResort: ['assets/salon-southern-resort-chigasaki.jpg', 'assets/sazanbeach.jpg'],
-        chigasakiEkimae: ['assets/salon-chigasaki-ekimae.jpg', 'assets/tigasaki.jpg'],
-        eni: ['assets/salon-eni-hair-and-resort.jpg', 'assets/eni-hair.jpg'],
-        lune: ['assets/salon-lune-chigasaki-kitaguchi.jpg', 'assets/lune.jpg'],
+        tsujido: ['assets/tujidou.jpg'],
+        southernResort: ['assets/sazanbeach.jpg'],
+        chigasakiEkimae: ['assets/tigasaki.jpg'],
+        eni: ['assets/eni-hair.jpg'],
+        lune: ['assets/lune.jpg'],
         hero2: ['assets/top_catch02.jpg'],
         hero3: ['assets/top_catch04.jpg']
     };
@@ -574,41 +566,23 @@ document.addEventListener('DOMContentLoaded', () => {
         pricingSection.id = 'price';
         pricingSection.innerHTML = `
             <div class="container ants-section-head ants-section-head--center reveal">
-                <span class="section-label">Price & Contact</span>
-                <h2 class="ants-display-title">訪問美容 料金のご案内</h2>
-                <p>施設訪問・在宅訪問の両方に対応しています。料金は10%税込の目安です。</p>
+                <span class="section-label">Service & Contact</span>
+                <h2 class="ants-display-title">訪問美容のご案内</h2>
+                <p>施設訪問・在宅訪問の両方に対応しています。</p>
             </div>
             <div class="container ants-pricing-grid">
                 <article class="ants-price-card reveal">
                     <div class="ants-price-image" style="background-image:url('${images.hero3[0]}')" role="img" aria-label="施設訪問美容のイメージ"></div>
                     <div class="ants-price-body">
                         <span class="ants-price-type">FACILITY</span><h3>施設訪問</h3>
-                        <p class="ants-price-note">施設様とのお打ち合わせのうえ、料金を設定いたします。</p>
-                        <dl class="ants-price-list">
-                            <div><dt>カット</dt><dd>¥1,900〜</dd></div>
-                            <div><dt>カット＋顔そり</dt><dd>¥2,700〜</dd></div>
-                            <div><dt>カット＋シャンプー</dt><dd>¥2,700〜</dd></div>
-                            <div><dt>カラー＋シャンプー</dt><dd>¥4,600〜</dd></div>
-                            <div><dt>カット＋カラー＋シャンプー</dt><dd>¥6,500〜</dd></div>
-                            <div><dt>パーマ＋シャンプー</dt><dd>¥4,600〜</dd></div>
-                            <div><dt>カット＋パーマ＋シャンプー</dt><dd>¥6,500〜</dd></div>
-                            <div><dt>ベッドサイド（1メニュー）</dt><dd>＋¥700〜</dd></div>
-                        </dl>
+                        <p class="ants-price-note">施設様とのお打ち合わせのうえ、メニュー・料金を設定いたします。<br>カット・カラー・パーマ・シャンプー・顔そり等、サロン同様のメニューに対応しております。</p>
                     </div>
                 </article>
                 <article class="ants-price-card reveal reveal-delay-1">
                     <div class="ants-price-image" style="background-image:url('${images.hero2[0]}')" role="img" aria-label="在宅訪問美容のイメージ"></div>
                     <div class="ants-price-body">
                         <span class="ants-price-type">HOME VISIT</span><h3>在宅訪問</h3>
-                        <p class="ants-price-note">ご本人様・ご家族様とのお打ち合わせのうえ、料金を設定いたします。</p>
-                        <dl class="ants-price-list">
-                            <div><dt>カット</dt><dd>¥4,860</dd></div>
-                            <div><dt>カット＋顔そり</dt><dd>¥6,480</dd></div>
-                            <div><dt>顔そり</dt><dd>¥2,160</dd></div>
-                            <div><dt>ベッド上カット</dt><dd>¥6,480</dd></div>
-                            <div><dt>シャンプー</dt><dd>¥2,160</dd></div>
-                            <div><dt>パーマ・カラー（各メニュー）</dt><dd>¥6,480</dd></div>
-                        </dl>
+                        <p class="ants-price-note">ご本人様・ご家族様とのお打ち合わせのうえ、メニュー・料金を設定いたします。<br>カット・カラー・パーマ・シャンプー・顔そり・ベッド上カット等に対応しております。</p>
                     </div>
                 </article>
             </div>
@@ -625,7 +599,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>担当：川内</p>
                     </div>
                 </div>
-                <p class="ants-price-caution">※掲載料金は施術内容・訪問条件・駐車料金等により異なる場合があります。</p>
+                <p class="ants-price-caution">※料金の詳細はお問い合わせ時にご案内いたします。</p>
             </div>
         `;
 

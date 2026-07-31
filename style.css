@@ -183,9 +183,8 @@ ul {
 
 .placeholder {
     background: #e2e0db;
-    background-image: url('assets/salon-list-htujidou.jpg') !important;
-    background-size: cover !important;
-    background-position: center !important;
+    background-size: cover;
+    background-position: center;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -889,12 +888,14 @@ ul {
 .salon-hiroin-txt {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    padding: 20px 8px 0;
+    gap: 8px;
+    padding: 18px 8px 0;
     font-family: var(--font-serif);
-    font-size: 0.95rem;
-    letter-spacing: 0.08em;
+    font-size: 1.15rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
     background: transparent !important;
     border: none !important;
     transition: color var(--tr);
@@ -902,6 +903,7 @@ ul {
 
 .salon-hiroin-txt .arrow {
     font-family: var(--font-sans);
+    font-size: 1.3rem;
     color: var(--color-muted);
     transition: transform var(--tr), color var(--tr);
 }
