@@ -150,6 +150,29 @@
             font-size: .75rem; overflow-wrap: anywhere;
         }
         .ants-price-caution { margin-top: 16px; color: #77736c; font-size: .7rem; line-height: 1.8; }
+        .ants-tel-inline { font-family: var(--font-serif); font-size: 1.15rem; letter-spacing: .06em; border-bottom: 1px solid var(--ants-line); }
+        .ants-phone-button--light {
+            max-width: 340px; margin-bottom: 32px; border-color: var(--ants-line); color: var(--ants-ink);
+            background: var(--ants-paper); transition: border-color .3s ease, background .3s ease;
+        }
+        .ants-phone-button--light:hover { border-color: var(--ants-gold); background: #fff; }
+        .ants-phone-button--light small { color: #77736c; }
+        .ants-phone-button--light span { color: #9f8260; }
+
+        /* Group companies */
+        .ants-group-section { background: var(--ants-white); }
+        .ants-group-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: clamp(24px, 4vw, 44px); max-width: 900px; }
+        .ants-group-card {
+            display: block; padding: clamp(32px, 5vw, 56px); border: 1px solid var(--ants-line);
+            background: var(--ants-paper); color: var(--ants-ink);
+            transition: transform .4s ease, box-shadow .4s ease, border-color .4s ease;
+        }
+        .ants-group-card:hover { transform: translateY(-4px); border-color: var(--ants-gold); box-shadow: 0 16px 40px rgba(38,33,27,.09); }
+        .ants-group-kicker { display: block; margin-bottom: 14px; color: #9f8260; font-family: var(--font-serif); font-size: .72rem; letter-spacing: .2em; }
+        .ants-group-card h3 { margin: 0 0 14px; font-family: var(--font-serif); font-size: clamp(1.5rem, 2.6vw, 2.1rem); font-weight: 300; letter-spacing: .08em; }
+        .ants-group-company { margin: 0 0 16px; color: #68655f; font-size: .76rem; letter-spacing: .06em; }
+        .ants-group-desc { margin: 0 0 26px; color: #74716b; font-size: .8rem; line-height: 1.95; }
+        .ants-group-link { display: inline-flex; gap: 8px; align-items: center; font-size: .74rem; letter-spacing: .14em; border-bottom: 1px solid var(--ants-gold); padding-bottom: 4px; }
 
         @media (max-width: 1080px) {
             .header-inner { padding-inline: 24px; }
@@ -395,7 +418,8 @@ document.addEventListener('DOMContentLoaded', () => {
         eni: ['assets/eni-hair.jpg'],
         lune: ['assets/lune.jpg'],
         hero2: ['assets/top_catch02.jpg'],
-        hero3: ['assets/top_catch04.jpg']
+        hero3: ['assets/top_catch04.jpg'],
+        visiting: ['assets/menu_visit_img01.jpg']
     };
 
     const setBackground = (element, imageCandidates, position = 'center') => {
@@ -489,7 +513,8 @@ document.addEventListener('DOMContentLoaded', () => {
             .forEach((src, index) => setBackground(gallery[index], src, 'center'));
 
         const business = document.querySelectorAll('.rakugei-visual');
-        setBackground(business[0], images.hero3, 'center');
+        // 訪問美容事業ブロックは、実際の訪問美容の写真を使用します。
+        setBackground(business[0], images.visiting, 'center 30%');
         // 元画像が横長のため、スマホでも16:10で表示し、顔が切れすぎない位置に調整。
         setBackground(business[1], images.tsujido, 'center 42%');
     }
@@ -497,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (isVisitPage) {
         const heroImage = document.querySelector('.visit-hero-img img');
         if (heroImage) {
-            heroImage.src = images.hero3[0];
+            heroImage.src = images.visiting[0];
             heroImage.alt = "ANT'Sの訪問美容サービス";
         }
     }
@@ -509,10 +534,10 @@ document.addEventListener('DOMContentLoaded', () => {
             ['2013', 'H25', '訪問美容オープン'],
             ['2016', 'H28', 'cozy resort by ANT’S 茅ヶ崎駅前店オープン'],
             ['2018', 'H30', '第1期 アンツアカデミー開校'],
-            ['2021', '', 'ANT’S Design Contest 2021 開催'],
+            ['2021', 'R3', 'ANT’S Design Contest 2021 開催'],
             ['2022', 'R4', 'ENi hair and resort by ANT’S オープン'],
             ['2023', 'R5', '合同会社サンクフルネス設立（福祉事業）'],
-            ['2025', '', '眠活ヘッドストレッチ茅ヶ崎南口店オープン'],
+            ['2025', 'R7', '眠活ヘッドストレッチ茅ヶ崎南口店オープン'],
             ['2026', 'R8', 'Lune. by ANT’S グランドオープン']
         ];
 
@@ -561,6 +586,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isVisitPage && !document.querySelector('.ants-pricing-section')) {
+        // ▼訪問美容の料金表。正式な金額が決まり次第、右側の '¥—' を実際の税込価格に書き換えてください。
+        const visitingMenu = {
+            facility: [
+                ['カット', '¥—'],
+                ['カラー（白髪染め）', '¥—'],
+                ['パーマ', '¥—'],
+                ['シャンプー', '¥—'],
+                ['顔そり', '¥—']
+            ],
+            home: [
+                ['カット', '¥—'],
+                ['カラー（白髪染め）', '¥—'],
+                ['パーマ', '¥—'],
+                ['シャンプー', '¥—'],
+                ['ベッド上カット', '¥—']
+            ]
+        };
+        const renderMenu = rows => `
+            <dl class="ants-price-list">
+                ${rows.map(([name, price]) => `<div><dt>${name}</dt><dd>${price}</dd></div>`).join('')}
+            </dl>`;
+
         const pricingSection = document.createElement('section');
         pricingSection.className = 'section ants-pricing-section';
         pricingSection.id = 'price';
@@ -572,10 +619,11 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div class="container ants-pricing-grid">
                 <article class="ants-price-card reveal">
-                    <div class="ants-price-image" style="background-image:url('${images.hero3[0]}')" role="img" aria-label="施設訪問美容のイメージ"></div>
+                    <div class="ants-price-image" style="background-image:url('${images.visiting[0]}')" role="img" aria-label="施設訪問美容のイメージ"></div>
                     <div class="ants-price-body">
                         <span class="ants-price-type">FACILITY</span><h3>施設訪問</h3>
                         <p class="ants-price-note">施設様とのお打ち合わせのうえ、メニュー・料金を設定いたします。<br>カット・カラー・パーマ・シャンプー・顔そり等、サロン同様のメニューに対応しております。</p>
+                        ${renderMenu(visitingMenu.facility)}
                     </div>
                 </article>
                 <article class="ants-price-card reveal reveal-delay-1">
@@ -583,6 +631,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="ants-price-body">
                         <span class="ants-price-type">HOME VISIT</span><h3>在宅訪問</h3>
                         <p class="ants-price-note">ご本人様・ご家族様とのお打ち合わせのうえ、メニュー・料金を設定いたします。<br>カット・カラー・パーマ・シャンプー・顔そり・ベッド上カット等に対応しております。</p>
+                        ${renderMenu(visitingMenu.home)}
                     </div>
                 </article>
             </div>
@@ -599,7 +648,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <p>担当：川内</p>
                     </div>
                 </div>
-                <p class="ants-price-caution">※料金の詳細はお問い合わせ時にご案内いたします。</p>
+                <p class="ants-price-caution">※金額は準備中です。料金の詳細はお問い合わせ時にご案内いたします。<br>※交通費・出張費が別途かかる場合がございます。</p>
             </div>
         `;
 
