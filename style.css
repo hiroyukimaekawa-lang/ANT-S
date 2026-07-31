@@ -532,19 +532,19 @@ ul {
 
 .hero-copy-wrap--rakugei .hero-copy-en {
     font-family: var(--font-serif);
-    font-size: clamp(0.85rem, 2vw, 1.05rem);
-    letter-spacing: 0.25em;
-    margin-bottom: 32px;
+    font-size: clamp(0.75rem, 1.6vw, 0.9rem);
+    letter-spacing: 0.2em;
+    margin-bottom: 8px; /* さらに縦幅短縮 */
     opacity: 0.9;
     text-transform: uppercase;
 }
 
 .hero-copy-wrap--rakugei .hero-copy-jp {
     font-family: var(--font-serif);
-    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-size: clamp(1.4rem, 3.2vw, 2.6rem);
     font-weight: 300;
-    letter-spacing: 0.25em;
-    line-height: 1.6;
+    letter-spacing: 0.18em;
+    line-height: 1.2; /* さらに縦幅短縮 */
     white-space: nowrap;
 }
 
@@ -921,25 +921,21 @@ ul {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     width: 100%;
-    gap: 16px;
-    margin-bottom: 16px;
+    gap: 0;
+    margin-bottom: 0;
 }
 
 .salon-grid--3 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    gap: 16px;
+    gap: 0;
 }
 
 .salon-grid--2 .salon-hiroin-img,
 .salon-grid--3 .salon-hiroin-img {
     aspect-ratio: unset;
-    height: 360px;
-}
-
-.salon-grid--3 .salon-hiroin-img {
-    height: 280px;
+    height: 320px;
 }
 
 /* ==============================
@@ -1584,13 +1580,20 @@ ul {
 
     /* ---- Top Page (Hero) ---- */
     .hero-copy-jp br {
-        display: block;
+        display: none;
+    }
+
+    .hero-copy-wrap--rakugei .hero-copy-en {
+        margin-bottom: 6px;
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
     }
 
     .hero-copy-wrap--rakugei .hero-copy-jp {
-        white-space: normal;
-        letter-spacing: 0.15em;
-        font-size: 1.8rem;
+        white-space: nowrap;
+        letter-spacing: 0.08em;
+        font-size: clamp(1.05rem, 4.4vw, 1.35rem);
+        line-height: 1.2;
     }
 
     /* ---- Top Page (Rakugei style overlap) - スマホでは写真を全画面幅にして縦積みに ---- */
@@ -2238,5 +2241,150 @@ ul {
     .cast-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 20px 12px;
+    }
+}
+
+/* ==============================================================
+   Dynamic Overlapping & Edge-Breakout Layouts (Responsive)
+   ============================================================== */
+.salon-grid--2,
+.salon-grid--3,
+.cast-grid {
+    position: relative;
+}
+
+/* モバイル・レスポンシブでのオーバーラップ＆ズレ配置 */
+@media (max-width: 900px) {
+    .salon-grid--2,
+    .salon-grid--3 {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        width: 100%;
+        padding: 0;
+    }
+
+    .salon-grid--2 .salon-hiroin-card,
+    .salon-grid--3 .salon-hiroin-card {
+        width: 100% !important;
+        margin: 0 !important;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+    }
+
+    .salon-grid--2 .salon-hiroin-img,
+    .salon-grid--3 .salon-hiroin-img {
+        height: 240px;
+        border-radius: 0;
+    }
+}
+
+/* PC等デスクトップ表示（ガタガタ段差を削除し元通りの綺麗に揃った配置に） */
+@media (min-width: 901px) {
+    .salon-hiroin-card {
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .salon-hiroin-card:hover {
+        box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+        z-index: 5;
+    }
+
+    /* SALON LIST: 上2分割・下3分割を余白ゼロで隙間なく統一 */
+    .salon-grid--2 .salon-hiroin-card,
+    .salon-grid--3 .salon-hiroin-card {
+        box-shadow: none;
+    }
+
+    .salon-grid--2 .salon-hiroin-card:hover,
+    .salon-grid--3 .salon-hiroin-card:hover {
+        box-shadow: none;
+    }
+
+    .salon-grid--2 .salon-hiroin-txt,
+    .salon-grid--3 .salon-hiroin-txt {
+        padding: 16px 8px 28px;
+    }
+}
+
+/* ==============================================================
+   Musical Notes & Cool Scroll Animations
+   ============================================================== */
+
+/* 音符・ロゴ浮遊パーティクル要素 */
+.note-particle,
+.note-particle-img {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    opacity: 0.75;
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.15));
+    animation: floatNote 2.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.note-particle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    color: var(--color-accent);
+    text-shadow: 0 2px 10px rgba(184, 154, 114, 0.4);
+}
+
+.note-particle-img {
+    height: auto;
+    object-fit: contain;
+}
+
+@keyframes floatNote {
+    0% {
+        opacity: 0;
+        transform: translate(0, 0) scale(0.6) rotate(-15deg);
+    }
+    20% {
+        opacity: 0.9;
+        transform: translate(var(--tx, 15px), -30px) scale(1.1) rotate(10deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(var(--tx-end, 40px), -120px) scale(0.8) rotate(35deg);
+    }
+}
+
+/* スクロール発動用の左右スライドイン */
+.reveal-slide-right {
+    opacity: 0;
+    transform: translateX(65px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-slide-left {
+    opacity: 0;
+    transform: translateX(-65px);
+    transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal-slide-right.is-visible,
+.reveal-slide-left.is-visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* セクション背景の装飾用浮遊音符アイコン */
+.decor-note {
+    position: absolute;
+    font-size: 2.5rem;
+    color: rgba(184, 154, 114, 0.15);
+    pointer-events: none;
+    user-select: none;
+    animation: gentlePulse 4s ease-in-out infinite alternate;
+}
+
+@keyframes gentlePulse {
+    0% {
+        transform: translateY(0) rotate(-5deg) scale(1);
+        opacity: 0.12;
+    }
+    100% {
+        transform: translateY(-15px) rotate(10deg) scale(1.15);
+        opacity: 0.28;
     }
 }

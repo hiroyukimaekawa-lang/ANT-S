@@ -621,7 +621,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const reveals = document.querySelectorAll('.reveal');
+    const reveals = document.querySelectorAll('.reveal, .reveal-slide-left, .reveal-slide-right');
     if (!('IntersectionObserver' in window)) {
         reveals.forEach(element => element.classList.add('is-visible'));
     } else {
@@ -631,9 +631,58 @@ document.addEventListener('DOMContentLoaded', () => {
                 entry.target.classList.add('is-visible');
                 observer.unobserve(entry.target);
             });
-        }, { threshold: .08, rootMargin: '0px 0px -24px 0px' });
+        }, { threshold: .05, rootMargin: '0px 0px -10px 0px' });
         reveals.forEach(element => revealObserver.observe(element));
     }
+
+    /* ロゴ画像 (assets/logo) スクロール浮遊アニメーション */
+    let lastScrollY = window.scrollY;
+    let noteCooldown = false;
+    const logoImages = [
+        'assets/logo/sazan-logo.png',
+        'assets/logo/eni-logo.png',
+        'assets/logo/lune-logo.png',
+        'assets/logo/tujidou.png'
+    ];
+
+    const spawnNoteParticle = (x, y) => {
+        const img = document.createElement('img');
+        img.className = 'note-particle-img';
+        img.src = logoImages[Math.floor(Math.random() * logoImages.length)];
+        img.alt = '';
+        
+        const randomX = (Math.random() - 0.5) * 50;
+        const randomXEnd = randomX + (Math.random() - 0.5) * 70;
+        const randomWidth = Math.floor(18 + Math.random() * 12); // 小さめ（18px〜30px）
+
+        img.style.left = `${x}px`;
+        img.style.top = `${y}px`;
+        img.style.width = `${randomWidth}px`;
+        img.style.setProperty('--tx', `${randomX}px`);
+        img.style.setProperty('--tx-end', `${randomXEnd}px`);
+        
+        document.body.appendChild(img);
+        setTimeout(() => img.remove(), 2400);
+    };
+
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        const delta = Math.abs(currentScrollY - lastScrollY);
+
+        // 発生頻度を控えめに（距離しきい値を大きく＋ランダム確率判定＋クールダウン850ms）
+        if (delta > 85 && !noteCooldown && Math.random() < 0.45) {
+            noteCooldown = true;
+            lastScrollY = currentScrollY;
+
+            const spawnX = Math.random() * (window.innerWidth - 80) + 40;
+            const spawnY = window.innerHeight * (0.65 + Math.random() * 0.25) + window.scrollY;
+            spawnNoteParticle(spawnX, spawnY - window.scrollY);
+
+            setTimeout(() => {
+                noteCooldown = false;
+            }, 850);
+        }
+    }, { passive: true });
 
     const countUps = document.querySelectorAll('.count-up');
     if (countUps.length && 'IntersectionObserver' in window) {
