@@ -224,23 +224,23 @@
             .page-index .hero-slide { background-position: center center !important; }
             .page-index .hero-overlay { background: rgba(0,0,0,.08) !important; }
             .page-index .hero-copy-wrap--rakugei {
-                top: auto !important; left: 9% !important; right: 0 !important; bottom: -128px !important;
-                width: 91% !important; min-height: 238px; transform: none !important;
-                align-items: flex-start !important; justify-content: center; padding: 34px 28px 30px;
+                top: auto !important; left: 9% !important; right: 0 !important; bottom: -96px !important;
+                width: 91% !important; min-height: 180px; transform: none !important;
+                align-items: flex-start !important; justify-content: center; padding: 24px 24px 22px;
                 background: #111; text-align: left !important;
             }
             .page-index .hero-copy-wrap--rakugei .hero-copy-en {
-                margin: 0 0 24px !important; font-size: .58rem !important; letter-spacing: .18em !important;
-                text-transform: none !important; opacity: .7;
+                margin: 0 0 14px !important; font-size: .65rem !important; letter-spacing: .1em !important;
+                text-transform: none !important; opacity: .7; white-space: nowrap !important;
             }
             .page-index .hero-copy-wrap--rakugei .hero-copy-jp {
-                margin: 0; font-size: clamp(2rem, 9.4vw, 2.8rem) !important; line-height: 1.45 !important;
-                letter-spacing: .09em !important; white-space: normal !important;
+                margin: 0; font-size: clamp(1.15rem, 5.4vw, 2rem) !important; line-height: 1.35 !important;
+                letter-spacing: .05em !important; white-space: nowrap !important;
             }
             .page-index .hero-scroll-indicator { display: none; }
 
             /* Intro spacing after overlapping panel */
-            .page-index .hero + .section { padding-top: 194px !important; padding-bottom: 64px !important; }
+            .page-index .hero + .section { padding-top: 152px !important; padding-bottom: 64px !important; }
             .page-index .hero + .section .container { padding-inline: 30px; }
             .page-index .hero + .section h3 { font-size: .76rem !important; letter-spacing: .18em !important; margin-bottom: 30px !important; }
             .page-index .hero + .section p { font-size: .82rem !important; line-height: 2.15 !important; letter-spacing: .05em !important; }
