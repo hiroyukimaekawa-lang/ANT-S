@@ -1403,6 +1403,38 @@ ul {
 /* ==============================
    Page: beauty.html
 ============================== */
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.content-body h2 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 2vw, 1.8rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    margin-bottom: 24px;
+    white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-body h2 {
+        font-size: clamp(0.72rem, 3.6vw, 1.3rem);
+        letter-spacing: 0.02em;
+        white-space: nowrap;
+    }
+}
+
 .compact-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -1889,7 +1921,15 @@ ul {
     font-family: var(--font-serif);
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     font-weight: 300;
-    letter-spacing: 0.2em;
+    letter-spacing: 0.15em;
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .page-hero-title {
+        font-size: clamp(1.7rem, 8.5vw, 3rem);
+        letter-spacing: 0.05em;
+    }
 }
 
 /* ==============================
