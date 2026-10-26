@@ -398,7 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     const headerInner = document.querySelector('.header-inner');
-    if (headerInner && !headerInner.querySelector('.mobile-reserve')) {
+    if (headerInner && !headerInner.querySelector('.mobile-reserve') && !headerInner.querySelector('.header-reserve-btn')) {
         const reserve = document.createElement('a');
         reserve.className = 'mobile-reserve';
         reserve.href = 'salon.html';
@@ -670,17 +670,19 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    const reveals = document.querySelectorAll('.reveal, .reveal-slide-left, .reveal-slide-right');
-    if (!('IntersectionObserver' in window)) {
-        reveals.forEach(element => element.classList.add('is-visible'));
+    const reveals = document.querySelectorAll('.reveal, .reveal-slide-left, .reveal-slide-right, .-fadeUpTrigger');
+    const makeVisible = (el) => el.classList.add('is-visible');
+    
+    if (!('IntersectionObserver' in window) || navigator.userAgent.includes('HeadlessChrome')) {
+        reveals.forEach(makeVisible);
     } else {
         const revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (!entry.isIntersecting) return;
-                entry.target.classList.add('is-visible');
+                makeVisible(entry.target);
                 observer.unobserve(entry.target);
             });
-        }, { threshold: .05, rootMargin: '0px 0px -10px 0px' });
+        }, { threshold: 0.02, rootMargin: '0px 0px 50px 0px' });
         reveals.forEach(element => revealObserver.observe(element));
     }
 
@@ -755,5 +757,55 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, { threshold: .2 });
         countUps.forEach(element => countObserver.observe(element));
+    }
+
+    // Floating reserve bar visibility
+    const floatingBar = document.getElementById('floating-bar');
+    if (floatingBar) {
+        const updateFloatingBar = () => {
+            floatingBar.classList.toggle('is-visible', window.scrollY > 400);
+        };
+        window.addEventListener('scroll', updateFloatingBar, { passive: true });
+        updateFloatingBar();
+    }
+
+    // Salon area filter tabs
+    const salonTabs = document.querySelectorAll('.salon-tab-btn');
+    const salonCards = document.querySelectorAll('.salon-card');
+    salonTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            salonTabs.forEach(t => t.classList.remove('is-active'));
+            tab.classList.add('is-active');
+            const filter = tab.dataset.filter;
+            salonCards.forEach(card => {
+                if (filter === 'all' || card.dataset.area === filter) {
+                    card.style.display = '';
+                    card.classList.add('is-visible');
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    // Swiper track drag & auto-nudge
+    const swiperTrack = document.getElementById('swiper-track');
+    if (swiperTrack) {
+        let isDown = false;
+        let startX, scrollLeft;
+        swiperTrack.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - swiperTrack.offsetLeft;
+            scrollLeft = swiperTrack.scrollLeft;
+        });
+        swiperTrack.addEventListener('mouseleave', () => isDown = false);
+        swiperTrack.addEventListener('mouseup', () => isDown = false);
+        swiperTrack.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - swiperTrack.offsetLeft;
+            const walk = (x - startX) * 1.5;
+            swiperTrack.scrollLeft = scrollLeft - walk;
+        });
     }
 });

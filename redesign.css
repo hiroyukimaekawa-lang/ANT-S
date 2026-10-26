@@ -1,53 +1,1515 @@
-/* ANT'S visual renewal / phase 1. Original editorial design inspired by contemporary salon sites. */
-body.ants-redesign {--color-bg:#f3f0eb;--color-surface:#faf8f4;--color-text:#252521;--color-accent:#74674f;--max-w:1120px; background:#f3f0eb;}
-body.ants-redesign .section {padding-block:clamp(82px,10vw,180px);}
-body.ants-redesign .container {max-width:1180px;padding-inline:clamp(22px,5vw,72px);}
-body.ants-redesign .header {background:rgba(247,245,240,.94);border-bottom:1px solid rgba(48,43,37,.12);}
-body.ants-redesign .header-inner {max-width:none;padding-inline:clamp(22px,4vw,72px);}
-body.ants-redesign .logo {font-size:1.9rem;letter-spacing:.18em;}
-body.ants-redesign .nav-list {gap:clamp(16px,2vw,42px);}
-body.ants-redesign .nav-link {font-size:.7rem;letter-spacing:.13em;}
-body.ants-redesign .editorial-hero {position:relative;min-height:min(900px,100svh);height:92svh;max-height:1100px;color:#fff;background:#403f3a;overflow:hidden;display:grid;align-items:end;isolation:isolate;}
-body.ants-redesign .editorial-hero__visual {position:absolute;inset:0;z-index:-2;background:url('assets/hero-section.jpg') center 44%/cover no-repeat;animation:antsEditorialDrift 18s ease-out both;}
-body.ants-redesign .editorial-hero__shade {position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(15,15,13,.58),rgba(15,15,13,.05) 82%),linear-gradient(0deg,rgba(15,15,13,.5),transparent 60%);}
-body.ants-redesign .editorial-hero__inner {width:100%;padding:clamp(48px,9vw,128px) clamp(26px,7vw,120px);padding-bottom:clamp(78px,10vw,148px);}
-body.ants-redesign .editorial-hero__eyebrow {font-family:var(--font-sans);font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:26px;animation:antsEditorialReveal .9s .15s ease both;}
-body.ants-redesign .editorial-hero__title {font-family:var(--font-serif);font-weight:300;font-size:clamp(4.6rem,12vw,11rem);line-height:.8;letter-spacing:-.045em;margin-bottom:36px;animation:antsEditorialReveal 1s .3s ease both;}
-body.ants-redesign .editorial-hero__message {font-size:clamp(.9rem,1.3vw,1.1rem);line-height:2.3;letter-spacing:.16em;max-width:28em;animation:antsEditorialReveal 1s .45s ease both;}
-body.ants-redesign .editorial-hero__bottom {position:absolute;bottom:28px;left:clamp(26px,7vw,120px);right:clamp(26px,7vw,120px);display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.45);padding-top:18px;text-transform:uppercase;font-size:.62rem;letter-spacing:.23em;}
-body.ants-redesign .editorial-intro {background:#f3f0eb !important;text-align:center;padding-block:clamp(90px,13vw,210px) !important;}
-body.ants-redesign .editorial-intro .container {max-width:900px;}
-body.ants-redesign .editorial-intro h3 {font-family:var(--font-serif)!important;font-size:clamp(2.5rem,5.5vw,5rem)!important;line-height:1.15!important;letter-spacing:.01em!important;margin-bottom:58px!important;}
-body.ants-redesign .editorial-intro p {font-size:clamp(.86rem,1.2vw,1rem)!important;letter-spacing:.12em!important;line-height:2.7!important;}
-body.ants-redesign .editorial-intro .rakugei-btn {margin-top:10px;}
-body.ants-redesign .overlap-gallery-section {background:#ded9d0;padding-block:clamp(70px,9vw,160px);}
-body.ants-redesign .overlap-gallery-container {max-width:1300px;margin-inline:auto;}
-body.ants-redesign .rakugei-overlap-wrap {max-width:1480px;margin-inline:auto;}
-body.ants-redesign .rakugei-visual {overflow:hidden;}
-body.ants-redesign .rakugei-visual .placeholder {transition:transform 1.2s cubic-bezier(.2,.8,.2,1);}
-body.ants-redesign .rakugei-overlap:hover .rakugei-visual .placeholder {transform:scale(1.035);}
-body.ants-redesign .section-title {font-size:clamp(2.4rem,5vw,4.6rem);font-weight:300;letter-spacing:.04em;}
-body.ants-redesign .section-title::after {width:56px;background:#8e8474;}
-body.ants-redesign .salon-hiroin-card {overflow:hidden;}
-body.ants-redesign .salon-hiroin-img {overflow:hidden;}
-body.ants-redesign .salon-hiroin-img .placeholder {transition:transform .9s cubic-bezier(.2,.8,.2,1);}
-body.ants-redesign .salon-hiroin-card:hover .salon-hiroin-img .placeholder {transform:scale(1.035);}
-body.ants-redesign .footer {background:#252521;}
-body.ants-redesign a:focus-visible,body.ants-redesign button:focus-visible {outline:2px solid #9f8565;outline-offset:4px;}
-@keyframes antsEditorialDrift {from{transform:scale(1.07)}to{transform:scale(1)}}
-@keyframes antsEditorialReveal {from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:767px){
- body.ants-redesign .editorial-hero {height:88svh;min-height:610px;max-height:920px;}
- body.ants-redesign .editorial-hero__visual {background-position:58% center;}
- body.ants-redesign .editorial-hero__shade {background:linear-gradient(0deg,rgba(15,15,13,.65),rgba(15,15,13,.06) 85%);}
- body.ants-redesign .editorial-hero__inner {padding:36px 26px 120px;}
- body.ants-redesign .editorial-hero__title {font-size:clamp(4.5rem,20vw,8rem);}
- body.ants-redesign .editorial-hero__message {font-size:.87rem;}
- body.ants-redesign .editorial-hero__bottom {left:26px;right:26px;}
- body.ants-redesign .editorial-intro h3 {margin-bottom:34px!important;}
- body.ants-redesign .section {padding-block:80px;}
+/* ==========================================================================
+   ANT'S Website Redesign - SENJYU Benchmark Master Stylesheet
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
+
+:root {
+  --color-bg: #f8f6f2;
+  --color-bg-alt: #f1ede5;
+  --color-surface: #ffffff;
+  --color-text: #262420;
+  --color-text-sub: #6e6b63;
+  --color-text-muted: #9e9a91;
+  --color-accent: #a3875a;
+  --color-accent-hover: #8c7247;
+  --color-accent-light: #fbf8f2;
+  --color-dark: #1e1d1a;
+  --color-dark-surface: #282622;
+  --color-border: rgba(38, 36, 32, 0.1);
+  --color-border-light: rgba(38, 36, 32, 0.06);
+
+  --font-serif: 'Cormorant Garamond', 'Noto Serif JP', 'Yu Mincho', serif;
+  --font-sans: 'Noto Sans JP', 'Helvetica Neue', Arial, sans-serif;
+
+  --max-w: 1200px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  --shadow-subtle: 0 4px 20px rgba(0, 0, 0, 0.04);
+  --shadow-card: 0 10px 30px rgba(38, 36, 32, 0.06);
+  --shadow-hover: 0 16px 40px rgba(38, 36, 32, 0.12);
+
+  --transition-smooth: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-slow: 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
-@media(prefers-reduced-motion:reduce){
- body.ants-redesign .editorial-hero__visual,body.ants-redesign .editorial-hero__eyebrow,body.ants-redesign .editorial-hero__title,body.ants-redesign .editorial-hero__message {animation:none!important;}
- body.ants-redesign .rakugei-visual .placeholder,body.ants-redesign .salon-hiroin-img .placeholder {transition:none!important;}
+
+/* Base resets & typography */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  scroll-behavior: smooth;
+  scroll-padding-top: 84px;
+}
+
+body.ants-redesign {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0.04em;
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+}
+
+body.ants-redesign * {
+  box-sizing: border-box;
+}
+
+body.ants-redesign a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--transition-smooth), opacity var(--transition-smooth);
+}
+
+body.ants-redesign img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ==========================================================================
+   Header & Navigation
+   ========================================================================== */
+body.ants-redesign .header {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  width: 100% !important;
+  z-index: 1000 !important;
+  background: rgba(248, 246, 242, 0.94) !important;
+  backdrop-filter: blur(16px) !important;
+  -webkit-backdrop-filter: blur(16px) !important;
+  border-bottom: 1px solid var(--color-border) !important;
+  box-shadow: none !important;
+  height: auto !important;
+  padding: 0 !important;
+}
+
+body.ants-redesign .header.is-scrolled {
+  background: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06) !important;
+}
+
+body.ants-redesign .header-inner {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  max-width: 1360px !important;
+  margin: 0 auto !important;
+  padding: 14px clamp(16px, 4vw, 48px) !important;
+  height: auto !important;
+  box-sizing: border-box !important;
+}
+
+body.ants-redesign .logo {
+  position: static !important;
+  transform: none !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0 !important;
+  font-family: var(--font-serif) !important;
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem) !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.16em !important;
+  color: var(--color-text) !important;
+  line-height: 1 !important;
+  z-index: 10 !important;
+}
+
+body.ants-redesign .logo::after {
+  display: none !important;
+}
+
+body.ants-redesign .nav-list {
+  display: flex;
+  align-items: center;
+  gap: clamp(16px, 2.2vw, 36px);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.ants-redesign .nav-link {
+  font-family: var(--font-sans);
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  color: var(--color-text);
+  padding: 8px 4px;
+  position: relative;
+}
+
+body.ants-redesign .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--color-accent);
+  transition: width var(--transition-smooth);
+}
+
+body.ants-redesign .nav-link:hover::after,
+body.ants-redesign .nav-link.is-current::after {
+  width: 100%;
+}
+
+body.ants-redesign .nav-link--recruit {
+  color: var(--color-accent);
+}
+
+/* Header Actions & Reserve Button */
+body.ants-redesign .header-actions {
+  display: flex !important;
+  align-items: center !important;
+  gap: 12px !important;
+  margin-left: auto !important;
+  flex-shrink: 0 !important;
+}
+
+body.ants-redesign .header-reserve-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  background: var(--color-accent);
+  color: #fff !important;
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 14px rgba(163, 135, 90, 0.28);
+  white-space: nowrap;
+}
+
+body.ants-redesign .header-reserve-btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(163, 135, 90, 0.38);
+}
+
+body.ants-redesign .hamburger {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  display: none !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+  width: 32px !important;
+  height: 24px !important;
+  padding: 4px 0 !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  z-index: 1020 !important;
+}
+
+body.ants-redesign .hamburger span {
+  display: block !important;
+  width: 100% !important;
+  height: 2px !important;
+  background: var(--color-text) !important;
+  border-radius: 2px !important;
+  transition: all var(--transition-smooth) !important;
+}
+
+body.ants-redesign .hamburger.is-active span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg) !important;
+}
+
+body.ants-redesign .hamburger.is-active span:nth-child(2) {
+  opacity: 0 !important;
+}
+
+body.ants-redesign .hamburger.is-active span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg) !important;
+}
+
+body.ants-redesign .mobile-reserve {
+  display: none !important;
+}
+
+body.ants-redesign .nav-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  background: rgba(0, 0, 0, 0.6) !important;
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+  transition: opacity var(--transition-smooth), visibility var(--transition-smooth) !important;
+  z-index: 1005 !important;
+}
+
+body.ants-redesign .nav-overlay.is-active {
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+body.ants-redesign .nav-close {
+  display: none !important;
+}
+
+/* ==========================================================================
+   Section Components & Shared Elements
+   ========================================================================== */
+body.ants-redesign .section {
+  padding-block: clamp(84px, 11vw, 150px);
+  position: relative;
+}
+
+body.ants-redesign .container {
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: clamp(20px, 4vw, 56px);
+}
+
+/* Section Header (SENJYU Style) */
+body.ants-redesign .section-head {
+  text-align: center;
+  margin-bottom: clamp(48px, 7vw, 84px);
+}
+
+body.ants-redesign .section-subtitle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 14px;
+}
+
+body.ants-redesign .section-subtitle::before,
+body.ants-redesign .section-subtitle::after {
+  content: '';
+  display: inline-block;
+  width: 24px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.6;
+}
+
+body.ants-redesign .section-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 4.2vw, 3.4rem);
+  font-weight: 300;
+  line-height: 1.25;
+  letter-spacing: 0.05em;
+  color: var(--color-text);
+  margin: 0;
+}
+
+body.ants-redesign .section-desc {
+  font-size: clamp(0.85rem, 1.2vw, 0.95rem);
+  color: var(--color-text-sub);
+  line-height: 2.2;
+  margin-top: 18px;
+  margin-bottom: 0;
+}
+
+/* Buttons */
+body.ants-redesign .btn-editorial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 14px 34px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  border-radius: var(--radius-full);
+  transition: all var(--transition-smooth);
+}
+
+body.ants-redesign .btn-editorial--outline {
+  border: 1px solid var(--color-accent);
+  color: var(--color-accent);
+  background: transparent;
+}
+
+body.ants-redesign .btn-editorial--outline:hover {
+  background: var(--color-accent);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(163, 135, 90, 0.25);
+}
+
+body.ants-redesign .btn-editorial--solid {
+  background: var(--color-accent);
+  color: #fff;
+  border: 1px solid var(--color-accent);
+  box-shadow: 0 6px 20px rgba(163, 135, 90, 0.28);
+}
+
+body.ants-redesign .btn-editorial--solid:hover {
+  background: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(163, 135, 90, 0.36);
+}
+
+/* ==========================================================================
+   1. MAIN VISUAL (Hero / top__mv)
+   ========================================================================== */
+body.ants-redesign .top__mv {
+  position: relative;
+  min-height: min(940px, 100svh);
+  height: 94svh;
+  max-height: 1100px;
+  color: #fff;
+  background: #2a2824;
+  overflow: hidden;
+  display: grid;
+  align-items: end;
+  isolation: isolate;
+}
+
+body.ants-redesign .top__mv-bg {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background: url('assets/hero-section.jpg') center 42% / cover no-repeat;
+  animation: antsEditorialZoom 20s ease-out both;
+}
+
+body.ants-redesign .top__mv-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: 
+    linear-gradient(90deg, rgba(20, 19, 17, 0.68) 0%, rgba(20, 19, 17, 0.2) 65%, rgba(20, 19, 17, 0.45) 100%),
+    linear-gradient(0deg, rgba(20, 19, 17, 0.8) 0%, transparent 60%);
+}
+
+body.ants-redesign .top__mv-inner {
+  width: 100%;
+  max-width: 1360px;
+  margin: 0 auto;
+  padding: clamp(48px, 8vw, 120px) clamp(24px, 5vw, 64px);
+  padding-bottom: clamp(74px, 9vw, 130px);
+}
+
+body.ants-redesign .top__mv-eyebrow {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.88);
+  margin-bottom: 24px;
+}
+
+body.ants-redesign .top__mv-title {
+  font-family: var(--font-serif);
+  font-size: clamp(4.4rem, 11vw, 9.8rem);
+  font-weight: 300;
+  line-height: 0.85;
+  letter-spacing: -0.04em;
+  margin: 0 0 32px;
+  color: #ffffff;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+}
+
+body.ants-redesign .top__mv-message {
+  font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+  line-height: 2.2;
+  letter-spacing: 0.16em;
+  max-width: 32em;
+  margin-bottom: 36px;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+body.ants-redesign .top__mv-cta-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
+}
+
+body.ants-redesign .top__mv-bottom-bar {
+  position: absolute;
+  bottom: 24px;
+  left: clamp(24px, 5vw, 64px);
+  right: clamp(24px, 5vw, 64px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid rgba(255, 255, 255, 0.35);
+  padding-top: 16px;
+  font-size: 0.65rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+body.ants-redesign .top__mv-scroll-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+body.ants-redesign .top__mv-scroll-indicator:hover {
+  color: #fff;
+}
+
+/* ==========================================================================
+   2. CONCEPT (top__concept)
+   ========================================================================== */
+body.ants-redesign .top__concept {
+  background: var(--color-bg);
+  text-align: center;
+}
+
+body.ants-redesign .top__concept-content {
+  max-width: 820px;
+  margin: 0 auto;
+}
+
+body.ants-redesign .top__concept-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.35;
+  letter-spacing: 0.08em;
+  margin-bottom: 40px;
+  color: var(--color-text);
+}
+
+body.ants-redesign .top__concept-lead {
+  font-size: clamp(0.92rem, 1.25vw, 1.05rem);
+  line-height: 2.6;
+  letter-spacing: 0.12em;
+  color: var(--color-text);
+  margin-bottom: 32px;
+}
+
+body.ants-redesign .top__concept-sub {
+  font-family: var(--font-serif);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  line-height: 2.1;
+  letter-spacing: 0.08em;
+  margin-bottom: 52px;
+}
+
+/* ==========================================================================
+   3. VISUAL SWIPER / GALLERY (top__concept-swiper)
+   ========================================================================== */
+body.ants-redesign .top__concept-swiper {
+  position: relative;
+  overflow: hidden;
+  padding-block: 20px 70px;
+  background: var(--color-bg-alt);
+}
+
+body.ants-redesign .swiper-track-container {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  display: flex;
+  gap: clamp(16px, 2.5vw, 32px);
+  padding: 20px clamp(20px, 4vw, 56px);
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body.ants-redesign .swiper-track-container::-webkit-scrollbar {
+  display: none;
+}
+
+body.ants-redesign .gallery-slide {
+  flex: 0 0 clamp(280px, 34vw, 440px);
+  scroll-snap-align: center;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: #fff;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+body.ants-redesign .gallery-slide:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+body.ants-redesign .gallery-slide-img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+body.ants-redesign .gallery-slide:hover .gallery-slide-img {
+  transform: scale(1.05);
+}
+
+body.ants-redesign .gallery-slide-info {
+  padding: 18px 20px;
+  background: #fff;
+}
+
+body.ants-redesign .gallery-slide-tag {
+  font-size: 0.68rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 4px;
+}
+
+body.ants-redesign .gallery-slide-title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0;
+}
+
+/* ==========================================================================
+   4. FEATURE (top__feature / 他のサロンとの圧倒的な違い)
+   ========================================================================== */
+body.ants-redesign .top__feature {
+  background: var(--color-bg);
+}
+
+body.ants-redesign .feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+}
+
+body.ants-redesign .feature-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+body.ants-redesign .feature-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+body.ants-redesign .feature-card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+body.ants-redesign .feature-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+body.ants-redesign .feature-card:hover .feature-card-img {
+  transform: scale(1.06);
+}
+
+body.ants-redesign .feature-card-number {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(30, 29, 26, 0.82);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-family: var(--font-serif);
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  letter-spacing: 0.1em;
+}
+
+body.ants-redesign .feature-card-body {
+  padding: clamp(24px, 3vw, 32px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+body.ants-redesign .feature-card-tag {
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+body.ants-redesign .feature-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.35rem;
+  font-weight: 500;
+  line-height: 1.4;
+  margin: 0 0 16px;
+  color: var(--color-text);
+}
+
+body.ants-redesign .feature-card-desc {
+  font-size: 0.84rem;
+  line-height: 2;
+  color: var(--color-text-sub);
+  margin-bottom: 24px;
+  flex-grow: 1;
+}
+
+body.ants-redesign .feature-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent);
+  margin-top: auto;
+}
+
+body.ants-redesign .feature-card-link span {
+  transition: transform var(--transition-smooth);
+}
+
+body.ants-redesign .feature-card:hover .feature-card-link span {
+  transform: translateX(6px);
+}
+
+/* ==========================================================================
+   5. REVIEW (top__review / 口コミで広がる価値)
+   ========================================================================== */
+body.ants-redesign .top__review {
+  background: var(--color-bg-alt);
+}
+
+body.ants-redesign .review-overall {
+  text-align: center;
+  margin-bottom: 48px;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+body.ants-redesign .review-stars {
+  color: #df9e38;
+  font-size: 1.3rem;
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+}
+
+body.ants-redesign .review-overall-text {
+  font-size: 0.82rem;
+  color: var(--color-text-sub);
+  letter-spacing: 0.1em;
+}
+
+body.ants-redesign .review-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(20px, 3vw, 32px);
+}
+
+body.ants-redesign .review-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: clamp(26px, 3vw, 36px);
+  box-shadow: var(--shadow-card);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+body.ants-redesign .review-card::before {
+  content: '“';
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  font-family: var(--font-serif);
+  font-size: 3.6rem;
+  color: var(--color-border);
+  line-height: 1;
+}
+
+body.ants-redesign .review-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+body.ants-redesign .review-card-stars {
+  color: #df9e38;
+  font-size: 0.95rem;
+}
+
+body.ants-redesign .review-card-author {
+  font-size: 0.74rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+body.ants-redesign .review-card-text {
+  font-size: 0.86rem;
+  line-height: 2.1;
+  color: var(--color-text);
+  margin: 0 0 16px;
+}
+
+body.ants-redesign .review-card-tag {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 10px;
+  font-size: 0.68rem;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   6. MEDIA & TOPICS (top__media / 取り組み・実績)
+   ========================================================================== */
+body.ants-redesign .top__media {
+  background: var(--color-bg);
+}
+
+body.ants-redesign .media-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(20px, 3vw, 32px);
+}
+
+body.ants-redesign .media-item {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+body.ants-redesign .media-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-hover);
+}
+
+body.ants-redesign .media-item-body {
+  padding: clamp(22px, 3vw, 28px);
+}
+
+body.ants-redesign .media-item-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+body.ants-redesign .media-item-date {
+  font-size: 0.72rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+}
+
+body.ants-redesign .media-item-badge {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  background: var(--color-bg-alt);
+  color: var(--color-text-sub);
+  border-radius: var(--radius-sm);
+}
+
+body.ants-redesign .media-item-title {
+  font-size: 0.94rem;
+  font-weight: 500;
+  line-height: 1.7;
+  color: var(--color-text);
+  margin: 0 0 14px;
+}
+
+body.ants-redesign .media-item-desc {
+  font-size: 0.8rem;
+  line-height: 1.9;
+  color: var(--color-text-sub);
+  margin: 0;
+}
+
+/* ==========================================================================
+   7. MENU (top__menu / 料金表)
+   ========================================================================== */
+body.ants-redesign .top__menu {
+  background: var(--color-bg-alt);
+}
+
+body.ants-redesign .menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 4vw, 48px);
+}
+
+body.ants-redesign .menu-panel {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: clamp(28px, 4vw, 42px);
+  box-shadow: var(--shadow-card);
+}
+
+body.ants-redesign .menu-panel-heading {
+  font-family: var(--font-serif);
+  font-size: 1.45rem;
+  font-weight: 500;
+  color: var(--color-text);
+  border-bottom: 2px solid var(--color-accent);
+  padding-bottom: 14px;
+  margin: 0 0 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+body.ants-redesign .menu-panel-heading span {
+  font-family: var(--font-sans);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--color-accent);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+body.ants-redesign .menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+body.ants-redesign .menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
+  border-bottom: 1px dashed var(--color-border);
+}
+
+body.ants-redesign .menu-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+body.ants-redesign .menu-item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+body.ants-redesign .menu-item-name {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+body.ants-redesign .menu-item-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.68rem;
+  color: var(--color-text-muted);
+}
+
+body.ants-redesign .menu-item-price {
+  font-family: var(--font-serif);
+  font-size: 1.18rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  white-space: nowrap;
+}
+
+body.ants-redesign .menu-note {
+  margin-top: 36px;
+  font-size: 0.74rem;
+  line-height: 2;
+  color: var(--color-text-sub);
+  text-align: center;
+}
+
+/* ==========================================================================
+   8. SALON LIST (top__salon / 店舗一覧)
+   ========================================================================== */
+body.ants-redesign .top__salon {
+  background: var(--color-bg);
+  overflow: hidden;
+}
+
+/* Marquee / Catch Slide Track */
+body.ants-redesign .marquee-track-wrap {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin-bottom: 48px;
+  user-select: none;
+  pointer-events: none;
+}
+
+body.ants-redesign .marquee-track {
+  display: inline-flex;
+  animation: antsMarquee 32s linear infinite;
+}
+
+body.ants-redesign .marquee-track span {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  font-weight: 300;
+  color: rgba(38, 36, 32, 0.05);
+  letter-spacing: 0.06em;
+  padding-right: 48px;
+}
+
+/* Area Filter Tabs */
+body.ants-redesign .salon-filter-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+
+body.ants-redesign .salon-tab-btn {
+  padding: 8px 22px;
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-sub);
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+}
+
+body.ants-redesign .salon-tab-btn:hover,
+body.ants-redesign .salon-tab-btn.is-active {
+  background: var(--color-text);
+  color: #fff;
+  border-color: var(--color-text);
+}
+
+/* Salon Cards */
+body.ants-redesign .salon-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(28px, 4vw, 44px);
+}
+
+body.ants-redesign .salon-card {
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+}
+
+body.ants-redesign .salon-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-hover);
+}
+
+body.ants-redesign .salon-card-media {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+}
+
+body.ants-redesign .salon-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+body.ants-redesign .salon-card:hover .salon-card-img {
+  transform: scale(1.05);
+}
+
+body.ants-redesign .salon-card-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(30, 29, 26, 0.85);
+  backdrop-filter: blur(8px);
+  color: #fff;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+}
+
+body.ants-redesign .salon-card-body {
+  padding: clamp(24px, 3.5vw, 36px);
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+body.ants-redesign .salon-card-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.3rem, 2vw, 1.6rem);
+  font-weight: 500;
+  color: var(--color-text);
+  margin: 0 0 6px;
+}
+
+body.ants-redesign .salon-card-en {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 20px;
+}
+
+body.ants-redesign .salon-card-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: var(--color-text-sub);
+  margin-bottom: 28px;
+  line-height: 1.7;
+}
+
+body.ants-redesign .salon-card-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px;
+}
+
+body.ants-redesign .salon-card-label {
+  font-weight: 500;
+  color: var(--color-text-muted);
+}
+
+body.ants-redesign .salon-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: auto;
+}
+
+body.ants-redesign .salon-reserve-btn {
+  flex: 1 1 auto;
+  min-width: 170px;
+  padding: 12px 18px;
+  background: var(--color-accent);
+  color: #fff !important;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  border-radius: var(--radius-full);
+  text-align: center;
+  transition: all var(--transition-smooth);
+  box-shadow: 0 4px 14px rgba(163, 135, 90, 0.28);
+}
+
+body.ants-redesign .salon-reserve-btn:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(163, 135, 90, 0.38);
+}
+
+body.ants-redesign .salon-tel-btn {
+  flex: 0 0 auto;
+  padding: 12px 18px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text) !important;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  border-radius: var(--radius-full);
+  text-align: center;
+  transition: all var(--transition-smooth);
+}
+
+body.ants-redesign .salon-tel-btn:hover {
+  border-color: var(--color-text);
+  background: var(--color-text);
+  color: #fff !important;
+}
+
+/* ==========================================================================
+   9. NEWS (top__news / お知らせ)
+   ========================================================================== */
+body.ants-redesign .top__news {
+  background: var(--color-bg-alt);
+}
+
+body.ants-redesign .news-container-box {
+  max-width: 860px;
+  margin: 0 auto;
+  background: var(--color-surface);
+  border-radius: var(--radius-md);
+  padding: clamp(24px, 4vw, 42px);
+  box-shadow: var(--shadow-card);
+}
+
+body.ants-redesign .news-row {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding-block: 16px;
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background var(--transition-smooth);
+}
+
+body.ants-redesign .news-row:last-child {
+  border-bottom: none;
+}
+
+body.ants-redesign .news-row:hover .news-link {
+  color: var(--color-accent);
+}
+
+body.ants-redesign .news-date {
+  font-size: 0.76rem;
+  color: var(--color-text-muted);
+  font-family: var(--font-sans);
+  flex-shrink: 0;
+}
+
+body.ants-redesign .news-badge {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  background: var(--color-accent-light);
+  color: var(--color-accent);
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+}
+
+body.ants-redesign .news-link {
+  font-size: 0.86rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   10. FLOATING RESERVE BAR & BOTTOM CTA
+   ========================================================================== */
+body.ants-redesign .floating-reserve-bar {
+  position: fixed;
+  bottom: 20px;
+  right: 24px;
+  z-index: 990;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  opacity: 0;
+  transform: translateY(24px);
+  pointer-events: none;
+  transition: opacity var(--transition-smooth), transform var(--transition-smooth);
+}
+
+body.ants-redesign .floating-reserve-bar.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+body.ants-redesign .floating-reserve-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 26px;
+  background: var(--color-accent);
+  color: #fff !important;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  border-radius: var(--radius-full);
+  box-shadow: 0 8px 24px rgba(163, 135, 90, 0.4);
+  transition: all var(--transition-smooth);
+}
+
+body.ants-redesign .floating-reserve-link:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(163, 135, 90, 0.5);
+}
+
+/* ==========================================================================
+   11. FOOTER
+   ========================================================================== */
+body.ants-redesign .footer {
+  background: var(--color-dark);
+  color: #e5e2da;
+  padding-block: clamp(64px, 8vw, 100px) 36px;
+}
+
+body.ants-redesign .footer a {
+  color: #b5b1a7;
+}
+
+body.ants-redesign .footer a:hover {
+  color: #ffffff;
+}
+
+body.ants-redesign .footer-sitemap {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: clamp(32px, 5vw, 64px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 56px;
+  margin-bottom: 40px;
+}
+
+body.ants-redesign .footer-col-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+body.ants-redesign .footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  font-size: 0.82rem;
+}
+
+body.ants-redesign .footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  font-size: 0.74rem;
+  color: #8a867c;
+}
+
+body.ants-redesign .footer-logo-text {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+}
+
+body.ants-redesign .footer-bottom-nav {
+  display: flex;
+  gap: 24px;
+}
+
+/* ==========================================================================
+   Scroll Reveal Animations
+   ========================================================================== */
+body.ants-redesign .reveal,
+body.ants-redesign .-fadeUpTrigger {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+body.ants-redesign .reveal.is-visible,
+body.ants-redesign .-fadeUpTrigger.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+body.ants-redesign .reveal-delay-1 { transition-delay: 0.12s; }
+body.ants-redesign .reveal-delay-2 { transition-delay: 0.24s; }
+body.ants-redesign .reveal-delay-3 { transition-delay: 0.36s; }
+
+/* Keyframe animations */
+@keyframes antsEditorialZoom {
+  from { transform: scale(1.08); }
+  to { transform: scale(1); }
+}
+
+@keyframes antsMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+@media (max-width: 1024px) {
+  body.ants-redesign .feature-grid,
+  body.ants-redesign .media-list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  body.ants-redesign .menu-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Mobile Header */
+  body.ants-redesign .header-inner {
+    padding: 10px 16px !important;
+  }
+
+  body.ants-redesign .logo {
+    font-size: 1.35rem !important;
+    letter-spacing: 0.1em !important;
+  }
+
+  body.ants-redesign .header-actions {
+    gap: 8px !important;
+  }
+
+  body.ants-redesign .header-reserve-btn {
+    padding: 7px 13px !important;
+    font-size: 0.68rem !important;
+    letter-spacing: 0.04em !important;
+  }
+
+  body.ants-redesign .hamburger {
+    display: flex !important;
+    width: 28px !important;
+    height: 22px !important;
+    padding: 3px 0 !important;
+  }
+
+  body.ants-redesign .nav {
+    position: fixed !important;
+    top: 0 !important;
+    left: auto !important;
+    right: 0 !important;
+    width: min(85vw, 340px) !important;
+    height: 100vh !important;
+    background: #ffffff !important;
+    box-shadow: -15px 0 40px rgba(0, 0, 0, 0.25) !important;
+    padding: 72px 28px 40px !important;
+    transform: translateX(105%) !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+    transition: transform var(--transition-smooth), visibility var(--transition-smooth) !important;
+    z-index: 1010 !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  body.ants-redesign .nav-close {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    position: absolute !important;
+    top: 16px !important;
+    right: 18px !important;
+    width: 36px !important;
+    height: 36px !important;
+    font-size: 1.1rem !important;
+    color: var(--color-ink) !important;
+    background: var(--color-bg-alt) !important;
+    border: 1px solid var(--color-border) !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+  }
+
+  body.ants-redesign .nav.is-active {
+    transform: translateX(0) !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+  }
+
+  body.ants-redesign .nav-list {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 22px;
+  }
+
+  body.ants-redesign .nav-link {
+    font-size: 0.95rem;
+  }
+
+  /* Mobile Hero */
+  body.ants-redesign .top__mv {
+    height: 90svh;
+    min-height: 600px;
+  }
+
+  body.ants-redesign .top__mv-inner {
+    padding-inline: 20px;
+    padding-bottom: 80px;
+  }
+
+  body.ants-redesign .top__mv-title {
+    font-size: clamp(3.8rem, 18vw, 6.5rem);
+    margin-bottom: 24px;
+  }
+
+  body.ants-redesign .top__mv-message {
+    font-size: 0.92rem;
+    line-height: 2;
+    margin-bottom: 28px;
+  }
+
+  body.ants-redesign .top__mv-bottom-bar {
+    left: 20px;
+    right: 20px;
+    font-size: 0.6rem;
+  }
+
+  /* Single Column Layouts on Mobile */
+  body.ants-redesign .feature-grid,
+  body.ants-redesign .review-grid,
+  body.ants-redesign .media-list,
+  body.ants-redesign .salon-cards-grid,
+  body.ants-redesign .footer-sitemap {
+    grid-template-columns: 1fr;
+  }
+
+  /* Mobile News */
+  body.ants-redesign .news-row {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  /* Mobile Floating Reserve Bar */
+  body.ants-redesign .floating-reserve-bar {
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    width: auto;
+  }
+
+  body.ants-redesign .floating-reserve-link {
+    width: 100%;
+    justify-content: center;
+    padding: 15px 20px;
+    font-size: 0.88rem;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  body.ants-redesign *,
+  body.ants-redesign *::before,
+  body.ants-redesign *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
