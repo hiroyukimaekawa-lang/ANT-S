@@ -1,0 +1,53 @@
+/* ANT'S visual renewal / phase 1. Original editorial design inspired by contemporary salon sites. */
+body.ants-redesign {--color-bg:#f3f0eb;--color-surface:#faf8f4;--color-text:#252521;--color-accent:#74674f;--max-w:1120px; background:#f3f0eb;}
+body.ants-redesign .section {padding-block:clamp(82px,10vw,180px);}
+body.ants-redesign .container {max-width:1180px;padding-inline:clamp(22px,5vw,72px);}
+body.ants-redesign .header {background:rgba(247,245,240,.94);border-bottom:1px solid rgba(48,43,37,.12);}
+body.ants-redesign .header-inner {max-width:none;padding-inline:clamp(22px,4vw,72px);}
+body.ants-redesign .logo {font-size:1.9rem;letter-spacing:.18em;}
+body.ants-redesign .nav-list {gap:clamp(16px,2vw,42px);}
+body.ants-redesign .nav-link {font-size:.7rem;letter-spacing:.13em;}
+body.ants-redesign .editorial-hero {position:relative;min-height:min(900px,100svh);height:92svh;max-height:1100px;color:#fff;background:#403f3a;overflow:hidden;display:grid;align-items:end;isolation:isolate;}
+body.ants-redesign .editorial-hero__visual {position:absolute;inset:0;z-index:-2;background:url('assets/hero-section.jpg') center 44%/cover no-repeat;animation:antsEditorialDrift 18s ease-out both;}
+body.ants-redesign .editorial-hero__shade {position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(15,15,13,.58),rgba(15,15,13,.05) 82%),linear-gradient(0deg,rgba(15,15,13,.5),transparent 60%);}
+body.ants-redesign .editorial-hero__inner {width:100%;padding:clamp(48px,9vw,128px) clamp(26px,7vw,120px);padding-bottom:clamp(78px,10vw,148px);}
+body.ants-redesign .editorial-hero__eyebrow {font-family:var(--font-sans);font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;margin-bottom:26px;animation:antsEditorialReveal .9s .15s ease both;}
+body.ants-redesign .editorial-hero__title {font-family:var(--font-serif);font-weight:300;font-size:clamp(4.6rem,12vw,11rem);line-height:.8;letter-spacing:-.045em;margin-bottom:36px;animation:antsEditorialReveal 1s .3s ease both;}
+body.ants-redesign .editorial-hero__message {font-size:clamp(.9rem,1.3vw,1.1rem);line-height:2.3;letter-spacing:.16em;max-width:28em;animation:antsEditorialReveal 1s .45s ease both;}
+body.ants-redesign .editorial-hero__bottom {position:absolute;bottom:28px;left:clamp(26px,7vw,120px);right:clamp(26px,7vw,120px);display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,.45);padding-top:18px;text-transform:uppercase;font-size:.62rem;letter-spacing:.23em;}
+body.ants-redesign .editorial-intro {background:#f3f0eb !important;text-align:center;padding-block:clamp(90px,13vw,210px) !important;}
+body.ants-redesign .editorial-intro .container {max-width:900px;}
+body.ants-redesign .editorial-intro h3 {font-family:var(--font-serif)!important;font-size:clamp(2.5rem,5.5vw,5rem)!important;line-height:1.15!important;letter-spacing:.01em!important;margin-bottom:58px!important;}
+body.ants-redesign .editorial-intro p {font-size:clamp(.86rem,1.2vw,1rem)!important;letter-spacing:.12em!important;line-height:2.7!important;}
+body.ants-redesign .editorial-intro .rakugei-btn {margin-top:10px;}
+body.ants-redesign .overlap-gallery-section {background:#ded9d0;padding-block:clamp(70px,9vw,160px);}
+body.ants-redesign .overlap-gallery-container {max-width:1300px;margin-inline:auto;}
+body.ants-redesign .rakugei-overlap-wrap {max-width:1480px;margin-inline:auto;}
+body.ants-redesign .rakugei-visual {overflow:hidden;}
+body.ants-redesign .rakugei-visual .placeholder {transition:transform 1.2s cubic-bezier(.2,.8,.2,1);}
+body.ants-redesign .rakugei-overlap:hover .rakugei-visual .placeholder {transform:scale(1.035);}
+body.ants-redesign .section-title {font-size:clamp(2.4rem,5vw,4.6rem);font-weight:300;letter-spacing:.04em;}
+body.ants-redesign .section-title::after {width:56px;background:#8e8474;}
+body.ants-redesign .salon-hiroin-card {overflow:hidden;}
+body.ants-redesign .salon-hiroin-img {overflow:hidden;}
+body.ants-redesign .salon-hiroin-img .placeholder {transition:transform .9s cubic-bezier(.2,.8,.2,1);}
+body.ants-redesign .salon-hiroin-card:hover .salon-hiroin-img .placeholder {transform:scale(1.035);}
+body.ants-redesign .footer {background:#252521;}
+body.ants-redesign a:focus-visible,body.ants-redesign button:focus-visible {outline:2px solid #9f8565;outline-offset:4px;}
+@keyframes antsEditorialDrift {from{transform:scale(1.07)}to{transform:scale(1)}}
+@keyframes antsEditorialReveal {from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:767px){
+ body.ants-redesign .editorial-hero {height:88svh;min-height:610px;max-height:920px;}
+ body.ants-redesign .editorial-hero__visual {background-position:58% center;}
+ body.ants-redesign .editorial-hero__shade {background:linear-gradient(0deg,rgba(15,15,13,.65),rgba(15,15,13,.06) 85%);}
+ body.ants-redesign .editorial-hero__inner {padding:36px 26px 120px;}
+ body.ants-redesign .editorial-hero__title {font-size:clamp(4.5rem,20vw,8rem);}
+ body.ants-redesign .editorial-hero__message {font-size:.87rem;}
+ body.ants-redesign .editorial-hero__bottom {left:26px;right:26px;}
+ body.ants-redesign .editorial-intro h3 {margin-bottom:34px!important;}
+ body.ants-redesign .section {padding-block:80px;}
+}
+@media(prefers-reduced-motion:reduce){
+ body.ants-redesign .editorial-hero__visual,body.ants-redesign .editorial-hero__eyebrow,body.ants-redesign .editorial-hero__title,body.ants-redesign .editorial-hero__message {animation:none!important;}
+ body.ants-redesign .rakugei-visual .placeholder,body.ants-redesign .salon-hiroin-img .placeholder {transition:none!important;}
+}
