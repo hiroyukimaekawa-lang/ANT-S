@@ -772,11 +772,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Salon area filter tabs
     const salonTabs = document.querySelectorAll('.salon-tab-btn');
     const salonCards = document.querySelectorAll('.salon-card');
+    const salonHeadings = document.querySelectorAll('[data-area-heading]');
     salonTabs.forEach(tab => {
         tab.addEventListener('click', () => {
             salonTabs.forEach(t => t.classList.remove('is-active'));
             tab.classList.add('is-active');
             const filter = tab.dataset.filter;
+            salonHeadings.forEach(heading => {
+                heading.hidden = filter !== 'all' && heading.dataset.areaHeading !== filter;
+            });
             salonCards.forEach(card => {
                 if (filter === 'all' || card.dataset.area === filter) {
                     card.style.display = '';
