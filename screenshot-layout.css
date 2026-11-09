@@ -205,3 +205,119 @@ body.ants-redesign .ants-photo-salon .salon-tel-btn:hover{background:#f4f0e7!imp
  body.ants-redesign .ants-photo-salon .salon-filter-tabs{gap:8px}
  body.ants-redesign .ants-photo-salon .salon-tab-btn{font-size:12px;padding:10px 15px!important}
 }
+
+
+/* 2026-11-09: screenshot-specific review columns and salon directory */
+@media (min-width:1200px){
+ body.ants-redesign .ants-photo-review .review-grid{
+   display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;
+   gap:18px!important;max-width:1600px!important;
+ }
+ body.ants-redesign .ants-photo-review>.container{max-width:1720px!important;width:calc(100% - 60px)!important}
+ body.ants-redesign .ants-photo-review .review-card{min-width:0;padding:25px 20px!important}
+ body.ants-redesign .ants-photo-review .review-card-text{
+   font-size:13px!important;line-height:1.85!important;overflow-wrap:anywhere;
+ }
+ body.ants-redesign .ants-photo-review .review-card-meta{flex-wrap:wrap;gap:8px}
+ body.ants-redesign .ants-photo-review .review-card-author{font-size:12px!important}
+}
+@media (min-width:700px) and (max-width:1199px){
+ body.ants-redesign .ants-photo-review .review-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+}
+/* Gallery and price sections were removed from index.html; no CSS-only hiding */
+body.ants-redesign .ants-photo-salon .salon-cards-grid{
+ display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+ gap:0!important;max-width:1500px;margin:auto
+}
+body.ants-redesign .ants-photo-salon .ants-salon-area-heading{
+ display:flex;align-items:center;min-height:64px;margin:32px 0 23px;
+ padding:12px 24px;background:#fbf9ee;color:#907a4f;
+ font-size:18px;font-weight:700;letter-spacing:.08em;
+}
+body.ants-redesign .ants-photo-salon .salon-card{
+ display:grid!important;
+ grid-template-columns:minmax(190px,25%) minmax(0,1fr) minmax(205px,26%);
+ grid-template-rows:auto auto 1fr;
+ gap:6px clamp(22px,2.5vw,42px);
+ align-items:start;min-height:245px;padding:15px 0 26px;
+ margin:0 0 12px;border:none!important;border-radius:0!important;
+ border-bottom:1px solid #e9e5dc!important;background:transparent!important;
+ box-shadow:none!important;transform:none!important
+}
+body.ants-redesign .ants-photo-salon .salon-card:hover{transform:none!important;box-shadow:none!important}
+body.ants-redesign .ants-photo-salon .salon-card-media{
+ grid-column:1;grid-row:1/4;align-self:stretch;
+ aspect-ratio:unset!important;min-height:210px!important;
+ border-radius:3px!important
+}
+body.ants-redesign .ants-photo-salon .salon-card-media img{
+ width:100%;height:100%!important;min-height:210px;max-height:280px;object-fit:cover
+}
+body.ants-redesign .ants-photo-salon .salon-card-badge{display:none!important}
+body.ants-redesign .ants-photo-salon .salon-card-body{display:contents!important}
+body.ants-redesign .ants-photo-salon .salon-card-name{
+ grid-column:2;grid-row:1;font-size:clamp(20px,1.6vw,29px)!important;
+ margin:0!important;padding:0!important
+}
+body.ants-redesign .ants-photo-salon .salon-card-en{
+ grid-column:2;grid-row:2;display:block;margin:0 0 5px;font-size:11px!important
+}
+body.ants-redesign .ants-photo-salon .salon-card-details{
+ grid-column:2;grid-row:3;
+ padding:0!important;margin:0!important;border:0!important
+}
+body.ants-redesign .ants-photo-salon .salon-card-row{
+ display:grid;grid-template-columns:74px minmax(0,1fr);gap:12px;
+ margin-bottom:8px;font-size:clamp(12px,.95vw,15px);line-height:1.8
+}
+body.ants-redesign .ants-photo-salon .salon-card-label{
+ color:#967b49!important;font-weight:700
+}
+body.ants-redesign .ants-photo-salon .salon-card-actions{
+ grid-column:3;grid-row:1/4;
+ display:flex!important;flex-direction:column;justify-content:center;
+ gap:14px!important;align-self:stretch;margin:0!important;padding:8px 0
+}
+body.ants-redesign .ants-photo-salon .salon-reserve-btn,
+body.ants-redesign .ants-photo-salon .salon-tel-btn{
+ flex:0 0 auto!important;min-width:0;width:100%;min-height:62px!important;
+ padding:15px 12px!important;border-radius:5px!important;
+ font-size:clamp(12px,1vw,16px)!important
+}
+body.ants-redesign .ants-photo-salon .salon-reserve-btn{
+ order:2;background:#95804f!important;border-color:#95804f!important
+}
+body.ants-redesign .ants-photo-salon .salon-tel-btn{
+ order:1;background:white!important;border-color:#c7c4bd!important
+}
+body.ants-redesign .ants-photo-salon .salon-card-actions:has(.salon-reserve-btn:only-child) .salon-reserve-btn{order:1}
+@media(max-width:1050px){
+ body.ants-redesign .ants-photo-salon .salon-card{
+   grid-template-columns:minmax(170px,33%) minmax(0,1fr);grid-template-rows:auto auto 1fr auto;
+ }
+ body.ants-redesign .ants-photo-salon .salon-card-media{grid-row:1/4}
+ body.ants-redesign .ants-photo-salon .salon-card-actions{
+   grid-column:2;grid-row:4;flex-direction:row;align-self:end;padding:8px 0
+ }
+ body.ants-redesign .ants-photo-salon .salon-card-actions>a{flex:1 1 0!important}
+}
+@media(max-width:650px){
+ body.ants-redesign .ants-photo-salon .salon-card{
+   display:grid!important;grid-template-columns:minmax(0,1fr)!important;
+   grid-template-rows:auto!important;padding:4px 0 30px;
+ }
+ body.ants-redesign .ants-photo-salon .salon-card-media{
+   grid-column:1;grid-row:auto;min-height:0!important;aspect-ratio:16/9!important
+ }
+ body.ants-redesign .ants-photo-salon .salon-card-media img{min-height:0;max-height:none}
+ body.ants-redesign .ants-photo-salon .salon-card-name,
+ body.ants-redesign .ants-photo-salon .salon-card-en,
+ body.ants-redesign .ants-photo-salon .salon-card-details,
+ body.ants-redesign .ants-photo-salon .salon-card-actions{
+   grid-column:1;grid-row:auto
+ }
+ body.ants-redesign .ants-photo-salon .salon-card-name{margin-top:17px!important}
+ body.ants-redesign .ants-photo-salon .salon-card-actions{flex-direction:column;margin-top:10px!important}
+ body.ants-redesign .ants-photo-salon .salon-card-actions>a{width:100%}
+ body.ants-redesign .ants-photo-salon .ants-salon-area-heading{font-size:16px;margin-top:24px}
+}
