@@ -321,3 +321,10 @@ body.ants-redesign .ants-photo-salon .salon-card-actions:has(.salon-reserve-btn:
  body.ants-redesign .ants-photo-salon .salon-card-actions>a{width:100%}
  body.ants-redesign .ants-photo-salon .ants-salon-area-heading{font-size:16px;margin-top:24px}
 }
+
+
+/* Filtering must take precedence over enhanced grid display rules. */
+body.ants-redesign .ants-photo-salon .salon-card[style*="display: none"],
+body.ants-redesign .ants-photo-salon .ants-salon-area-heading[hidden]{
+  display:none!important;
+}
