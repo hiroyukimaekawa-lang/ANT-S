@@ -14,6 +14,8 @@
   <!-- CSS -->
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="redesign.css">
+  <link rel="stylesheet" href="editorial-refinement.css">
+  <link rel="stylesheet" href="screenshot-layout.css">
   
   <!-- Prevent conflicting legacy main.js styles -->
   <style id="ants-responsive-unified">/* superseded by redesign.css */</style>
@@ -22,32 +24,28 @@
 
 <body class="ants-redesign">
 
-  <!-- ==================== HEADER ==================== -->
-  <header class="header" id="header">
+  <!-- Header: hero-overlaid, photo-led navigation -->
+  <header class="header ants-photo-header" id="header">
     <div class="header-inner">
-      <a href="index.html" class="logo" aria-label="ANT'S ホーム">ANT'S</a>
-      
+      <a href="index.html" class="logo ants-wordmark" aria-label="ANT'S ホーム">
+        <span class="ants-wordmark-caption">professional beauty team</span><span class="ants-wordmark-main">ANT'S</span>
+      </a>
       <div class="nav-overlay" id="nav-overlay" aria-hidden="true"></div>
-      
       <nav class="nav" id="nav" aria-label="メインナビゲーション">
         <button class="nav-close" id="nav-close" aria-label="メニューを閉じる">✕</button>
         <ul class="nav-list">
-          <li><a href="salon.html" class="nav-link" data-page="salon.html">ABOUT</a></li>
-          <li><a href="visit.html" class="nav-link" data-page="visit.html">訪問美容</a></li>
-          <li><a href="beauty.html" class="nav-link" data-page="beauty.html">トータルビューティー</a></li>
-          <li><a href="cast.html" class="nav-link" data-page="cast.html">CAST</a></li>
-          <li><a href="access.html" class="nav-link" data-page="access.html">ACCESS</a></li>
-          <li><a href="#top-menu" class="nav-link">MENU</a></li>
-          <li><a href="#salon-list" class="nav-link">SALON</a></li>
-          <li><a href="https://ants10-recruit.com/" target="_blank" rel="noopener noreferrer" class="nav-link nav-link--recruit">RECRUIT ↗</a></li>
+          <li><a href="#concept" class="nav-link">ANT'Sについて</a></li>
+          <li><a href="#feature" class="nav-link">他サロンとの違い</a></li>
+          <li><a href="#review" class="nav-link">お客様の声</a></li>
+          <li><a href="#media" class="nav-link">メディア</a></li>
+          <li><a href="#salon-list" class="nav-link">店舗一覧</a></li>
+          <li><a href="#news" class="nav-link">お知らせ</a></li>
+          <li><a href="access.html" class="nav-link" data-page="access.html">会社概要</a></li>
         </ul>
       </nav>
-
       <div class="header-actions">
-        <a href="#salon-list" class="header-reserve-btn" aria-label="サロン店舗一覧・簡単Web予約">簡単Web予約</a>
-        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false">
-          <span></span><span></span><span></span>
-        </button>
+        <a href="#salon-list" class="header-reserve-btn" aria-label="店舗一覧・Web予約">Web予約</a>
+        <button class="hamburger" id="hamburger" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
       </div>
     </div>
   </header>
@@ -80,30 +78,39 @@
       </div>
     </section>
 
-    <!-- ==================== 2. CONCEPT (top__concept) ==================== -->
-    <section class="section top__concept -fadeUpTrigger" id="concept">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-subtitle">Concept</span>
-          <h2 class="top__concept-heading">
-            あなた以上に、<br>あなたの髪と心に寄り添う。
-          </h2>
+    <!-- Concept: split copy and salon photography -->
+    <section class="section top__concept ants-photo-concept -fadeUpTrigger" id="concept">
+      <div class="ants-photo-concept-grid">
+        <div class="ants-photo-concept-copy">
+          <div class="ants-photo-kicker">Concept</div>
+          <h2 class="top__concept-heading">あなた以上に、<br>あなたの髪を想う。</h2>
+          <p class="top__concept-lead">華やかなトレンドを追うその前に、まずは素材である髪そのものを健やかに整えること。<br>それが、私たちの考える本当の美容です。<br>湘南の地で育んだ「ありがとう」の想いを大切に、髪と心に寄り添います。</p>
+          <a href="salon.html" class="ants-photo-outline">ANT'Sについて詳しく見る <span aria-hidden="true">→</span></a>
         </div>
+        <div class="ants-photo-concept-image"><img src="assets/top_catch01.jpg" alt="ANT'Sの自然光あふれるサロン空間" loading="lazy"></div>
+      </div>
+    </section>
 
-        <div class="top__concept-content">
-          <p class="top__concept-lead">
-            華やかなトレンドを追うその前に、まずは素材である髪そのものを健やかに整えること。<br>
-            そして、茅ヶ崎・辻堂で育んできた「ありがとう」の想いで、一人ひとりの人生に寄り添うこと。<br>
-            サロンでの心地よい時間から、施設やご自宅へ伺う訪問美容まで。<br>
-            ここは、美しさを通じて心からの笑顔と感動をお届けする特別なサロンです。
-          </p>
-          <p class="top__concept-sub">
-            Inspiring a world of thankfulness.<br>
-            We cherish natural hair texture and create happiness that ripples outward.
-          </p>
-          <div>
-            <a href="salon.html" class="btn-editorial btn-editorial--outline">ANT'Sについて (ABOUT) <span>→</span></a>
-          </div>
+    <!-- Feature: sticky vertical title + photographic banners -->
+    <section class="section top__feature ants-photo-feature -fadeUpTrigger" id="feature">
+      <div class="ants-photo-feature-grid">
+        <div class="ants-photo-feature-title">
+          <span class="ants-photo-feature-kicker">Feature</span>
+          <h2>他のサロンとの<br>圧倒的な違い</h2>
+        </div>
+        <div class="ants-photo-feature-banners">
+          <a class="ants-photo-feature-banner" href="salon.html">
+            <img src="assets/top_catch02.jpg" alt="ANT'Sのサロンでの施術・接客" loading="lazy">
+            <span class="ants-photo-feature-body"><small>01 / Salon Experience</small><strong>カウンセリングから施術、<br>アフターケアまでの流れ</strong><span>初めてでも安心してお越しいただける、丁寧な美容体験。</span></span><span class="ants-photo-feature-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="ants-photo-feature-banner" href="beauty.html">
+            <img src="assets/concept_organic.png" alt="ANT'Sの髪質改善とケア" loading="lazy">
+            <span class="ants-photo-feature-body"><small>02 / Hair Quality Care</small><strong>ANT'Sの技術が<br>大切にしていること</strong><span>髪質と一人ひとりの理想に向き合う、パーソナルな提案。</span></span><span class="ants-photo-feature-arrow" aria-hidden="true">→</span>
+          </a>
+          <a class="ants-photo-feature-banner" href="visit.html">
+            <img src="assets/menu_visit_img01.jpg" alt="ANT'Sの訪問美容" loading="lazy">
+            <span class="ants-photo-feature-body"><small>03 / Visiting Beauty</small><strong>美しさをもっと身近に。<br>地域に寄り添う訪問美容</strong><span>ご自宅や施設でも、サロンの技術と温かな時間を。</span></span><span class="ants-photo-feature-arrow" aria-hidden="true">→</span>
+          </a>
         </div>
       </div>
     </section>
@@ -161,71 +168,10 @@
       </div>
     </section>
 
-    <!-- ==================== 4. FEATURE (top__feature / 他のサロンとの圧倒的な違い) ==================== -->
-    <section class="section top__feature -fadeUpTrigger" id="feature">
-      <div class="container">
-        <div class="section-head">
-          <span class="section-subtitle">Feature</span>
-          <h2 class="section-title">他のサロンとの 圧倒的な違い</h2>
-          <p class="section-desc">ANT'Sが湘南・茅ヶ崎・辻堂で選ばれ続ける3つの理由</p>
-        </div>
 
-        <div class="feature-grid">
-          
-          <!-- Card 1 -->
-          <article class="feature-card reveal-delay-1">
-            <div class="feature-card-media">
-              <span class="feature-card-number">01</span>
-              <img src="assets/concept_organic.png" alt="丁寧なカウンセリングと髪質改善ケア" class="feature-card-img" loading="lazy">
-            </div>
-            <div class="feature-card-body">
-              <span class="feature-card-tag">Hair Quality Care</span>
-              <h3 class="feature-card-title">丁寧なカウンセリングと<br>素材を活かす髪質改善</h3>
-              <p class="feature-card-desc">
-                一人ひとりの髪質や骨格、ダメージ履歴を丁寧に診断。一時的な手触りだけでなく、素材本来の健やかな艶としなやかさを引き出すパーソナルケアを提案します。
-              </p>
-              <a href="salon.html" class="feature-card-link">サロンケアの詳細を見る <span>→</span></a>
-            </div>
-          </article>
-
-          <!-- Card 2 -->
-          <article class="feature-card reveal-delay-2">
-            <div class="feature-card-media">
-              <span class="feature-card-number">02</span>
-              <img src="assets/menu_visit_img01.jpg" alt="地域に根ざした訪問美容の専門体制" class="feature-card-img" loading="lazy">
-            </div>
-            <div class="feature-card-body">
-              <span class="feature-card-tag">Visiting Beauty</span>
-              <h3 class="feature-card-title">地域に寄り添う<br>安心・安全の「訪問美容」</h3>
-              <p class="feature-card-desc">
-                サロンクオリティの施術をご自宅や介護施設へ。全スタッフが美容師免許を保持し、長年の実績と細やかな衛生管理体制で、美しく生きる喜びをお届けします。
-              </p>
-              <a href="visit.html" class="feature-card-link">訪問美容の詳細を見る <span>→</span></a>
-            </div>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="feature-card reveal-delay-3">
-            <div class="feature-card-media">
-              <span class="feature-card-number">03</span>
-              <img src="assets/service_spa.png" alt="トータルビューティー＆リゾートの癒し空間" class="feature-card-img" loading="lazy">
-            </div>
-            <div class="feature-card-body">
-              <span class="feature-card-tag">Total Beauty</span>
-              <h3 class="feature-card-title">トータルビューティーと<br>湘南リゾートの癒し空間</h3>
-              <p class="feature-card-desc">
-                ヘア、アイラッシュ、エステ、ネイル、ヘッドスパまで。日常を忘れリフレッシュできる心地よい湘南リゾート空間で、お客様の美を総合プロデュースします。
-              </p>
-              <a href="beauty.html" class="feature-card-link">ビューティー事業を見る <span>→</span></a>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
 
     <!-- ==================== 5. REVIEW (top__review / 口コミで広がる価値) ==================== -->
-    <section class="section top__review -fadeUpTrigger" id="review">
+    <section class="section top__review ants-photo-review -fadeUpTrigger" id="review">
       <div class="container">
         <div class="section-head">
           <span class="section-subtitle">Review</span>
@@ -291,7 +237,7 @@
     </section>
 
     <!-- ==================== 6. MEDIA & TOPICS (top__media / 取り組み・実績) ==================== -->
-    <section class="section top__media -fadeUpTrigger" id="media">
+    <section class="section top__media ants-photo-media -fadeUpTrigger" id="media">
       <div class="container">
         <div class="section-head">
           <span class="section-subtitle">Activity &amp; Topics</span>
@@ -484,7 +430,7 @@
     </section>
 
     <!-- ==================== 8. SALON LIST (top__salon / 店舗一覧) ==================== -->
-    <section class="section top__salon -fadeUpTrigger" id="salon-list">
+    <section class="section top__salon ants-photo-salon -fadeUpTrigger" id="salon-list">
       
       <!-- Catch slide track -->
       <div class="marquee-track-wrap" aria-hidden="true">

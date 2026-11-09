@@ -1,0 +1,95 @@
+/* ANT'S photo-led homepage design — original implementation */
+body.ants-redesign .ants-photo-header{background:transparent!important;border:0!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important;box-shadow:none!important}
+body.ants-redesign .ants-photo-header.is-scrolled{background:rgba(255,253,249,.96)!important;backdrop-filter:blur(16px)!important;-webkit-backdrop-filter:blur(16px)!important;box-shadow:0 4px 24px rgba(0,0,0,.05)!important}
+body.ants-redesign .ants-photo-header .header-inner{max-width:none!important;padding:18px clamp(20px,5.5vw,106px)!important;min-height:112px!important;gap:clamp(20px,3vw,56px)}
+body.ants-redesign .ants-photo-header .ants-wordmark{display:flex!important;flex-direction:column;align-items:flex-start;gap:6px;min-width:max-content;color:#a28b5a!important}
+body.ants-redesign .ants-wordmark-caption{font:400 clamp(8px,.7vw,12px)/1.2 var(--font-sans);letter-spacing:.3em}
+body.ants-redesign .ants-wordmark-main{font:400 clamp(32px,3vw,55px)/.95 var(--font-serif);letter-spacing:.15em}
+body.ants-redesign .ants-photo-header .nav{margin-left:auto}
+body.ants-redesign .ants-photo-header .nav-list{gap:clamp(12px,1.7vw,30px)}
+body.ants-redesign .ants-photo-header .nav-link{white-space:nowrap;color:#9b8154;font-weight:700;font-size:clamp(11px,.96vw,17px);letter-spacing:.03em}
+body.ants-redesign .ants-photo-header .header-actions{margin-left:0!important}
+body.ants-redesign .ants-photo-header .header-reserve-btn{display:none!important}
+body.ants-redesign .ants-photo-header .nav-list li{animation:antsNavIn .7s both;animation-delay:calc(.09s + var(--order,0)*.075s)}
+body.ants-redesign .ants-photo-header .nav-list li:nth-child(1){--order:1}
+body.ants-redesign .ants-photo-header .nav-list li:nth-child(2){--order:2}
+body.ants-redesign .ants-photo-header .nav-list li:nth-child(3){--order:3}
+body.ants-redesign .ants-photo-header .nav-list li:nth-child(4){--order:4}
+body.ants-redesign .ants-photo-header .nav-list li:nth-child(5){--order:5}
+body.ants-redesign .ants-photo-header .nav-list li:nth-child(6){--order:6}
+body.ants-redesign .ants-photo-header .nav-list li:nth-child(7){--order:7}
+@keyframes antsNavIn{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}
+body.ants-redesign .top__mv{margin-top:0!important;height:100svh!important;min-height:660px!important;max-height:none!important}
+body.ants-redesign .top__mv-inner{padding-top:165px}
+/* Concept: generous white/ivory split layout */
+body.ants-redesign .ants-photo-concept{background:linear-gradient(180deg,#fff 0 22%,#fbfaf1 22% 100%)!important;text-align:left!important;padding:clamp(90px,9vw,155px) 0!important}
+body.ants-redesign .ants-photo-concept::before{display:none!important}
+body.ants-redesign .ants-photo-concept-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:clamp(40px,5vw,100px);max-width:1680px;margin:auto;padding:0 clamp(28px,6.5vw,135px)}
+body.ants-redesign .ants-photo-kicker{display:flex;align-items:center;gap:15px;font-size:15px;letter-spacing:.1em;margin-bottom:36px;color:#433a2c}
+body.ants-redesign .ants-photo-kicker::before{content:"";display:block;width:30px;height:1px;background:#bdb6ab}
+body.ants-redesign .ants-photo-concept .top__concept-heading{font:700 clamp(32px,3.8vw,65px)/1.75 'Noto Sans JP',sans-serif!important;letter-spacing:.04em!important;color:#30291d!important;margin:0 0 48px!important}
+body.ants-redesign .ants-photo-concept .top__concept-lead{font-size:clamp(14px,1vw,17px)!important;line-height:2.4!important;letter-spacing:.035em!important;text-align:left;margin:0 0 28px!important}
+body.ants-redesign .ants-photo-outline{display:inline-flex;align-items:center;gap:45px;font-size:13px;font-weight:600;border-bottom:1px solid #a58f67;padding:14px 0}
+body.ants-redesign .ants-photo-outline span{font-size:21px;transition:transform .3s}
+body.ants-redesign .ants-photo-outline:hover span{transform:translateX(7px)}
+body.ants-redesign .ants-photo-concept-image{height:clamp(550px,54vw,850px);overflow:hidden;border-radius:24px 0 0 24px}
+body.ants-redesign .ants-photo-concept-image img{width:100%;height:100%;object-fit:cover}
+/* Feature: sticky vertical heading and image-based wide links */
+body.ants-redesign .ants-photo-feature{background:#fff!important;padding:clamp(80px,9vw,148px) 0!important}
+body.ants-redesign .ants-photo-feature-grid{display:grid;grid-template-columns:clamp(165px,19vw,300px) minmax(0,1fr);gap:clamp(30px,5vw,80px);max-width:1710px;margin:auto;padding:0 clamp(24px,6.5vw,130px)}
+body.ants-redesign .ants-photo-feature-title{position:sticky;top:150px;display:flex;align-items:start;gap:20px;max-height:600px}
+body.ants-redesign .ants-photo-feature-title h2{writing-mode:vertical-rl;margin:0;font:750 clamp(35px,4.1vw,66px)/1.4 'Noto Sans JP',sans-serif;letter-spacing:.12em;color:#30291f}
+body.ants-redesign .ants-photo-feature-kicker{writing-mode:vertical-rl;border-left:1px solid #c3b9a9;padding-left:12px;letter-spacing:.15em;font-size:14px}
+body.ants-redesign .ants-photo-feature-banners{display:grid;gap:28px;min-width:0}
+body.ants-redesign .ants-photo-feature-banner{position:relative;display:block;min-height:330px;aspect-ratio:3/1;overflow:hidden;border-radius:24px 0 0 24px;color:#fff!important;isolation:isolate}
+body.ants-redesign .ants-photo-feature-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(25,21,17,.68),rgba(25,21,17,.14));z-index:1}
+body.ants-redesign .ants-photo-feature-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.75,.2,1)}
+body.ants-redesign .ants-photo-feature-banner:hover img{transform:scale(1.05)}
+body.ants-redesign .ants-photo-feature-body{position:absolute;z-index:2;top:50%;left:clamp(25px,4vw,60px);right:85px;transform:translateY(-50%);display:flex;flex-direction:column;gap:18px}
+body.ants-redesign .ants-photo-feature-body small{font-size:12px;letter-spacing:.2em}
+body.ants-redesign .ants-photo-feature-body strong{font-size:clamp(25px,2.5vw,41px);line-height:1.5;letter-spacing:.04em}
+body.ants-redesign .ants-photo-feature-body>span{font-size:clamp(12px,1vw,16px);line-height:1.8}
+body.ants-redesign .ants-photo-feature-arrow{position:absolute;bottom:0;right:0;display:grid;place-items:center;z-index:3;background:#fff;color:#9c8455;width:90px;height:90px;font-size:40px}
+/* Review: editorial oversized heading and scrollable customer voices */
+body.ants-redesign .ants-photo-review{background:#fbfaf4!important;padding:clamp(90px,10vw,160px) 0!important}
+body.ants-redesign .ants-photo-review .section-head{max-width:1100px;text-align:center;margin:0 auto clamp(46px,6vw,90px)}
+body.ants-redesign .ants-photo-review .section-title{font-family:'Noto Sans JP',sans-serif!important;font-size:clamp(30px,4.2vw,64px);font-weight:700!important;line-height:1.5!important}
+body.ants-redesign .ants-photo-review .review-overall{display:flex;justify-content:center;gap:14px;align-items:center;flex-wrap:wrap}
+body.ants-redesign .ants-photo-review .review-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:1150px;margin:auto}
+body.ants-redesign .ants-photo-review .review-card{background:#fff!important;border:1px solid #e9e4d9!important;box-shadow:none!important;border-radius:18px;padding:clamp(26px,3vw,47px)!important;transition:transform .4s,box-shadow .4s}
+body.ants-redesign .ants-photo-review .review-card:hover{transform:translateY(-5px);box-shadow:0 18px 40px rgba(39,32,19,.07)!important}
+body.ants-redesign .ants-photo-review .review-card-text{font-size:clamp(14px,1.08vw,17px);line-height:2.15}
+body.ants-redesign .ants-photo-review .review-card-stars{color:#aa8c52}
+@media(max-width:1150px){
+ body.ants-redesign .ants-photo-header .nav{position:fixed!important;top:0!important;right:0!important;left:auto!important;width:min(88vw,360px)!important;height:100dvh!important;padding:88px 25px 30px!important;transform:translateX(110%)!important;visibility:hidden!important;pointer-events:none!important;overflow:auto!important;background:#fff!important;z-index:1010!important;transition:transform .4s,visibility .4s!important}
+ body.ants-redesign .ants-photo-header .nav.is-active{transform:translateX(0)!important;visibility:visible!important;pointer-events:auto!important}
+ body.ants-redesign .ants-photo-header .nav-list{display:flex;flex-direction:column;align-items:flex-start;gap:20px}
+ body.ants-redesign .ants-photo-header .nav-link{font-size:15px}
+ body.ants-redesign .ants-photo-header .nav-close{display:flex!important;position:absolute!important;top:20px!important;right:20px!important}
+ body.ants-redesign .ants-photo-header .hamburger{display:flex!important}
+ body.ants-redesign .ants-photo-header .header-reserve-btn{display:inline-flex!important}
+}
+@media(max-width:767px){
+ body.ants-redesign .ants-photo-header .header-inner{min-height:74px!important;padding:12px 20px!important}
+ body.ants-redesign .ants-wordmark-main{font-size:31px}
+ body.ants-redesign .ants-wordmark-caption{font-size:8px}
+ body.ants-redesign .top__mv{height:100svh!important;min-height:570px!important}
+ body.ants-redesign .ants-photo-concept{padding:75px 0!important}
+ body.ants-redesign .ants-photo-concept-grid{grid-template-columns:1fr;gap:35px;padding:0 22px}
+ body.ants-redesign .ants-photo-concept .top__concept-heading{font-size:clamp(27px,7.5vw,40px)!important;margin-bottom:24px!important}
+ body.ants-redesign .ants-photo-concept-image{height:460px;border-radius:18px}
+ body.ants-redesign .ants-photo-feature{padding:60px 0!important}
+ body.ants-redesign .ants-photo-feature-grid{grid-template-columns:1fr;padding:0 16px;gap:28px}
+ body.ants-redesign .ants-photo-feature-title{position:static;max-height:none;gap:13px;align-items:flex-end}
+ body.ants-redesign .ants-photo-feature-title h2{writing-mode:horizontal-tb;font-size:clamp(29px,8vw,42px);line-height:1.45}
+ body.ants-redesign .ants-photo-feature-kicker{writing-mode:horizontal-tb;border:0;border-left:1px solid #c3b9a9;padding:0 0 0 12px}
+ body.ants-redesign .ants-photo-feature-banner{min-height:320px;aspect-ratio:auto;border-radius:18px}
+ body.ants-redesign .ants-photo-feature-body{left:22px;right:40px;gap:14px}
+ body.ants-redesign .ants-photo-feature-body strong{font-size:clamp(23px,6vw,31px)}
+ body.ants-redesign .ants-photo-feature-arrow{width:60px;height:60px;font-size:28px}
+ body.ants-redesign .ants-photo-review .review-grid{grid-template-columns:1fr}
+}
+@media(prefers-reduced-motion:reduce){
+ body.ants-redesign .ants-photo-header .nav-list li{animation:none!important}
+ body.ants-redesign .ants-photo-feature-banner img{transition:none!important}
+}
