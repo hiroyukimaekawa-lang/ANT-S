@@ -1,0 +1,104 @@
+/* ANT'S original footer design: staff portrait mosaic and cream link directory.
+   Reference-inspired layout; no reference-site images or source are copied. */
+body.ants-redesign .footer.ants-collage-footer {
+  padding:0!important;margin:0!important;background:#fbf8ed!important;color:#2d271d!important;
+  border:none!important;overflow:hidden;position:relative;
+}
+body.ants-redesign .footer.ants-collage-footer::before{display:none!important}
+body.ants-redesign .ants-footer-hero{
+  position:relative;min-height:clamp(390px,36vw,590px);
+  display:grid;place-items:center;background:#655b47;isolation:isolate;overflow:hidden
+}
+body.ants-redesign .ants-footer-portraits{
+  position:absolute;inset:0;display:grid;
+  grid-template-columns:repeat(8,minmax(0,1fr));
+  grid-template-rows:repeat(3,minmax(0,1fr));gap:0;z-index:-2
+}
+body.ants-redesign .ants-footer-portraits img{
+ width:100%;height:100%;min-width:0;min-height:0;object-fit:cover;
+ filter:saturate(.7);transition:transform .8s ease
+}
+body.ants-redesign .ants-footer-hero-shade{
+ position:absolute;inset:0;z-index:-1;
+ background:linear-gradient(90deg,rgba(66,55,32,.68),rgba(89,72,42,.51),rgba(62,50,30,.65));
+}
+body.ants-redesign .ants-footer-hero-message{
+ width:min(94%,1000px);padding:75px 30px 105px;text-align:center;color:#fff!important;
+ position:relative;z-index:2
+}
+body.ants-redesign .ants-footer-hero-message span{
+ display:block;font-family:var(--font-serif);font-size:clamp(13px,1.4vw,19px);
+ letter-spacing:.3em;margin-bottom:30px
+}
+body.ants-redesign .ants-footer-hero-message h2{
+ margin:0 0 25px!important;font-family:'Noto Sans JP',sans-serif!important;
+ font-size:clamp(24px,2.55vw,43px)!important;line-height:1.8;letter-spacing:.08em;
+ font-weight:700;color:#fff!important
+}
+body.ants-redesign .ants-footer-hero-message p{
+ margin:0!important;font-size:clamp(14px,1.2vw,19px);line-height:2.1;
+ letter-spacing:.09em;color:rgba(255,255,255,.94)!important
+}
+body.ants-redesign .ants-footer-panel{
+ position:relative;z-index:2;margin-top:-38px;
+ border-radius:clamp(28px,4vw,70px) clamp(28px,4vw,70px) 0 0;
+ background:#fbf8ed!important;padding:clamp(60px,7vw,110px) 0 35px
+}
+body.ants-redesign .ants-footer-content{width:min(90%,1530px);margin:auto}
+body.ants-redesign .ants-footer-brand{
+ display:flex;justify-content:space-between;align-items:baseline;gap:25px;
+ border-bottom:1px solid rgba(78,69,49,.19);margin-bottom:35px;padding-bottom:24px
+}
+body.ants-redesign .ants-footer-brand-en{
+ font-family:var(--font-serif);font-size:clamp(58px,9.5vw,145px);font-weight:400;
+ line-height:.9;letter-spacing:.06em;color:#8f7851
+}
+body.ants-redesign .ants-footer-brand p{font-size:13px;letter-spacing:.15em;color:#9a835e}
+body.ants-redesign .ants-footer-store-directory{
+ display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:0 30px;
+ margin-bottom:55px
+}
+body.ants-redesign .ants-footer-store-directory a{
+ display:flex;justify-content:space-between;align-items:center;gap:13px;
+ min-width:0;padding:23px 0;border-bottom:1px solid rgba(78,69,49,.32);
+ font-size:clamp(12px,1.05vw,16px);font-weight:700;line-height:1.7;
+ color:#302a20!important;transition:color .25s ease,padding .25s ease
+}
+body.ants-redesign .ants-footer-store-directory a span{font-size:20px;color:#937b4e}
+body.ants-redesign .ants-footer-store-directory a:hover{color:#90754a!important;padding-left:4px}
+body.ants-redesign .ants-footer-site-nav{
+ display:flex;flex-wrap:wrap;gap:14px 28px;padding:28px 0;
+ border-top:1px solid rgba(78,69,49,.16);
+ border-bottom:1px solid rgba(78,69,49,.16)
+}
+body.ants-redesign .ants-footer-site-nav a{
+ font-size:13px;font-weight:500;color:#665d4b!important
+}
+body.ants-redesign .ants-footer-site-nav a:hover{color:#94794b!important}
+body.ants-redesign .ants-footer-bottom{
+ display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px 30px;
+ padding:30px 0 0;font-size:11px;line-height:1.8;color:#786f60
+}
+body.ants-redesign .ants-footer-bottom a{color:inherit!important}
+body.ants-redesign .ants-collage-footer a:focus-visible{outline:2px solid #9f8251;outline-offset:4px}
+@media(max-width:1199px){
+ body.ants-redesign .ants-footer-store-directory{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:767px){
+ body.ants-redesign .ants-footer-hero{min-height:430px}
+ body.ants-redesign .ants-footer-portraits{grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:repeat(6,minmax(0,1fr))}
+ body.ants-redesign .ants-footer-hero-message{padding:72px 16px 100px}
+ body.ants-redesign .ants-footer-hero-message span{letter-spacing:.13em;font-size:12px}
+ body.ants-redesign .ants-footer-hero-message h2{font-size:clamp(20px,5vw,29px)!important;line-height:1.65}
+ body.ants-redesign .ants-footer-hero-message p{font-size:13px}
+ body.ants-redesign .ants-footer-panel{margin-top:-28px;padding-top:65px}
+ body.ants-redesign .ants-footer-brand{display:block}
+ body.ants-redesign .ants-footer-brand p{margin-top:20px;font-size:11px}
+ body.ants-redesign .ants-footer-store-directory{grid-template-columns:1fr;gap:0;margin-bottom:35px}
+ body.ants-redesign .ants-footer-store-directory a{font-size:15px;padding:18px 0}
+ body.ants-redesign .ants-footer-site-nav{gap:16px 24px}
+ body.ants-redesign .ants-footer-bottom{display:grid;gap:12px}
+}
+@media(prefers-reduced-motion:reduce){
+ body.ants-redesign .ants-footer-portraits img{transition:none!important}
+}
