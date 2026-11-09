@@ -1,0 +1,104 @@
+/* ANT'S editorial design refinement — original implementation inspired by
+   the visual rhythm of morikoshi.net. No reference-site source or assets used.
+   Scoped to the homepage to preserve existing subpages. */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&display=swap');
+body.ants-redesign {
+  --editorial-ink:#292620;
+  --editorial-gold:#a18c70;
+  --editorial-paper:#f8f6f2;
+  --editorial-rule:rgba(55,47,36,.16);
+}
+body.ants-redesign .header {
+  transition:background-color .45s ease,box-shadow .45s ease,border-color .45s ease!important;
+}
+body.ants-redesign .header:not(.is-scrolled) {
+  background:rgba(250,248,244,.86)!important;
+}
+body.ants-redesign .logo { letter-spacing:.13em; }
+body.ants-redesign .header-reserve-btn { letter-spacing:.09em; }
+body.ants-redesign .top__mv { min-height:min(920px,100svh); isolation:isolate; }
+body.ants-redesign .top__mv-bg { transform:scale(1.05); animation:ants-editorial-hero 14s ease-out both; }
+body.ants-redesign .top__mv-overlay {
+  background:linear-gradient(90deg,rgba(18,17,15,.6),rgba(18,17,15,.22) 57%,rgba(18,17,15,.08))!important;
+}
+body.ants-redesign .top__mv-inner { position:relative; z-index:2; }
+body.ants-redesign .top__mv-eyebrow { letter-spacing:.24em; text-transform:uppercase; }
+body.ants-redesign .top__mv-title { letter-spacing:.12em; line-height:.92; }
+body.ants-redesign .top__mv-message { font-family:'Noto Serif JP',serif; letter-spacing:.12em; line-height:2; }
+body.ants-redesign .section { scroll-margin-top:80px; }
+body.ants-redesign .section-head { position:relative; }
+body.ants-redesign .section-subtitle { text-transform:capitalize; letter-spacing:.11em; }
+body.ants-redesign .section-title,
+body.ants-redesign .top__concept-heading {
+  font-family:'Noto Serif JP',serif;
+  font-weight:400!important;
+  letter-spacing:.075em;
+  line-height:1.65;
+}
+body.ants-redesign .top__concept { position:relative; overflow:hidden; }
+body.ants-redesign .top__concept::before {
+  content:"ANT'S";position:absolute;right:-.06em;bottom:-.25em;
+  font-family:Georgia,serif;font-size:clamp(8rem,24vw,30rem);
+  font-weight:400;letter-spacing:-.09em;line-height:1;
+  color:rgba(118,103,78,.035);pointer-events:none;
+}
+body.ants-redesign .top__concept > .container { position:relative;z-index:1; }
+body.ants-redesign .top__concept-lead { line-height:2.45; }
+body.ants-redesign .gallery-slide-img,
+body.ants-redesign .feature-card-img,
+body.ants-redesign .salon-card-img { transition:transform .9s cubic-bezier(.2,.7,.2,1)!important; }
+@media(hover:hover) {
+  body.ants-redesign .gallery-slide:hover .gallery-slide-img,
+  body.ants-redesign .feature-card:hover .feature-card-img,
+  body.ants-redesign .salon-card:hover .salon-card-img { transform:scale(1.055); }
+}
+body.ants-redesign .feature-grid { align-items:stretch; }
+body.ants-redesign .feature-card,
+body.ants-redesign .review-card,
+body.ants-redesign .menu-panel,
+body.ants-redesign .salon-card { transition:transform .45s ease,box-shadow .45s ease; }
+body.ants-redesign .feature-card:focus-within,
+body.ants-redesign .salon-card:focus-within { outline:2px solid var(--editorial-gold);outline-offset:4px; }
+body.ants-redesign .top__review {
+  background:linear-gradient(145deg,#f3f0e9 0%,#fbfaf7 70%)!important;
+}
+body.ants-redesign .review-card { border:1px solid var(--editorial-rule); }
+body.ants-redesign .media-item { border-bottom:1px solid var(--editorial-rule); }
+body.ants-redesign .menu-panel { border:1px solid var(--editorial-rule); }
+body.ants-redesign .salon-card-actions a { min-height:44px;display:inline-flex;justify-content:center;align-items:center; }
+body.ants-redesign .footer {
+  position:relative;overflow:hidden;
+  background:#23211e!important;color:#f8f6f2!important;
+}
+body.ants-redesign .footer::before {
+  content:"ANT'S";display:block;margin:0 auto;
+  padding:clamp(22px,4vw,50px) 5% 0;
+  max-width:1400px;border-bottom:1px solid rgba(255,255,255,.13);
+  font-family:Georgia,serif;font-weight:400;
+  font-size:clamp(5rem,19vw,21rem);line-height:.92;letter-spacing:-.055em;
+  color:rgba(255,255,255,.09);pointer-events:none;
+}
+body.ants-redesign .footer a:focus-visible,
+body.ants-redesign .nav a:focus-visible,
+body.ants-redesign .header-reserve-btn:focus-visible,
+body.ants-redesign button:focus-visible {
+  outline:2px solid #c7aa81;outline-offset:4px;
+}
+@keyframes ants-editorial-hero {
+  from{transform:scale(1.07)}to{transform:scale(1)}
+}
+@media(max-width:767px) {
+  body.ants-redesign .top__mv { min-height:100svh; }
+  body.ants-redesign .top__mv-overlay {
+    background:linear-gradient(0deg,rgba(18,17,15,.65),rgba(18,17,15,.04) 75%)!important;
+  }
+  body.ants-redesign .top__mv-title { letter-spacing:.08em; }
+  body.ants-redesign .top__concept-lead { line-height:2.1; }
+  body.ants-redesign .footer::before { font-size:clamp(4.4rem,22vw,10rem);padding-top:35px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  body.ants-redesign .top__mv-bg { animation:none!important;transform:none!important; }
+  body.ants-redesign .gallery-slide-img,
+  body.ants-redesign .feature-card-img,
+  body.ants-redesign .salon-card-img { transition:none!important; }
+}
