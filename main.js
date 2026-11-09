@@ -774,9 +774,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const salonCards = document.querySelectorAll('.salon-card');
     const salonHeadings = document.querySelectorAll('[data-area-heading]');
     salonTabs.forEach(tab => {
+        tab.setAttribute('aria-pressed', String(tab.classList.contains('is-active')));
         tab.addEventListener('click', () => {
-            salonTabs.forEach(t => t.classList.remove('is-active'));
+            salonTabs.forEach(t => {
+                t.classList.remove('is-active');
+                t.setAttribute('aria-pressed', 'false');
+            });
             tab.classList.add('is-active');
+            tab.setAttribute('aria-pressed', 'true');
             const filter = tab.dataset.filter;
             salonHeadings.forEach(heading => {
                 heading.hidden = filter !== 'all' && heading.dataset.areaHeading !== filter;
